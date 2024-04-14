@@ -1,0 +1,33 @@
+"use client"
+
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+import { TypographyParagraphProps } from "@/components/typography/types.typography"
+import { variants } from "@/components/typography/variants.typography"
+import { Box } from "../box"
+
+export const TypographyParagraph = ({
+  children,
+  className,
+  inView,
+  muted,
+  variant = "default",
+  ...props
+}: TypographyParagraphProps) => {
+  return (
+    <Box
+      {...props}
+      as="p"
+      className={cn(
+        "leading-7 text-pretty align-top transition-al text-xl",
+        variant && variants.variant[variant],
+        muted && "text-muted-foreground",
+        className
+      )}
+    >
+      {children}
+    </Box>
+  )
+}
+TypographyParagraph.displayName = "TypographyParagraph"
