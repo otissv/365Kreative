@@ -20,7 +20,7 @@ export const TypographyH3 = ({
       {...props}
       as="h3"
       className={cn(
-        "scroll-m-20 text-3xl font-semibold tracking-tight text-balance align-top",
+        "inline-flex scroll-m-20 text-3xl font-semibold tracking-tight text-balance align-top",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

@@ -20,7 +20,7 @@ export const TypographyH4 = ({
       {...props}
       as="h4"
       className={cn(
-        "scroll-m-20 text-xl font-semibold tracking-tight text-balance align-top",
+        "inline-flex scroll-m-20 text-xl font-semibold tracking-tight text-balance align-top",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

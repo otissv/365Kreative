@@ -1,0 +1,18 @@
+{
+  "id": "mig_coggpg4dh80ve3s0ubug",
+  "parentID": "mig_coggp3ina9qe6cnamr4g",
+  "checksum": "1:43658fe1c61603f31056feb174d3fb9e37f874c0d45326f416f4b2ea10aed43f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "null"
+        },
+        "table": "website_contact_form"
+      }
+    }
+  ]
+}

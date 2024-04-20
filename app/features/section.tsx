@@ -1,19 +1,12 @@
+import React from "react"
+
 import { Box, BoxProps } from "@/components/box"
-import { ShapeDivider } from "@/components/shape-divider"
+import { ShapeDivider, ShapeDividerProps } from "@/components/shape-divider"
 import { TypographyH2 } from "@/components/typography/h2.typography"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { cn } from "@/lib/utils"
-import React from "react"
-
-export interface SectionProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "content"> {
-  content?: React.ReactNode
-  hasContainer?: boolean
-  heading?: string
-  watermarkClassName?: string
-  onInView?: (id: string) => void
-}
-
+import Image, { ImageProps } from "next/image"
+import { useElementScrollPosition } from "../hooks/useElementScrollPosition"
 export interface SectionHeadingProps extends BoxProps {
   heading?: string
   className?: string
@@ -37,12 +30,6 @@ export const SectionHeading = ({
       )}
       {...props}
     >
-      <Box
-        className={cn(
-          "absolute bg-purple-700 h-4 w-4 rounded-full opacity-0 -translate-x-5 top-5"
-        )}
-        enter="opacity-100 "
-      ></Box>
       <TypographyH2
         className={cn(
           "inline-flex text-6xl leading-none translate-y-40 opacity-10 duration-500 delay-100",
@@ -69,9 +56,9 @@ export const SectionWatermark = ({
     <div
       aria-hidden={true}
       className={cn(
-        "356-WaterMark absolute font-bold translate-y-[-1vh] overflow-x-hidden w-[calc(100%-8px)] h-full",
+        "356-WaterMark absolute font-bold translate-y-[-1vh] overflow-x-hidden w-[calc(100%-9px)] h-full",
 
-        "lg:w-[calc(100%-5rem)] xl:w-[calc(100%-1rem)] lg:translate-y-[-3vh] lg:w-[calc(100%-80px) ",
+        "lg:w-[calc(100%-5rem)] xl:w-[calc(100%-4rem)] lg:translate-y-[-3vh] lg:w-[calc(100%-80px) ",
         className
       )}
     >
@@ -88,47 +75,71 @@ export const SectionWatermark = ({
   )
 }
 
-export const useElementScrollPosition = (
-  elementRef: React.RefObject<HTMLElement>,
-  onTopPosition: () => void
-) => {
-  const checkPosition = React.useCallback(() => {
-    if (!elementRef.current) return false
+// export const useElementScrollPosition = (
+//   elementRef: React.RefObject<HTMLElement>,
+//   onTopPosition: () => void
+// ) => {
+//   const checkPosition = React.useCallback(() => {
+//     if (!elementRef.current) return false
 
-    const elementTop = elementRef.current.getBoundingClientRect().top
-    const elementHeight = elementRef.current.getBoundingClientRect().height
-    const scrollPosition = window.scrollY || window.pageYOffset
+//     const elementTop = elementRef.current.getBoundingClientRect().top
+//     const elementHeight = elementRef.current.getBoundingClientRect().height
+//     const scrollPosition = window.scrollY || window.pageYOffset
 
-    // When the top of the element is reached
-    if (
-      elementTop / 2 <= (scrollPosition - window.outerHeight) * 0.33 * 0.33 &&
-      elementTop + elementHeight / 2 > 0
-    ) {
-      onTopPosition()
-    }
+//     // When the top of the element is reached
+//     if (
+//       elementTop / 2 <= (scrollPosition - window.outerHeight) * 0.33 * 0.33 &&
+//       elementTop + elementHeight / 2 > 0
+//     ) {
+//       onTopPosition()
+//     }
 
-    return elementTop === scrollPosition
-  }, [elementRef, onTopPosition])
+//     return elementTop === scrollPosition
+//   }, [elementRef, onTopPosition])
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", checkPosition, { passive: true })
-    return () => window.removeEventListener("scroll", checkPosition)
-  }, [checkPosition])
+//   React.useEffect(() => {
+//     window.addEventListener("scroll", checkPosition, { passive: true })
+//     return () => window.removeEventListener("scroll", checkPosition)
+//   }, [checkPosition])
 
-  return checkPosition
+//   return checkPosition
+// }
+
+export interface SectionBackground
+  extends React.HTMLAttributes<HTMLDivElement> {
+  image?: ImageProps
+}
+
+export interface SectionProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "content"> {
+  background?: SectionBackground
+  bottomDivider?: ShapeDividerProps
+  content?: React.ReactNode
+  hasContainer?: boolean
+  heading?: string
+  topDivider?: ShapeDividerProps
+  onInView?: (id: string) => void
 }
 
 export function Section({
+  background,
+  bottomDivider,
   children,
   className,
   content,
   id,
+  topDivider,
   onInView,
   ...props
 }: SectionProps) {
   const scrollRef = React.useRef<HTMLDivElement>(null)
 
-  useElementScrollPosition(scrollRef, () => onInView && onInView(id as string))
+  useElementScrollPosition(
+    scrollRef,
+    (inInView) => inInView && onInView && onInView(id as string)
+  )
+
+  const { image, ...backgroundProps } = background || { image: {} }
 
   return (
     <section
@@ -141,18 +152,30 @@ export function Section({
       {...props}
       ref={scrollRef}
     >
-      <ShapeDivider
-        type="waves"
-        width="153%"
-        flipVertical={true}
-        className="-translate-y-[calc(100%-1px)]"
-      />
-      <ShapeDivider type="waves" width="156%" />
-
+      {background ? (
+        <div className="overflow-hidden w-full initial" {...backgroundProps}>
+          <Image
+            className={cn("100vh brightness-50", image?.className)}
+            fill
+            {...image}
+            src={image?.src || ""}
+            alt={image?.alt || ""}
+          />
+        </div>
+      ) : null}
+      {topDivider ? (
+        <ShapeDivider
+          width="153%"
+          flipVertical={true}
+          className="-translate-y-[calc(100%-1px)]"
+          {...topDivider}
+        />
+      ) : null}
+      {bottomDivider ? <ShapeDivider width="156%" {...bottomDivider} /> : null}
       <div className="absolute h-full" id={id}></div>
       <div
         className={cn(
-          "365-SectionContent relative flex flex-col w-full z-[2]  gap-x-2 gap-y-6"
+          "365-SectionContent relative w-full z-[2]  gap-x-2 gap-y-6"
         )}
       >
         {children}

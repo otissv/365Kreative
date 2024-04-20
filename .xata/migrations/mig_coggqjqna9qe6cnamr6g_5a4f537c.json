@@ -1,0 +1,18 @@
+{
+  "id": "mig_coggqjqna9qe6cnamr6g",
+  "parentID": "mig_coggq3kdh80ve3s0uc10",
+  "checksum": "1:5a4f537cf398c537b9b7ccedfb7810dace722cbf5816396b0785839e1d611cb1",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "verified",
+          "type": "bool",
+          "notNull": true,
+          "defaultValue": "false"
+        },
+        "table": "subsribe"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mig_coggp3ina9qe6cnamr4g",
+  "parentID": "mig_coggon4dh80ve3s0ubtg",
+  "checksum": "1:490397288caeefc1f9cc9a7e39ae6f01dfe9268ce9c09020588c8f0ed5219e0b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "email",
+          "type": "email",
+          "defaultValue": "null@null"
+        },
+        "table": "website_contact_form"
+      }
+    }
+  ]
+}

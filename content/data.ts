@@ -8,12 +8,12 @@ export const nav = [
     to: "services",
   },
   {
-    label: "About Us",
-    to: "about",
-  },
-  {
     label: "Projects",
     to: "projects",
+  },
+  {
+    label: "About Us",
+    to: "about",
   },
   {
     label: "Testimonials",
@@ -28,10 +28,11 @@ export const nav = [
 export const header = {
   title: "Transform Your Online Presence",
   subTitle:
-    "We design, develop, and optimise websites that are not just visually stunning, but also SEO-savvy and conversion-focused.",
+    "We design, develop, and optimise websites that are not just visually stunning, but also SEO-savvy and conversion-focused",
 }
 
 export const services = {
+  heading: "services",
   title: "Build and Design Websites",
   items: [
     {
@@ -58,7 +59,36 @@ export const services = {
   ],
 }
 
+export const benefits = {
+  heading: "Benefits Value",
+  title: "Why Clients Choose Us",
+  items: [
+    {
+      heading: "Your Digital Crafting Experts",
+      content:
+        "In the ever-evolving digital world, your online presence is more than just a website; it's the heartbeat of your brand. That's where 365 Kreative steps in. We offer a comprehensive suite of digital solutions, from bespoke web design and development to cutting-edge SEO strategies. Our approach is simple yet powerful – blending aesthetics with functionality, and aligning every pixel with your business goals. With us, experience the convenience of having all your digital needs addressed under one roof, ensuring a cohesive and impactful online presence.",
+      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      alt: "",
+    },
+    {
+      heading: "Crafting Experiences, Not Just Websites",
+      content:
+        "At 365 Kreative, we believe in creating more than just websites – we create digital experiences. Our team of experts is dedicated to designing and developing websites that are not only visually stunning but also user-centric. We focus on crafting sites that offer seamless navigation and engaging content, making every visitor's journey enjoyable and memorable. Our SEO expertise ensures your website ranks high in search results, connecting you with your target audience effectively. Plus, our commitment to data-driven decisions means your website stays relevant, dynamic, and ahead of the competition.",
+      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      alt: "",
+    },
+    {
+      heading: "Your Growth, Our Mission",
+      content:
+        "Your business is unique, and your digital strategy should reflect that. At 365 Kreative, we tailor our services to fit the unique contours of your brand. From creating a distinctive brand identity to optimising for conversions, every step we take is designed to amplify your online presence and drive business growth. And as your business evolves, our scalable solutions evolve with you, ensuring you always stay on top of the digital game. With our ongoing support and maintenance, rest assured that your digital assets remain in expert hands, leaving you free to focus on what you do best – growing your business.",
+      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      alt: "",
+    },
+  ],
+}
+
 export const seoFeatures = {
+  heading: "Search engine optimisation (SEO)",
   title: "Drive Traffic & Engage Users",
 
   items: [
@@ -110,7 +140,8 @@ export const seoFeatures = {
   ],
 }
 
-export const wbeFeatures = {
+export const webFeatures = {
+  heading: "Wed design and development",
   title: "Engage & Impress  ",
   title2: "with Fast, Accessible Web Design",
 
@@ -153,35 +184,9 @@ export const wbeFeatures = {
   ],
 }
 
-export const benefits = {
-  title: "Why Clients Choose Us",
-  items: [
-    {
-      heading: "Your Digital Crafting Experts",
-      content:
-        "In the ever-evolving digital world, your online presence is more than just a website; it's the heartbeat of your brand. That's where 365 Kreative steps in. We offer a comprehensive suite of digital solutions, from bespoke web design and development to cutting-edge SEO strategies. Our approach is simple yet powerful – blending aesthetics with functionality, and aligning every pixel with your business goals. With us, experience the convenience of having all your digital needs addressed under one roof, ensuring a cohesive and impactful online presence.",
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
-      alt: "",
-    },
-    {
-      heading: "Crafting Experiences, Not Just Websites",
-      content:
-        "At 365 Kreative, we believe in creating more than just websites – we create digital experiences. Our team of experts is dedicated to designing and developing websites that are not only visually stunning but also user-centric. We focus on crafting sites that offer seamless navigation and engaging content, making every visitor's journey enjoyable and memorable. Our SEO expertise ensures your website ranks high in search results, connecting you with your target audience effectively. Plus, our commitment to data-driven decisions means your website stays relevant, dynamic, and ahead of the competition.",
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
-      alt: "",
-    },
-    {
-      heading: "Your Growth, Our Mission",
-      content:
-        "Your business is unique, and your digital strategy should reflect that. At 365 Kreative, we tailor our services to fit the unique contours of your brand. From creating a distinctive brand identity to optimising for conversions, every step we take is designed to amplify your online presence and drive business growth. And as your business evolves, our scalable solutions evolve with you, ensuring you always stay on top of the digital game. With our ongoing support and maintenance, rest assured that your digital assets remain in expert hands, leaving you free to focus on what you do best – growing your business.",
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
-      alt: "",
-    },
-  ],
-}
-
 export const aboutUs = {
-  title: "About Us",
+  heading: "About Us",
+  title: "Web specialists",
   content: [
     "Welcome to 365Kreative, a premier web design and development agency based in the London, UK. We specialise in creating innovative and visually appealing websites that help businesses stand out in the digital world.",
     "With our team of talented designers and developers, we are dedicated to providing top-notch services tailored to meet your unique needs and goals. Let us help you to elevate your online presence and achieve success in a competitive online landscape.",
@@ -193,12 +198,9 @@ export const aboutUs = {
 }
 
 export const projects = {
-  title: "Projects",
+  heading: "Projects",
+  title: "Our work",
   items: [
-    {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
-      alt: "",
-    },
     {
       src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
       alt: "",
@@ -211,6 +213,7 @@ export const projects = {
 }
 
 export const testimonials: {
+  heading: string
   title: string
   items: {
     src: string
@@ -220,6 +223,7 @@ export const testimonials: {
     name: string
   }[]
 } = {
+  heading: "Testimonials",
   title: "What Our Clients Say About Us",
   items: [
     {
@@ -242,7 +246,165 @@ export const testimonials: {
 }
 
 export const contact = {
-  title: "Elevate your online presence with 365 Kreative",
+  heading: "Contact us",
+  title: "Let's create the future together",
+  phone: "+48 882943276",
+  email: "otissv@gmail.com",
   content: "discovery call message here/ invite to discuss",
-  button: "Let's create something amazing together",
+  button: "Send",
+}
+
+export const subscribe = {
+  heading: "Subscribe",
+  title: "Join My Mailing List",
+  content: [
+    "The people on my mailing list are the first to hear about my new content.",
+    "Join them by signing up now!",
+  ],
+  agree:
+    "I agree to newsletter via email and consent to be contacted by 365Kreative Design with future updates and related promotional materials. I understand that I can unsubscribe from these communications at any time.",
+  button: "Subscribe",
+  sending: "Sending",
+}
+
+// change with qwil
+export const enquiry = {
+  heading: "Enquiry",
+  title: "Enquiry",
+  content:
+    "Describe your requirements and I'll get back to you within a couple of working days.",
+  form: {
+    description: {
+      title: "Brief description of the website",
+      heading: "Typical audience, main goals, what success looks like eg.",
+      placeholder:
+        "e.g I am the CEO of a non-profit for looking for a new website to raise awareness of the brand...",
+    },
+    services: [
+      "Brand Identity",
+      "Website Design",
+      "Website Development",
+      "Memberships",
+      "Ecommerce",
+      "SEO (Search Engine Optimisation)",
+      "Animations & interaction",
+      "Data & Analytics",
+    ],
+  },
+}
+
+// change with qwil
+export const workflow = {
+  heading: "How we Work",
+  title: "How we Work",
+
+  steps: [
+    {
+      heading: "Step 01",
+      title: "",
+      content: [
+        "It starts by you getting in touch.",
+        "Then we have a short call where I explain who I am and what I do and you can explain who you are, why you find yourself looking for Web Design work and what your goals are for a new product.",
+      ],
+    },
+    {
+      heading: "Step 02",
+      title: "Proposal",
+      content: [
+        "If I think I can build something to help you achieve your goals, I then write up a free proposal PDF. This includes a design mockup and explanation, cost range, potential timeline for work and next steps.",
+      ],
+    },
+    ,
+    {
+      heading: "Step 03",
+      title: "Call",
+      content: [
+        "If you like the proposal and want to work with me, we then have a call to sort out all the fine details of what content you want on your site, what structure you may have in mind and what features you want.",
+      ],
+    },
+    {
+      heading: "Step 04",
+      title: "Design",
+      content: [
+        "The work begins! I first draw out a sitemap of your website - the structure of your site. I then get to the drawing board and follow a process taking me from pencil and pad to fully designed pages in design software.",
+        "",
+      ],
+    },
+    {
+      heading: "Step 05",
+      title: "Build",
+      content: [
+        "I then take those HD designs and build them out as real web pages, inline with best SEO practices, making sure visitors have the best experience and are always led to interact in the ways that you want them to.",
+      ],
+    },
+    {
+      heading: "Step 06",
+      title: "Test",
+      content: [
+        "When the site is built and we're both happy to launch, there will be a period of testing where you can send out a private link to trusted people to test the website to make sure everything works, and see if there are any bugs or issues.",
+        "During this time, I also train you/your team on how to use/edit/manage your site.",
+      ],
+    },
+    {
+      heading: "Step 07",
+      title: "Launch",
+      content: [
+        "When all the bugs have been dealt with, we launch the site and monitor visitors and search engine results. There is a period of time when I’m on hand to answer any questions and fix any issues.",
+        "After that, if you don’t choose to have an (customer success plan) plan, the site is handed over and you gain the reins of your sparkly new site!",
+      ],
+    },
+  ],
+}
+
+export const faq = {
+  heading: "faq",
+  tile: "faq",
+  items: [
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+    {
+      heading: "",
+      content: [""],
+    },
+  ],
+}
+
+export const emails = {
+  confirmNewsletterSubscription: {
+    from: "noreply@365kreative.com",
+    subject: "Please confirm your subscription",
+    unsubscribePath: "/subscribe/unsubscribe",
+    verifyPath: "/subscribe/verify",
+  },
+  contact: {
+    from: "website@365kreative.com",
+    to: "info@365kreative.com",
+    subject: "New Message",
+  },
 }

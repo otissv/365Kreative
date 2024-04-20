@@ -1,0 +1,16 @@
+{
+  "id": "mig_coggnqina9qe6cnamr3g",
+  "parentID": "mig_coggnn2na9qe6cnamr2g",
+  "checksum": "1:c345e73766bdd4f523cfa4a3600d801891be5f83344a15ec3e46a973b03f1db2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "text"
+        },
+        "table": "website_contact_form"
+      }
+    }
+  ]
+}

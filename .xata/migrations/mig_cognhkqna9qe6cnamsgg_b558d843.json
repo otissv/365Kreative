@@ -1,0 +1,16 @@
+{
+  "id": "mig_cognhkqna9qe6cnamsgg",
+  "parentID": "mig_cognh9ina9qe6cnamsfg",
+  "checksum": "1:b558d84363b305cbfe22d91d01955cb0fd34d500256f68b29c019eb866c75da0",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "token_expiry",
+          "type": "datetime"
+        },
+        "table": "subscribe"
+      }
+    }
+  ]
+}

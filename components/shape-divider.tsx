@@ -12,11 +12,10 @@ export type ShapeDividerTypes =
   | "split"
   | "book"
 
-type ShapeProps = { id: string; fill?: string; svgClassName?: string }
+type ShapeProps = { fill?: string; svgClassName?: string }
 
-const Waves = ({ id, fill, svgClassName }: ShapeProps) => (
+const Waves = ({ fill, svgClassName }: ShapeProps) => (
   <svg
-    data-name={id}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1200 120"
     preserveAspectRatio="none"
@@ -34,9 +33,8 @@ const Waves = ({ id, fill, svgClassName }: ShapeProps) => (
   </svg>
 )
 
-const WavesOpacity = ({ id, fill, svgClassName }: ShapeProps) => (
+const WavesOpacity = ({ fill, svgClassName }: ShapeProps) => (
   <svg
-    data-name={id}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1200 120"
     preserveAspectRatio="none"
@@ -59,10 +57,9 @@ const WavesOpacity = ({ id, fill, svgClassName }: ShapeProps) => (
   </svg>
 )
 
-const Curves = ({ id, fill, svgClassName }: ShapeProps) => {
+const Curves = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -76,10 +73,9 @@ const Curves = ({ id, fill, svgClassName }: ShapeProps) => {
   )
 }
 
-const CurersAsymmetrical = ({ id, fill, svgClassName }: ShapeProps) => {
+const CurersAsymmetrical = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -93,10 +89,9 @@ const CurersAsymmetrical = ({ id, fill, svgClassName }: ShapeProps) => {
   )
 }
 
-const Triangle = ({ id, fill, svgClassName }: ShapeProps) => {
+const Triangle = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -107,10 +102,9 @@ const Triangle = ({ id, fill, svgClassName }: ShapeProps) => {
   )
 }
 
-const TriangleAsymmetrical = ({ id, fill, svgClassName }: ShapeProps) => {
+const TriangleAsymmetrical = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -121,10 +115,9 @@ const TriangleAsymmetrical = ({ id, fill, svgClassName }: ShapeProps) => {
   )
 }
 
-const Tilt = ({ id, fill, svgClassName }: ShapeProps) => {
+const Tilt = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -135,10 +128,9 @@ const Tilt = ({ id, fill, svgClassName }: ShapeProps) => {
   )
 }
 
-const Arrow = ({ id, fill, svgClassName }: ShapeProps) => {
+const Arrow = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -152,10 +144,9 @@ const Arrow = ({ id, fill, svgClassName }: ShapeProps) => {
   )
 }
 
-const Split = ({ id, fill, svgClassName }: ShapeProps) => {
+const Split = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -170,10 +161,9 @@ const Split = ({ id, fill, svgClassName }: ShapeProps) => {
     </svg>
   )
 }
-const Book = ({ id, fill, svgClassName }: ShapeProps) => {
+const Book = ({ fill, svgClassName }: ShapeProps) => {
   return (
     <svg
-      data-name={id}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
@@ -225,15 +215,6 @@ export const ShapeDivider = ({
 
   return (
     <>
-      <style>
-        {`
-        .shape-divider-${id} {
-          width: calc(${width} + 1.3px);
-         
-        }
-        `}
-      </style>
-
       <div
         className={cn(
           "356-ShapeDivider",
@@ -244,7 +225,7 @@ export const ShapeDivider = ({
           className
         )}
       >
-        <DividerPath id={id} fill={fill} svgClassName={`shape-divider-${id}`} />
+        <DividerPath fill={fill} />
       </div>
     </>
   )

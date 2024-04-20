@@ -20,7 +20,7 @@ export const TypographyBlockquote = ({
       {...props}
       as="blockquote"
       className={cn(
-        "mt-6 border-l-2 pl-6 italic text-pretty align-top",
+        "inline-flex mt-6 border-l-2 pl-6 text-balance align-top",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

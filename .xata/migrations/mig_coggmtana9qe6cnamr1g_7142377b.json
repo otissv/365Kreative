@@ -1,0 +1,11 @@
+{
+  "id": "mig_coggmtana9qe6cnamr1g",
+  "checksum": "1:7142377bd243179b92ae9e94629e8b1991bd0f0545a4f2d60f21d1f9b5c79634",
+  "operations": [
+    {
+      "addTable": {
+        "table": "website_contact_form"
+      }
+    }
+  ]
+}

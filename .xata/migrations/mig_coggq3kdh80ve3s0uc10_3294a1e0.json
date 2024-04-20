@@ -1,0 +1,18 @@
+{
+  "id": "mig_coggq3kdh80ve3s0uc10",
+  "parentID": "mig_coggpvkdh80ve3s0uc00",
+  "checksum": "1:3294a1e03586fab1242a908b39e11821b6209add0fc4d020c9f70507ac3008c7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "email",
+          "type": "email",
+          "notNull": true,
+          "defaultValue": "null@null"
+        },
+        "table": "subsribe"
+      }
+    }
+  ]
+}

@@ -20,7 +20,7 @@ export const TypographyParagraph = ({
       {...props}
       as="p"
       className={cn(
-        "leading-7 text-pretty align-top transition-al text-xl",
+        "inline-flex leading-7 text-pretty align-top transition-all text-xl",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

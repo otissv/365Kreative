@@ -19,7 +19,7 @@ export const TypographyCode = ({
       {...props}
       as="code"
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold align-top",
+        "inline-flex relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold align-top",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

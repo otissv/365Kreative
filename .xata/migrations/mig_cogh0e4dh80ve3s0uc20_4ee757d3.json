@@ -1,0 +1,13 @@
+{
+  "id": "mig_cogh0e4dh80ve3s0uc20",
+  "parentID": "mig_coggqppatd3tffebgen0",
+  "checksum": "1:4ee757d37f0b97b816f8dd2896094133bf139ca475a9f9b71aa6a116113664e1",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "contact_form",
+        "oldName": "website_contact_form"
+      }
+    }
+  ]
+}

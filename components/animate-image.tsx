@@ -2,8 +2,12 @@ import Image, { ImageProps } from "next/image"
 import { ComponentProps } from "./component.types"
 import { Box } from "./box"
 
+interface AnimateImagePropsProps extends Omit<ImageProps, "src" | "alt"> {
+  className?: string
+}
+
 export interface AnimateImageProps extends ComponentProps<HTMLImageElement> {
-  imageProps?: ImageProps & { className?: string }
+  imageProps?: AnimateImagePropsProps
   src: string
   alt: string
   width?: number
@@ -29,7 +33,7 @@ export const AnimateImage = ({
         height={height}
         {...widthProps}
         {...imageProps}
-        alt={imageProps?.alt || alt}
+        alt={alt}
       />
     </Box>
   )

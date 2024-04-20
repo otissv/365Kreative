@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Otis-Virginie-s-workspace-ir3drk.eu-west-1.xata.sh/db/365kreative",
+  "codegen": {
+    "output": "xata.ts"
+  }
+}

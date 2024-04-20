@@ -19,7 +19,7 @@ export const TypographyH1 = ({
     <Box
       as="h1"
       className={cn(
-        "scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl xl:text-7xl text-balance align-top transition-all",
+        "inline-flex scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl xl:text-7xl text-balance align-top transition-all",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

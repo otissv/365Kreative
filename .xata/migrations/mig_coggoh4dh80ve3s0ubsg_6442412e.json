@@ -1,0 +1,13 @@
+{
+  "id": "mig_coggoh4dh80ve3s0ubsg",
+  "parentID": "mig_coggnqina9qe6cnamr3g",
+  "checksum": "1:6442412e90e5219f8c1b26efdc0523e28887c45ab721321c6cbda5be4637aff4",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "name",
+        "table": "website_contact_form"
+      }
+    }
+  ]
+}

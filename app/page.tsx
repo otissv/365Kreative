@@ -7,18 +7,13 @@ import { Button } from "@/components/ui/button"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Nav, NaveItemType, setSelectedNavItem } from "./features/nav"
+import {
+  Nav,
+  NaveItemType,
+  SocialLinks,
+  setSelectedNavItem,
+} from "./features/nav"
 import { Feature } from "./features/feature"
 import { benefits, contact, nav } from "../content/data"
 
@@ -26,7 +21,7 @@ import {
   header,
   services,
   seoFeatures,
-  wbeFeatures,
+  webFeatures,
   aboutUs,
   projects,
   testimonials,
@@ -37,7 +32,11 @@ import { Hero1 } from "./features/header"
 import { AnimateImage } from "@/components/animate-image"
 import { cn } from "@/lib/utils"
 import { TypographyH3 } from "@/components/typography/h3.typography"
-import { SendHorizontal } from "lucide-react"
+import { TypographyBlockquote } from "@/components/typography/blockquote.typography"
+import { QuoteMarks } from "./features/quote-marks"
+import { Subscribe } from "./subscribe/subscribe"
+import { Contact } from "./contact/contact"
+import { Testimonials } from "./features/testimonials"
 
 export default function Home() {
   const [active, setActive] = React.useState<NaveItemType>(nav[0])
@@ -50,10 +49,9 @@ export default function Home() {
   const handleOnInView = (id: string) => {
     const index = nav.findIndex((item) => item.to === id)
     if (index >= 0) {
-      setActiveLink(index)
+      setActiveLink(id)
     }
   }
-
   return (
     <>
       <Nav
@@ -69,33 +67,28 @@ export default function Home() {
         title={header.title}
         subTitle={header.subTitle}
         onInView={handleOnInView}
-      >
-        <AnimateImage
-          className="object-cover opacity-30 scale-50 duration-1000 ease-in-out"
-          src="/images/photo-1587440871875-191322ee64b0.jpeg"
-          alt=""
-          width={600}
-          height={500}
-          enter="opacity-100 scale-100"
-          parallax={70}
-          imageProps={{
-            className: "rounded-lg",
-          }}
-        />
-      </Hero1>
+        className="section-gradient"
+      />
 
       <main>
         <Section
           id="services"
           className="section-gradient"
           onInView={handleOnInView}
+          topDivider={{ type: "tilt", flipHorizontal: true }}
         >
-          <SectionWatermark className="ml-2 lg:ml-16 top-[9%] md:top-[13%] lg:top-[15%]">
+          <SectionWatermark className="lg:translate-x-16  top-[9%] md:top-[13%] lg:top-[15%]">
             {services.title}
           </SectionWatermark>
 
           <div className="section-container pb-20  lg:px-20 px-2 pt-[30%] lg:pt-[28%] xl:pt-[20%] 2xl:pt-[10%]">
-            <SectionHeading parallax={30}>{services.title}</SectionHeading>
+            <SectionHeading headingClassName="grid mb-2">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                {services.heading}
+                <span className="text-transparent">,</span>
+              </span>
+              {services.title}
+            </SectionHeading>
             {services.items.map(({ src, alt, title, content }, index) => (
               <Feature
                 key={index}
@@ -113,16 +106,18 @@ export default function Home() {
           id="services"
           onInView={handleOnInView}
           className="section-gradient"
+          bottomDivider={{ type: "tilt" }}
         >
-          <SectionWatermark className="ml-2 lg:ml-16 top-[5%] md:top-[10%] 2xl:top-[20%]">
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[5%] md:top-[10%] 2xl:top-[20%]">
             {benefits.title}
           </SectionWatermark>
 
-          <Box
-            className="section-container pb-20 lg:px-20 px-2 pt-[50%] md:pt-[36%] lg:pt-[28%] xl:pt-[20%] 2xl:pt-[16%]"
-            parallax={70}
-          >
-            <SectionHeading headingClassName="mb-10" parallax={30}>
+          <Box className="section-container pb-20 lg:px-20 px-2 pt-[50%] md:pt-[36%] lg:pt-[28%] xl:pt-[20%] 2xl:pt-[16%]">
+            <SectionHeading headingClassName="grid mb-2">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                {benefits.heading}
+                <span className="text-transparent">,</span>
+              </span>
               {benefits.title}
             </SectionHeading>
 
@@ -131,11 +126,7 @@ export default function Home() {
               enter="opacity-100 translate-y-0"
             >
               {benefits.items.map(({ heading, content, src, alt }, index) => (
-                <Box
-                  key={heading}
-                  className="mb-32 md:mb-0 xl:mb-8"
-                  parallax={30}
-                >
+                <Box key={heading} className="mb-32 md:mb-0 xl:mb-8">
                   <TypographyH3
                     className="mb-4 opacity-0 translate-y-40 ml-5 lg:ml-0"
                     enter="opacity-100 translate-y-0"
@@ -151,14 +142,14 @@ export default function Home() {
                     </TypographyParagraph>
 
                     <AnimateImage
-                      className="object-cover rounded-lg opacity-30 scale-50 duration-1000 ease-in-out "
+                      className="object-cover rounded-sm opacity-30 scale-50 duration-1000 ease-in-out"
                       src={src}
                       width={460}
                       height={306}
                       alt={alt}
                       enter="opacity-100 scale-100"
                       imageProps={{
-                        className: "rounded-lg",
+                        className: "rounded-sm",
                       }}
                     />
                   </div>
@@ -170,30 +161,31 @@ export default function Home() {
 
         <Section
           id="services"
-          heading={wbeFeatures.title}
+          heading={webFeatures.title}
           onInView={handleOnInView}
           className="section-gradient"
+          topDivider={{ type: "tilt", flipHorizontal: true }}
         >
-          <SectionWatermark className="ml-2 lg:ml-16 top-[7%] md:top-[10%] lg:top-[15%]">
-            {wbeFeatures.title}
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] md:top-[10%] lg:top-[15%]">
+            {webFeatures.title}
           </SectionWatermark>
-          <Box
-            className="section-container pb-20 px-2 lg:px-20 pt-[40%] md:mt-[2%] lg:pt-[40%] xl:pt-[25%] 2xl:pt-[10%]"
-            parallax={70}
-          >
+          <Box className="section-container pb-20 px-2 lg:px-20 pt-[40%] md:mt-[2%] lg:pt-[40%] xl:pt-[25%] 2xl:pt-[10%]">
             <SectionHeading
-              parallax={30}
               className="mb-16 lg:mb-0"
-              headingClassName="flex-col"
+              headingClassName="flex-col grid mb-2"
             >
-              <span className="">{wbeFeatures.title}</span>
-              <span className="text-4xl"> {wbeFeatures.title2}</span>
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                {webFeatures.heading}
+                <span className="text-transparent">,</span>
+              </span>
+              <span className="mb-1">{webFeatures.title}</span>
+              <span className="text-4xl"> {webFeatures.title2}</span>
             </SectionHeading>
 
             <Box className="pl-5 md:grid md:grid-cols-2 lg:pl-0 lg:translate-y-32 lg:mb-20">
               <ul className="flex flex-col gap-8">
-                {wbeFeatures.items.map(({ heading, content, src, alt }) => (
-                  <Box as="li" key={heading} parallax={30}>
+                {webFeatures.items.map(({ heading, content }) => (
+                  <Box as="li" key={heading}>
                     <TypographyH3
                       className="mb-2 opacity-0 translate-y-40"
                       enter="opacity-100 translate-y-0"
@@ -218,19 +210,23 @@ export default function Home() {
           heading={seoFeatures.title}
           onInView={handleOnInView}
           className="section-gradient font-medium"
+          bottomDivider={{ type: "tilt" }}
         >
-          <SectionWatermark className="ml-2 top-[5%] md:top-[10%] lg:ml-16 2xl:top-[20%]">
+          <SectionWatermark className="ml-2 top-[5%] md:top-[10%] lg:translate-x-16  2xl:top-[20%]">
             {seoFeatures.title}
           </SectionWatermark>
-          <Box
-            className="section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[30%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]"
-            parallax={70}
-          >
-            <SectionHeading parallax={30}>{seoFeatures.title}</SectionHeading>
+          <Box className="section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[30%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]">
+            <SectionHeading headingClassName="grid mb-2">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                {seoFeatures.heading}
+                <span className="text-transparent">,</span>
+              </span>
+              {seoFeatures.title}
+            </SectionHeading>
 
             <div className="md:grid md:grid-cols-2 ml-5 lg:ml-0">
               <ul className="flex flex-col gap-y-6">
-                {seoFeatures.items.map(({ heading, content, src, alt }) => (
+                {seoFeatures.items.map(({ heading, content }) => (
                   <Box as="li" key={heading}>
                     <TypographyH3 className="mb-4">{heading}</TypographyH3>
                     <TypographyParagraph>{content}</TypographyParagraph>
@@ -244,35 +240,52 @@ export default function Home() {
         <Section
           id="projects"
           className="section-gradient"
+          heading={projects.title}
           onInView={handleOnInView}
+          topDivider={{ type: "tilt", flipHorizontal: true }}
         >
-          <SectionWatermark className="ml-2 top-[5%] md:top-[10%] lg:ml-16">
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] 2xl:top-[20%]">
             {projects.title}
           </SectionWatermark>
-          {/* <Box className="px-2 pt-40 pb-20 my-20 md:py-80 lg:px-20" parallax={70}>
-            <SectionHeading parallax={30}>{projects.title}</SectionHeading>
-            <div className="365-Carousel flex justify-center">
-              <Carousel className="w-full max-w-[800px] overflow-hidden lg:overflow-auto">
-                <CarouselContent>
-                  {projects.items.map(({ src, alt }, index) => (
-                    <CarouselItem key={index} className="h-[100px] w-[100px]">
-                      <Image
-                        className=" rounded-lg "
-                        src={src}
-                        alt={alt}
-                        height={320}
-                        width={320}
-                      />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <div className="flex justify-center gap-4 mt-4">
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </div>
-              </Carousel>
-            </div>
-          </Box> */}
+          <Box
+            className={cn(
+              "section-container px-2 lg:px-20 pb-20 pt-[36%] md:pt-[20%] lg:pt-[15%]",
+              "lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start"
+            )}
+          >
+            <SectionHeading
+              className="mb-16 lg:mb-0"
+              headingClassName="grid mb-2"
+            >
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                {projects.heading}
+                <span className="text-transparent">,</span>
+              </span>
+              {projects.title}
+            </SectionHeading>
+            <Box
+              className={cn(
+                "grid gap-6 justify-center items-center w-full mt-10",
+                "lg:grid-row-2"
+              )}
+            >
+              {projects.items.map(({ src, alt }, index) => (
+                <AnimateImage
+                  key={index}
+                  className="relative opacity-30 translate-y-40 w-full lg:max-w-[800px] scale-0"
+                  enter="opacity-100 translate-y-0 scale-100"
+                  src={src}
+                  alt={alt}
+                  width={580}
+                  height={580}
+                  parallax={70}
+                  imageProps={{
+                    className: "rounded-sm",
+                  }}
+                />
+              ))}
+            </Box>
+          </Box>
         </Section>
 
         <Section
@@ -280,8 +293,9 @@ export default function Home() {
           heading={aboutUs.title}
           className="section-gradient"
           onInView={handleOnInView}
+          bottomDivider={{ type: "tilt" }}
         >
-          <SectionWatermark className="ml-2 top-[10%] lg:ml-16 lg:top-[20%] 2xl:top-[30%]">
+          <SectionWatermark className="ml-2 top-[10%] lg:translate-x-16  lg:top-[20%] 2xl:top-[30%]">
             {aboutUs.title}
           </SectionWatermark>
           <Box
@@ -289,10 +303,15 @@ export default function Home() {
               "section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[50%] md:pt-[25%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]",
               "lg:grid lg:grid-cols-2 lg:grid-row-2 lg:gap-6 items-center"
             )}
-            parallax={70}
           >
             <div className="mb-10">
-              <SectionHeading parallax={30}>{aboutUs.title}</SectionHeading>
+              <SectionHeading headingClassName="grid mb-2">
+                <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                  {aboutUs.heading}
+                  <span className="text-transparent">,</span>
+                </span>
+                {aboutUs.title}
+              </SectionHeading>
               {aboutUs.content.map((item, index) => (
                 <TypographyParagraph
                   key={index}
@@ -307,10 +326,9 @@ export default function Home() {
             <Box
               className="relative h-[600px] w-full row-start-1 translate-y-40 opacity-30 scale-50 col-start-2"
               enter="translate-y-0 scale-100 opacity-1"
-              parallax={70}
             >
               <Image
-                className="object-cover rounded-lg"
+                className="object-cover rounded-sm shadow-2xl"
                 src="/images/photo-1499951360447-b19be8fe80f5.jpeg"
                 fill
                 alt=""
@@ -324,8 +342,9 @@ export default function Home() {
           className="section-gradient"
           heading={testimonials.title}
           onInView={handleOnInView}
+          topDivider={{ type: "tilt", flipHorizontal: true }}
         >
-          <SectionWatermark className="ml-2 lg:ml-16 top-[7%] 2xl:top-[20%]">
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] 2xl:top-[20%]">
             {testimonials.title}
           </SectionWatermark>
           <Box
@@ -333,129 +352,75 @@ export default function Home() {
               "section-container px-2 lg:px-20 pb-20 pt-[36%] md:pt-[20%] lg:pt-[15%]",
               "lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start"
             )}
-            parallax={70}
           >
-            <SectionHeading parallax={30} className="mb-16 lg:mb-0">
+            <SectionHeading
+              className="mb-16 lg:mb-0"
+              headingClassName="grid mb-2"
+            >
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+                {testimonials.heading}
+                <span className="text-transparent">,</span>
+              </span>
               {testimonials.title}
             </SectionHeading>
-            <Box
-              className={cn(
-                "grid gap-6 justify-center items-center w-full mt-10",
-                "lg:grid-row-2"
-              )}
-            >
-              {testimonials.items.map(
-                ({ src, alt, fallback, review, name }, index) => (
-                  <Box
-                    key={index}
-                    className="opacity-30 translate-y-40"
-                    enter="opacity-100 translate-y-0"
-                  >
-                    <Card className="w-full lg:max-w-[800px]">
-                      <CardHeader>
-                        <Avatar className="h-[64px] w-[64px]">
-                          <AvatarImage src={src} alt={alt} />
-                          <AvatarFallback>{fallback}</AvatarFallback>
-                        </Avatar>
-                      </CardHeader>
-                      <CardContent className="px-6 pb-6 w-full">
-                        <TypographyParagraph>{review}</TypographyParagraph>
-                      </CardContent>
-                      <CardFooter className="md:whitespace-nowrap">
-                        - {name}
-                      </CardFooter>
-                    </Card>
-                  </Box>
-                )
-              )}
-            </Box>
-          </Box>
-        </Section>
 
-        <Section className="section-gradient relative h-[100vh]">
-          <Image
-            className="object-cover opacity-30 scale-50 duration-1000 ease-in-out"
-            src="/images/photo-1587440871875-191322ee64b0.jpeg"
-            alt=""
-            fill
-            // parallax={70}
-          />
+            <Testimonials />
+          </Box>
         </Section>
 
         <Section
-          id="contact"
-          className="section-gradient"
-          onInView={handleOnInView}
+          id="testimonials"
+          className="section-gradient h-[100vh] block"
+          background={{
+            image: {
+              src: "/images/photo-1587440871875-191322ee64b0.jpeg",
+              alt: "",
+            },
+          }}
+          bottomDivider={{ type: "tilt" }}
         >
-          <SectionWatermark className="ml-2 lg:ml-16 top-[10%] md:top-[15%] lg:top-[20%] 2xl:top-[20%]">
-            {contact.title}
-          </SectionWatermark>
-          <Box
-            className={cn(
-              "section-container px-2 lg:px-20 pb-20 pt-[36%] md:pt-[5%] lg:pt-[8%] xl:pt-[15%] 2xl:pt-[5%]",
-              "lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start"
-            )}
-            parallax={70}
-          >
-            <div>
-              <SectionHeading className="mb-8" parallax={30}>
-                {contact.title}
-              </SectionHeading>
-
-              <TypographyParagraph
-                className="mb-8 ml-5 lg:ml-0 duration-500 delay-100"
-                parallax={30}
-                enter="translate-y-0"
-              >
-                {contact.content}
-              </TypographyParagraph>
-            </div>
-
-            <Box
-              as="form"
-              className={cn(
-                "bg-black flex flex-col gap-6 ml-5 lg:ml-0  translate-y-40 duration-500 delay-100 rounded-lg",
-                "lg:gird lg:col-start-2"
-              )}
-              enter="translate-y-0"
-              parallax={30}
+          <Box className="h-[100vh] max-w-[730px] mx-auto">
+            <TypographyBlockquote
+              className="relative border-0 text-6xl font-bold translate-y-0 opacity-0 scale-0 w-full"
+              enter="opacity-100 translate-y-[50vh] scale-100"
             >
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="name" className="flex mb-2">
-                    Name
-                  </Label>
-                  <Input id="name" />
-                </div>
-                <div>
-                  <Label htmlFor="email" className="flex mb-2">
-                    Email
-                  </Label>
-                  <Input id="email" type="email" />
-                </div>
-              </div>
-              <div>
-                <Label htmlFor="message" className="flex mb-2">
-                  Message
-                </Label>
-                <Textarea id="message" placeholder="Enter message here.." />
-              </div>
-              <Button
-                className={cn(
-                  "grid grid-cols-[1fr_max-content] text-xl bg-purple-700 text-foreground w-full h-auto hover:bg-purple-500 focus:bg-purple-500 ",
-                  "md:ml-auto md:w-auto"
-                )}
-              >
-                {contact.button}
-                <SendHorizontal className="ml-4 h-6 w-6" />
-              </Button>
-            </Box>
+              <QuoteMarks
+                className="w-28 absolute z-[0] -translate-y-16"
+                side="right"
+              />
+              <span className=" z-[1] absolute">
+                The best way to predict <br />
+                the future is to create it
+              </span>
+            </TypographyBlockquote>
           </Box>
         </Section>
+
+        <Contact
+          id="contact"
+          onInView={handleOnInView}
+          topDivider={{ type: "tilt", flipHorizontal: true }}
+        />
+
+        <Subscribe id="contact" bottomDivider={{ type: "tilt" }} />
       </main>
 
-      <footer className="container flex justify-center p-4 pt-20 md:pt-6  lg:pt-20 text-sm">
-        <span>© 365Kreative</span>
+      <footer className="container relative text-sm z-[2] pt-20 pb-4 px-8 lg:px-20 grid items-end xl:h-[50vh]">
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="grid gap-4 w-full ">
+            <div>365Kreative</div>
+            <a className="flex" href={`mailto:${contact.email}`}>
+              {contact.email}
+            </a>
+            <a className="flex" href={`tel:${contact.phone}`}>
+              {contact.phone}
+            </a>
+          </div>
+          <SocialLinks />
+        </div>
+        <div className="mt-10 mb-1 md:flex justify-center xl:flex">
+          © Copyright 2024 all right reserved
+        </div>
       </footer>
     </>
   )

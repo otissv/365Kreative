@@ -67,6 +67,10 @@ module.exports = {
       h: {
         toolbar: "56px",
         app: "calc(100vh - 56px)",
+        vh: "100h",
+      },
+      leading: {
+        0: "0",
       },
 
       fontFamily: {

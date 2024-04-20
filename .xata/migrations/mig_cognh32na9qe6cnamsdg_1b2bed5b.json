@@ -1,0 +1,17 @@
+{
+  "id": "mig_cognh32na9qe6cnamsdg",
+  "parentID": "mig_cogn80kdh80ve3s0uepg",
+  "checksum": "1:1b2bed5ba2355735846b4806c529eade95b01bd3ceabf42c9ef2dbcd66a4d903",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "token",
+          "type": "string",
+          "unique": true
+        },
+        "table": "subscribe"
+      }
+    }
+  ]
+}

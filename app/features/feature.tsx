@@ -28,14 +28,13 @@ export function Feature({
 }) {
   return (
     <Box
-      parallax={70}
       className="opacity-30 translate-y-40"
       enter="opacity-100 translate-y-0"
     >
       <CardContainer className={cn("inter-var w-full", className)}>
         <CardBody
           className={cn(
-            "relative group/card h-auto rounded-xl p-6 border ",
+            "relative group/card h-auto rounded-sm p-6 border ",
             " w-full ",
             "bg-gray-50 dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]"
           )}
@@ -57,7 +56,7 @@ export function Feature({
               src={src}
               height="1000"
               width="1000"
-              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              className="h-60 w-full object-cover rounded-sm group-hover/card:shadow-xl"
               alt={alt}
             />
           </CardItem>

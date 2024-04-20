@@ -10,9 +10,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 
@@ -43,7 +40,11 @@ export const SocialLinks = ({ className }: { className?: string }) => {
     <ul className={cn("flex gap-1", className)}>
       {social.map(({ href, Icon }, index) => {
         return (
-          <Link key={index} href={href} className="w-10">
+          <Link
+            key={index}
+            href={href}
+            className="inline-flex justify-center items-center rounded-full w-10 h-10 bg-background border bg-nav-button-hover"
+          >
             <Icon />
           </Link>
         )
@@ -102,11 +103,9 @@ export const setSelectedNavItem =
     items: NaveItemType[]
     setActive: (navItem: NaveItemType) => void
   }) =>
-  (index: number) => {
-    const newLinks = [...items]
-    const selectedLink = newLinks.splice(index, 1)
-    newLinks.unshift(selectedLink[0])
-    setActive(newLinks[0])
+  (id: string) => {
+    const item = items.find((item) => item.to === id)
+    setActive(item || ({} as any))
   }
 
 export interface NaveItemProps extends React.HTMLAttributes<HTMLLIElement> {
@@ -114,9 +113,8 @@ export interface NaveItemProps extends React.HTMLAttributes<HTMLLIElement> {
   activeButtonClassName?: string
   buttonClassName?: string
   buttonLabelClassName?: string
-  index: number
   isStack?: boolean
-  setActiveLink: (navItemIndex: number) => void
+  setActiveLink: (id: to) => void
   to: string
 }
 
@@ -125,19 +123,18 @@ export const NaveItem = ({
   activeButtonClassName,
   buttonClassName,
   buttonLabelClassName,
-  index,
   isStack,
   children,
   setActiveLink,
   to,
   ...props
 }: NaveItemProps) => {
-  const [hovering, setHovering] = React.useState<number | null>(null)
+  const [hovering, setHovering] = React.useState<string>("")
 
   return (
     <li
       onClick={() => {
-        setActiveLink(index)
+        setActiveLink(to)
       }}
       className={buttonClassName}
       style={{
@@ -149,22 +146,17 @@ export const NaveItem = ({
         <motion.div
           layoutId="navItemActive"
           transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-          className={cn(
-            "absolute inset-0  rounded-full ",
-            activeButtonClassName
-          )}
+          className={cn("absolute inset-0  rounded-sm ", activeButtonClassName)}
         />
       )}
-
       <ScrollLink
-        key={index}
         to={to}
         onClick={() => {
-          setActiveLink(index)
+          setActiveLink(to)
         }}
         className={cn(
-          "relative block w-full px-4 py-2 rounded-full transition-all duration-1000",
-          hovering === index && activeButtonClassName,
+          "relative block w-full px-4 py-2 rounded-sm transition-all duration-1000",
+          hovering === to && activeButtonClassName,
           active.label === children && isStack && activeButtonClassName,
 
           buttonLabelClassName
@@ -174,39 +166,6 @@ export const NaveItem = ({
       </ScrollLink>
     </li>
   )
-}
-
-export const NavItems = ({
-  active,
-  activeButtonClassName,
-  buttonClassName,
-  buttonLabelClassName,
-  items,
-  setActiveLink,
-}: {
-  active: NaveItemType
-  activeButtonClassName?: string
-  buttonClassName?: string
-  buttonLabelClassName?: string
-  items: NaveItemType[]
-  setActiveLink: (navItemIndex: number) => void
-}) => {
-  return items.map(({ label, to }, index) => {
-    return (
-      <NaveItem
-        key={`${label}${to}`}
-        active={active}
-        activeButtonClassName={activeButtonClassName}
-        buttonClassName={buttonClassName}
-        buttonLabelClassName={buttonLabelClassName}
-        setActiveLink={setActiveLink}
-        to={to}
-        index={index}
-      >
-        {label}
-      </NaveItem>
-    )
-  })
 }
 
 export interface NavContainerProps
@@ -244,7 +203,7 @@ export type NavProps = React.HTMLAttributes<HTMLDivElement> & {
   isMainMenu?: boolean
   items?: NaveItemType[]
   label: string
-  setActiveLink: (navItemIndex: number) => void
+  setActiveLink: (id: string) => void
 }
 
 export function Nav({
@@ -270,7 +229,7 @@ export function Nav({
           <SheetTrigger asChild>
             <button
               className={cn(
-                "inline-flex items-center justify-center h-10 w-10 py-2 mr-2 px-0 text-base  whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+                "inline-flex items-center justify-center h-10 w-10 py-2 mr-2 px-0 text-base  whitespace-nowrap rounded-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                 // "md:hidden"
               )}
               type="button"
@@ -303,7 +262,6 @@ export function Nav({
                     buttonLabelClassName={buttonLabelClassName}
                     setActiveLink={setActiveLink}
                     to={to}
-                    index={index}
                   >
                     <SheetClose className="justify-start">{label}</SheetClose>
                   </NaveItem>
@@ -319,17 +277,16 @@ export function Nav({
       <ScrollLink to="hero">365Kreative</ScrollLink>
 
       <NavList>
-        {items.map(({ label, to }, index) => {
+        {items.map(({ label, to }) => {
           return (
             <NaveItem
               key={`${label}${to}`}
               active={active}
-              activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active "
+              activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active"
               buttonClassName={buttonClassName}
               buttonLabelClassName={buttonLabelClassName}
               setActiveLink={setActiveLink}
               to={to}
-              index={index}
             >
               {label}
             </NaveItem>

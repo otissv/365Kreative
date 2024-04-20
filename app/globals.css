@@ -117,47 +117,100 @@
   .editor-panel-editor div {
       height: inherit;
   }
-}
 
-.no-visible-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-}
- 
-.no-visible-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 
-.section-gradient {
-  &:nth-child(odd) {
-    background: var(--bg-black);
+  .no-visible-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .no-visible-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
-  &:nth-child(even) {
-      background: hsla(293, 75%, 13%, 1);
-      background: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
-      
+  .section-gradient {
+    &:nth-child(odd) {
+      background: var(--bg-black);
     }
-}
 
-.section-container {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  width:100%;
-  max-width: 1440px;
-}
+    &:nth-child(even) {
+        background: hsla(293, 75%, 13%, 1);
+        background: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
+        
+      }
+  }
 
-.rtl {
-  direction: rtl;
-}
-.ltr {
-  direction: ltr;
-}
 
-.bg-nav-button-active {
-  background: rgb(140,30,215);
-  background: linear-gradient(56deg, rgba(140,30,215,1) 0%, rgba(93,0,157,1) 100%, rgba(94,0,158,1) 100%);
+  .section-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width:100%;
+    max-width: 1440px;
+  }
+
+  .rtl {
+    direction: rtl;
+  }
+  .md\:rtl {
+    @media (min-width: 768px) {
+      direction: rtl;
+    }
+  }
+  .ltr {
+    @media (min-width: 768px) {
+      direction: ltr;
+    }
+  }
+  .md\:ltr {
+    @media (min-width: 768px) {
+      direction: ltr;
+    }
+  }
+
+  .initial {
+    position: initial;
+  }
+  .sm\:initial {
+    @media (min-width: 640px) {
+      position: initial;
+    }
+  }
+  .md\:initial {
+    @media (min-width: 768px) {
+      position: initial;
+    }
+  }
+  .lg\:initial {
+    @media (min-width: 1024px) {
+      position: initial;
+    }
+  }
+  .xl\:initial {
+    @media (min-width: 1280px) {
+      position: initial;
+    }
+  }
+
+
+  .bg-nav-button-active, .bg-nav-button-hover:hover {
+    background: rgb(140,30,215);
+    background: linear-gradient(56deg, rgba(140,30,215,1) 0%, rgba(93,0,157,1) 100%, rgba(94,0,158,1) 100%);
+  }
+
+  .app-bg-gradient {
+    background: hsla(293, 75%, 13%, 1);
+    background: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
+  }
+
+  .app-gradient-border {
+    border-color: hsla(293, 75%, 13%, 1);
+    border-color: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
+  }
+
+  .app-gradient-color {
+    color: hsl(293, 76%, 13%) ;
+  }
 }

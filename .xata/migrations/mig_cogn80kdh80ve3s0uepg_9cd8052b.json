@@ -1,0 +1,13 @@
+{
+  "id": "mig_cogn80kdh80ve3s0uepg",
+  "parentID": "mig_cogh3i4dh80ve3s0uc80",
+  "checksum": "1:9cd8052b6df74bcd64c624d1c992aa88c8c894e62a2b3706ad039f19025bde48",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "subscribe",
+        "oldName": "subsribe"
+      }
+    }
+  ]
+}
