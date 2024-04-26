@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sheet"
 
 import { ScrollLink } from "@/components/scroll-link"
-import { Logo365k } from "./365kreative"
+import { Logo365k } from "@/app/[features]/365kreative"
 
 export type NaveItemType = {
   label: string
@@ -115,7 +115,7 @@ export interface NaveItemProps extends React.HTMLAttributes<HTMLLIElement> {
   buttonClassName?: string
   buttonLabelClassName?: string
   isStack?: boolean
-  setActiveLink: (id: to) => void
+  setActiveLink: (id: string) => void
   to: string
 }
 
@@ -130,7 +130,7 @@ export const NaveItem = ({
   to,
   ...props
 }: NaveItemProps) => {
-  const [hovering, setHovering] = React.useState<string>("")
+  // const [hovering, _] = React.useState<string>("")
 
   return (
     <li
@@ -157,7 +157,7 @@ export const NaveItem = ({
         }}
         className={cn(
           "relative block w-full px-4 py-2 rounded-sm transition-all duration-1000",
-          hovering === to && activeButtonClassName,
+          // hovering === to && activeButtonClassName,
           active.label === children && isStack && activeButtonClassName,
           buttonLabelClassName
         )}

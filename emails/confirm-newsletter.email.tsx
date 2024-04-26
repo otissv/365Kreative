@@ -1,4 +1,4 @@
-import { SubscribeForm } from "@/app/subscribe/validate.subscribe"
+import { SubscribeForm } from '@/app/[features]/subscribe/validate.subscribe'
 import {
   Body,
   Button,
@@ -6,13 +6,12 @@ import {
   Head,
   Hr,
   Html,
-  Img,
   Link,
   Preview,
   Section,
-  Text,
-} from "@react-email/components"
-import * as React from "react"
+  Text
+} from '@react-email/components'
+import * as React from 'react'
 
 export interface ConfirmNewsletterEmailProps extends SubscribeForm {
   subject: string
@@ -25,7 +24,7 @@ export default function ConfirmNewsletterEmail({
   subject,
   name,
   unsubscribeURL,
-  verifyURL,
+  verifyURL
 }: ConfirmNewsletterEmailProps) {
   return (
     <Html>
@@ -39,7 +38,7 @@ export default function ConfirmNewsletterEmail({
           </Text>
 
           <Text style={paragraph}>
-            {" "}
+            {' '}
             Please click the link below to confirm your subscription.
           </Text>
 
@@ -51,7 +50,7 @@ export default function ConfirmNewsletterEmail({
 
           <Text style={paragraph}>It&apos;s good to have you!</Text>
 
-          <Section style={{ marginTop: "64px" }}>
+          <Section style={{ marginTop: '64px' }}>
             <Text style={paragraph}>Best Regards,</Text>
             <Text style={paragraph}>The 365Kreative Team</Text>
 
@@ -59,7 +58,7 @@ export default function ConfirmNewsletterEmail({
 
             <Text style={footerText}>
               You are receiving this email because you previously requested to
-              subscribe to newsletter.{" "}
+              subscribe to newsletter.{' '}
               <Link href={unsubscribeURL} style={footerText}>
                 Unsubscribe from list.
               </Link>
@@ -70,54 +69,54 @@ export default function ConfirmNewsletterEmail({
     </Html>
   )
 }
-ConfirmNewsletterEmail.display = "ConfirmNewsletterEmail"
+ConfirmNewsletterEmail.display = 'ConfirmNewsletterEmail'
 
 ConfirmNewsletterEmail.PreviewProps = {
-  subject: "Please confirm you email",
-  name: "Otis",
-  unsubscribeURL: "http://localhost:3000/subscribe/unsubscribe",
-  verifyURL: "http://localhost:3000/subscribe/verify",
+  subject: 'Please confirm you email',
+  name: 'Otis',
+  unsubscribeURL: 'http://localhost:3000/subscribe/unsubscribe',
+  verifyURL: 'http://localhost:3000/subscribe/verify'
 } as ConfirmNewsletterEmailProps
 
 const main = {
-  backgroundColor: "#ffffff",
+  backgroundColor: '#ffffff',
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
 }
 
 const container = {
-  margin: "0 auto",
-  padding: "20px 0 48px",
+  margin: '0 auto',
+  padding: '20px 0 48px'
 }
 
 const paragraph = {
-  fontSize: "16px",
-  lineHeight: "26px",
+  fontSize: '16px',
+  lineHeight: '26px'
 }
 
 const btnContainer = {
-  textAlign: "center" as const,
+  textAlign: 'center' as const
 }
 
 const button = {
-  borderRadius: "4px",
-  fontSize: "24px",
+  borderRadius: '4px',
+  fontSize: '24px',
   background:
-    "linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%)",
-  color: "#fff",
-  textDecoration: "none",
-  textAlign: "center" as const,
-  display: "block",
-  padding: "12px",
+    'linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%)',
+  color: '#fff',
+  textDecoration: 'none',
+  textAlign: 'center' as const,
+  display: 'block',
+  padding: '12px'
 }
 
 const hr = {
-  borderColor: "#cccccc",
-  margin: "20px 0",
+  borderColor: '#cccccc',
+  margin: '20px 0'
 }
 
 const footerText = {
-  color: "#8898aa",
-  fontSize: "12px",
-  lineHeight: "14px",
+  color: '#8898aa',
+  fontSize: '12px',
+  lineHeight: '14px'
 }

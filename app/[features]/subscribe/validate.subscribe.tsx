@@ -1,5 +1,7 @@
-import { formatValidationError } from "@/lib/formatValidationError"
+import { SubscribeRecord } from "@/xata"
 import z from "zod"
+
+import { formatValidationError } from "@/lib/formatValidationError"
 
 export const subscribeFormValidator = z.object({
   name: z

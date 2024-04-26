@@ -1,6 +1,9 @@
 import { getXataClient } from "@/xata"
 
-import { Contact, contactValidate } from "@/app/contact/validate.contract"
+import {
+  Contact,
+  contactValidate,
+} from "@/app/[features]/contact/validate.contract"
 import { ErrorIssues } from "@/lib/formatValidationError"
 
 const xata = getXataClient()

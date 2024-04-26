@@ -6,7 +6,7 @@ import {
   SubscribeForm,
   subscribeTokenValidate,
   subscribeValidate,
-} from "@/app/subscribe/validate.subscribe"
+} from "@/app/[features]/subscribe/validate.subscribe"
 import { ErrorIssues } from "@/lib/formatValidationError"
 
 const xata = getXataClient()

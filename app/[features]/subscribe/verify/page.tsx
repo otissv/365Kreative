@@ -2,22 +2,22 @@ import { redirect } from "next/navigation"
 import { isBefore } from "date-fns"
 import { SubscribeRecord } from "@/xata"
 import { SelectedPick } from "@xata.io/client"
+import { Newspaper } from "lucide-react"
+import Link from "next/link"
 
 import { TypographyH1 } from "@/components/typography/h1.typography"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import {
   filterBySubscribeToken,
   updateSubscribeToken,
-} from "@/app/subscribe/service.subscribe"
-import { ResendSubscribe } from "@/app/subscribe/verify/resend-subscribe"
-import { Subscribe } from "../validate.subscribe"
+} from "@/app/[features]/subscribe/service.subscribe"
+import { ResendSubscribe } from "@/app/[features]/subscribe/verify/resend-subscribe"
+import { Subscribe } from "@/app/[features]/subscribe/validate.subscribe"
 import { Divider } from "@/components/divider"
 import { Button } from "@/components/ui/button"
-import { SocialLinks } from "@/app/features/nav"
-import Link from "next/link"
+import { SocialLinks } from "@/app/[features]/nav"
 import { TypographyH2 } from "@/components/typography/h2.typography"
-import { Testimonials } from "@/app/features/testimonials"
-import { Newspaper } from "lucide-react"
+import { Testimonials } from "@/app/[features]/testimonials"
 
 export default async function Verify({
   searchParams,

@@ -1,14 +1,15 @@
+import { ArrowDown } from "lucide-react"
+import React from "react"
+
+import { cn } from "@/lib/utils"
 import { TypographyH1 } from "@/components/typography/h1.typography"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { BackgroundGradientAnimation } from "@/components/aceternity/background-gradient-animation"
 import { Box } from "@/components/box"
-import { ArrowDown } from "lucide-react"
 import { ScrollLink } from "@/components/scroll-link"
-import { cn } from "@/lib/utils"
-import React from "react"
 import { Button } from "@/components/ui/button"
-import { Section } from "./section"
-import { Logo365k } from "./365kreative"
+import { Section } from "@/app/[features]/section"
+import { Logo365k } from "@/app/[features]/365kreative"
 
 export interface Hero1Props extends React.HTMLAttributes<HTMLElement> {
   title: string

@@ -2,11 +2,14 @@ import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
 import { emails } from "@/content/data"
-import { Contact, contactValidate } from "@/app/contact/validate.contract"
+import {
+  Contact,
+  contactValidate,
+} from "@/app/[features]/contact/validate.contract"
 import ContactEmail from "@/emails/contact.email"
 import { isDev } from "@/lib/isDev"
 import { ErrorIssues } from "@/lib/formatValidationError"
-import { contactCreate } from "@/app/contact/service.contact"
+import { contactCreate } from "@/app/[features]/contact/service.contact"
 import { env } from "@/config/env"
 
 const { resend365ApiKey, testEmailAddress } = env()

@@ -4,18 +4,18 @@ import React from "react"
 import { MoveRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 
+import { cn } from "@/lib/utils"
 import { subscribe } from "@/content/data"
 import {
   Section,
   SectionHeading,
   SectionProps,
   SectionWatermark,
-} from "@/app/features/section"
+} from "@/app/[features]/section"
 import { Box, BoxProps } from "@/components/box"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Loading } from "@/components/loading"
@@ -23,7 +23,7 @@ import {
   subscribeEmailValidate,
   subscribeNameValidate,
   subscribeValidate,
-} from "@/app/subscribe/validate.subscribe"
+} from "@/app/[features]/subscribe/validate.subscribe"
 import { ErrorIssues } from "@/lib/formatValidationError"
 import { isNullOrUndefined } from "@/lib/isNullOrUndefined"
 

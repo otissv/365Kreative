@@ -1,12 +1,13 @@
 import React from "react"
+import Image, { ImageProps } from "next/image"
 
+import { cn } from "@/lib/utils"
 import { Box, BoxProps } from "@/components/box"
 import { ShapeDivider, ShapeDividerProps } from "@/components/shape-divider"
 import { TypographyH2 } from "@/components/typography/h2.typography"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
-import { cn } from "@/lib/utils"
-import Image, { ImageProps } from "next/image"
-import { useElementScrollPosition } from "../hooks/useElementScrollPosition"
+import { useElementScrollPosition } from "@/app/hooks/useElementScrollPosition"
+
 export interface SectionHeadingProps extends BoxProps {
   heading?: string
   className?: string

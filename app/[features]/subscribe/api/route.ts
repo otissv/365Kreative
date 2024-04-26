@@ -8,9 +8,9 @@ import { isDev } from "@/lib/isDev"
 import {
   SubscribeForm,
   subscribeValidate,
-} from "@/app/subscribe/validate.subscribe"
+} from "@/app/[features]/subscribe/validate.subscribe"
 import { ErrorIssues } from "@/lib/formatValidationError"
-import { createSubscribe } from "@/app/subscribe/service.subscribe"
+import { createSubscribe } from "@/app/[features]/subscribe/service.subscribe"
 import { env } from "@/config/env"
 
 const { resend365ApiKey, testEmailAddress, baseUrl } = env()

@@ -1,5 +1,6 @@
-import { ErrorIssues, formatValidationError } from "@/lib/formatValidationError"
 import z from "zod"
+
+import { ErrorIssues, formatValidationError } from "@/lib/formatValidationError"
 
 export const contactFormValidator = z.object({
   name: z.string().min(2, { message: "Name is too short" }),

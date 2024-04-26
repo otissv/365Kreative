@@ -1,9 +1,9 @@
+import { cn } from "@/lib/utils"
 import { Box } from "@/components/box"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { testimonials } from "@/content/data"
-import { cn } from "@/lib/utils"
 
 export const Testimonials = ({ className }: { className?: string }) => {
   return (

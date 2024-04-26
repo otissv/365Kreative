@@ -3,9 +3,9 @@
 import React from "react"
 import Image from "next/image"
 
+import { cn } from "@/lib/utils"
 import { TypographyH3 } from "@/components/typography/h3.typography"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
-import { cn } from "@/lib/utils"
 import { Box } from "@/components/box"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 

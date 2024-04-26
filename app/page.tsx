@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
+import { MoveDown } from "lucide-react"
 
 import { AuroraBackground } from "@/components/aceternity/aurora-background"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
@@ -10,28 +11,29 @@ import {
   NaveItemType,
   SocialLinks,
   setSelectedNavItem,
-} from "./features/nav"
-import { benefits, contact, faq, nav, ourProcess } from "../content/data"
-
+} from "@/app/[features]/nav"
 import {
-  header,
-  services,
-  seoFeatures,
-  webFeatures,
   aboutUs,
-  projects,
+  benefits,
+  contact,
+  faq,
+  header,
+  nav,
+  ourProcess,
+  seoFeatures,
+  services,
   testimonials,
-} from "../content/data"
-import { Section, SectionHeading, SectionWatermark } from "./features/section"
+  webFeatures,
+} from "@/content/data"
+import { Section, SectionHeading, SectionWatermark } from "./[features]/section"
 import { Box } from "@/components/box"
-import { Hero1 } from "./features/header"
 import { AnimateImage } from "@/components/animate-image"
 import { cn } from "@/lib/utils"
 import { TypographyH3 } from "@/components/typography/h3.typography"
 import { TypographyBlockquote } from "@/components/typography/blockquote.typography"
-import { Subscribe } from "./subscribe/subscribe"
-import { Contact } from "./contact/contact"
-import { Testimonials } from "./features/testimonials"
+import { Subscribe } from "@/app/[features]/subscribe/subscribe"
+import { Contact } from "@/app/[features]/contact/contact"
+import { Testimonials } from "@/app/[features]/testimonials"
 import {
   Accordion,
   AccordionContent,
@@ -40,8 +42,8 @@ import {
 } from "@/components/ui/accordion"
 import { TypographyUList } from "@/components/typography/u-list.typography"
 import { ScrollLink } from "@/components/scroll-link"
-import { MoveDown } from "lucide-react"
-import { Logo365k } from "./features/365kreative"
+import { Logo365k } from "@/app/[features]/365kreative"
+import { Hero1 } from "@/app/[features]/hero1"
 
 export default function Home() {
   const [active, setActive] = React.useState<NaveItemType>(nav[0])
@@ -435,7 +437,7 @@ export default function Home() {
             </SectionHeading>
 
             <ul>
-              {ourProcess.steps.map(({ step, heading, content }) => {
+              {ourProcess.steps.map(({ step, heading, content }: any) => {
                 return (
                   <Box as="li" key={step} className="grid mb-6 ml-5 lg:ml-0">
                     <Box

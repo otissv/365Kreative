@@ -2,28 +2,28 @@
 
 import React from "react"
 import { useRouter } from "next/navigation"
+import { SendHorizontal } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { contact } from "@/content/data"
 import {
   Section,
   SectionHeading,
   SectionProps,
   SectionWatermark,
-} from "@/app/features/section"
+} from "@/app/[features]/section"
 import { Box } from "@/components/box"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { SendHorizontal } from "lucide-react"
 import {
   contactEmailValidate,
   contactMessageValidate,
   contactNameValidate,
   contactValidate,
-} from "@/app/contact/validate.contract"
+} from "@/app/[features]/contact/validate.contract"
 import { Loading } from "@/components/loading"
 import { ErrorIssues } from "@/lib/formatValidationError"
 import { isNullOrUndefined } from "@/lib/isNullOrUndefined"
@@ -201,7 +201,7 @@ export const Contact = ({ className, ...props }: SectionProps) => {
 
       if (!response.ok) {
         formDispatch({
-          type: "agree",
+          type: "message",
           error: "Something went wrong",
         })
         return

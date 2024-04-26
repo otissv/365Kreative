@@ -1,15 +1,25 @@
 import { CircleCheck, Mail, MoveDown } from "lucide-react"
+import { redirect } from "next/navigation"
 import Link from "next/link"
 
-import { SocialLinks } from "@/app/features/nav"
+import { SocialLinks } from "@/app/[features]/nav"
 import { TypographyH1 } from "@/components/typography/h1.typography"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { Button } from "@/components/ui/button"
-import { Testimonials } from "@/app/features/testimonials"
+import { Testimonials } from "@/app/[features]/testimonials"
 import { TypographyH2 } from "@/components/typography/h2.typography"
 import { Divider } from "@/components/divider"
+import { isEmail } from "@/lib/isEmail"
 
-export default function ThankYou() {
+export default function ThankYou({
+  searchParams,
+}: {
+  searchParams: { email: string }
+}) {
+  const { email } = searchParams
+
+  if (!isEmail(email)) redirect("/")
+
   return (
     <div className="container grid justify-center pt-6 pb-20 gap-20">
       <div className="max-w-[800px] grid center gap-6">
@@ -23,11 +33,16 @@ export default function ThankYou() {
 
         <TypographyH1 className="center mb-6">
           Thank you <br />
-          for contacting us
+          for signing up <br />
+          for our newsletter
         </TypographyH1>
 
         <TypographyParagraph className="text-xl center ">
-          You will here from us shortly.
+          An email has been sent to {email}.
+        </TypographyParagraph>
+        <TypographyParagraph className="text-xl center ">
+          Please click the verify button in the email to complete your
+          registration.
         </TypographyParagraph>
 
         <TypographyParagraph className="inline-block center ">

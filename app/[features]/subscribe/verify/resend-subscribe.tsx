@@ -1,11 +1,11 @@
 "use client"
 
+import React from "react"
 import { useRouter } from "next/navigation"
 
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
 import { Button } from "@/components/ui/button"
-import { SubscribeForm } from "../validate.subscribe"
-import React from "react"
+import { SubscribeForm } from "@/app/[features]/subscribe/validate.subscribe"
 
 export interface ResendSubscribeProps
   extends SubscribeForm,
