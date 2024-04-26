@@ -98,12 +98,17 @@ export const Subscribe = ({ className, ...props }: SectionProps) => {
         </SectionHeading>
 
         <TypographyParagraph
-          className="mb-8 ml-5 lg:ml-0 opacity-0 translate-y-40 duration-500 delay-100"
+          className="block mb-1 ml-5 lg:ml-0 opacity-0 translate-y-40 duration-500 delay-100"
           enter="opacity-1 translate-y-0"
         >
           {subscribe.content[0]}
-          <br />
-          <span className="inline-flex mt-2">{subscribe.content[1]}</span>
+        </TypographyParagraph>
+
+        <TypographyParagraph
+          className="block mb-8 ml-5 lg:ml-0 opacity-0 translate-y-40 duration-500 delay-100"
+          enter="opacity-1 translate-y-0"
+        >
+          {subscribe.content[1]}
         </TypographyParagraph>
 
         <SubscribeForm
@@ -304,57 +309,106 @@ export const SubscribeForm = ({ className, ...props }: BoxProps) => {
   }
 
   return (
-    <Box
-      className={cn("max-w-[500px] ml-5 lg:ml-0 leading-[0]", className)}
-      {...props}
-    >
-      <p className="text-sm italic mb-1 ">No spam, ever!</p>
-      <Label htmlFor="agree" className="items-start leading-1 mb-6">
-        <Checkbox
-          id="agree"
-          checked={form.agree.value}
-          className="mr-2 mb-2 items-center translate-y-1"
-          onClick={handleOnCheckboxChange}
-        />
-        <TypographyParagraph className="text-sm">
-          {subscribe.agree}
-        </TypographyParagraph>
-      </Label>
+    <>
+      <Box
+        as="p"
+        className="text-sm italic mb-1 opacity-0 translate-y-40"
+        enter="translate-y-0 opacity-100"
+      >
+        No spam, ever!
+      </Box>
 
-      <div className="relative grid md:flex">
-        <div className="mb-3 md:w-96">
-          <Input
-            aria-label="name"
-            className="md:rounded-r-none"
-            placeholder="Enter your name..."
-            onBlur={handleOnBlur("name")}
-            value={form.name.value}
-            onChange={handleOnInputChange("name")}
+      <Box
+        as="form"
+        className={cn(
+          "bg-background-3 border rounded-sm p-4 max-w-[500px] ml-5 lg:ml-0 leading-[0]",
+          className
+        )}
+        {...props}
+      >
+        <Label htmlFor="agree" className="items-start leading-1 mb-6">
+          <Checkbox
+            id="agree"
+            checked={form.agree.value}
+            className="mr-2 mb-2 items-center translate-y-1"
+            onClick={handleOnCheckboxChange}
           />
+          <TypographyParagraph className="text-sm">
+            {subscribe.agree}
+          </TypographyParagraph>
+        </Label>
+
+        <div className="relative grid md:flex">
+          <div className="mb-3 md:w-96">
+            <Input
+              aria-label="name"
+              className="md:rounded-r-none"
+              placeholder="Enter your name..."
+              onBlur={handleOnBlur("name")}
+              value={form.name.value}
+              onChange={handleOnInputChange("name")}
+            />
+          </div>
+
+          <div className="mb-3 md:w-96">
+            <Input
+              type="email"
+              aria-label="email address"
+              className="md:rounded-l-none md:border-l-0 md:rounded-r-none md:border-r-0"
+              placeholder="Enter your email here.."
+              value={form.email.value}
+              onBlur={handleOnBlur("email")}
+              onChange={handleOnInputChange("email")}
+            />
+          </div>
+
+          <Button
+            className={cn(
+              "bg-purple-700  hover:bg-purple-500 focus:bg-purple-500 text-white w-full hidden",
+              "md:flex md:w-[150px] md:border md:rounded-l-none"
+            )}
+            onClick={handleOnSubscriptionSubmit}
+          >
+            {form.isLoading ? (
+              <>
+                <Loading className="mr-2 h-4 w-4" /> {subscribe.sending}...
+              </>
+            ) : (
+              <>
+                {subscribe.button} <MoveRight className="h-4 w-4 ml-4" />
+              </>
+            )}
+          </Button>
         </div>
 
-        <div className="mb-3 md:w-96">
-          <Input
-            type="email"
-            aria-label="email address"
-            className="md:rounded-l-none md:border-l-0 md:rounded-r-none md:border-r-0"
-            placeholder="Enter your email here.."
-            value={form.email.value}
-            onBlur={handleOnBlur("email")}
-            onChange={handleOnInputChange("email")}
-          />
+        <div className="grid">
+          {form.name.error ? (
+            <TypographyParagraph className="text-sm bg-red-700 my-2 p-1 rounded-sm leading-normal">
+              {form.name.error}
+            </TypographyParagraph>
+          ) : null}
+          {form.email.error ? (
+            <TypographyParagraph className="text-sm bg-red-700 my-2 p-1 rounded-sm leading-normal">
+              {form.email.error}
+            </TypographyParagraph>
+          ) : null}
+
+          {form.agree.error ? (
+            <TypographyParagraph className="text-sm bg-red-700 my-2 p-1 rounded-sm leading-normal">
+              {form.agree.error}
+            </TypographyParagraph>
+          ) : null}
         </div>
 
         <Button
           className={cn(
-            "w-full hidden",
-            "md:flex md:w-[150px] md:border md:rounded-l-none"
+            "bg-purple-700  hover:bg-purple-500 focus:bg-purple-500 text-white w-full mt-6 md:hidden"
           )}
           onClick={handleOnSubscriptionSubmit}
         >
           {form.isLoading ? (
             <>
-              <Loading className="mr-2 h-4 w-4" /> {subscribe.sending}...
+              <Loading className="mr-2 h-4 w-4" /> {subscribe.sending}
             </>
           ) : (
             <>
@@ -362,41 +416,7 @@ export const SubscribeForm = ({ className, ...props }: BoxProps) => {
             </>
           )}
         </Button>
-      </div>
-
-      <div className="grid">
-        {form.name.error ? (
-          <TypographyParagraph className="text-sm bg-red-700 my-2 p-1 rounded-sm leading-normal">
-            {form.name.error}
-          </TypographyParagraph>
-        ) : null}
-        {form.email.error ? (
-          <TypographyParagraph className="text-sm bg-red-700 my-2 p-1 rounded-sm leading-normal">
-            {form.email.error}
-          </TypographyParagraph>
-        ) : null}
-
-        {form.agree.error ? (
-          <TypographyParagraph className="text-sm bg-red-700 my-2 p-1 rounded-sm leading-normal">
-            {form.agree.error}
-          </TypographyParagraph>
-        ) : null}
-      </div>
-
-      <Button
-        className={cn("w-full mt-6 md:hidden")}
-        onClick={handleOnSubscriptionSubmit}
-      >
-        {form.isLoading ? (
-          <>
-            <Loading className="mr-2 h-4 w-4" /> {subscribe.sending}
-          </>
-        ) : (
-          <>
-            {subscribe.button} <MoveRight className="h-4 w-4 ml-4" />
-          </>
-        )}
-      </Button>
-    </Box>
+      </Box>
+    </>
   )
 }

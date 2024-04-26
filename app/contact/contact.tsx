@@ -276,7 +276,7 @@ export const Contact = ({ className, ...props }: SectionProps) => {
     }
 
   return (
-    <Section className="section-gradient" {...props}>
+    <Section className={cn("section-gradient", className)} {...props}>
       <SectionWatermark className="ml-2 lg:translate-x-16 top-[10%] md:top-[15%] lg:top-[20%] 2xl:top-[20%]">
         {contact.title}
       </SectionWatermark>
@@ -311,7 +311,7 @@ export const Contact = ({ className, ...props }: SectionProps) => {
         <Box
           as="form"
           className={cn(
-            "bg-background border rounded-sm p-4 flex flex-col gap-6 ml-5 lg:ml-0 translate-y-40 duration-500 delay-100",
+            "bg-background-3 border rounded-sm p-4 flex flex-col gap-6 ml-5 lg:ml-0 translate-y-40 duration-500 delay-100",
             "lg:gird lg:col-start-2"
           )}
           enter="translate-y-0"
@@ -385,7 +385,7 @@ export const Contact = ({ className, ...props }: SectionProps) => {
 
           <Button
             className={cn(
-              "text-xl bg-purple-700 rounded-sm text-foreground w-full h-auto hover:bg-purple-500 focus:bg-purple-500 ",
+              "text-xl rounded-sm text-foreground w-full h-auto bg-purple-700  hover:bg-purple-500 focus:bg-purple-500",
               "md:ml-auto md:w-auto"
             )}
             disabled={form.isLoading}

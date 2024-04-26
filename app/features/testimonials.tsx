@@ -5,12 +5,13 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { testimonials } from "@/content/data"
 import { cn } from "@/lib/utils"
 
-export const Testimonials = ({}) => {
+export const Testimonials = ({ className }: { className?: string }) => {
   return (
     <Box
       className={cn(
         "grid gap-6 justify-center items-center w-full mt-10",
-        "lg:grid-row-2"
+        "lg:grid-row-2",
+        className
       )}
     >
       {testimonials.items.map(({ src, alt, fallback, review, name }, index) => (
@@ -19,7 +20,7 @@ export const Testimonials = ({}) => {
           className="opacity-30 translate-y-40"
           enter="opacity-100 translate-y-0"
         >
-          <Card className="w-full lg:max-w-[800px] rounded-sm">
+          <Card className="w-full lg:max-w-[800px] rounded-sm bg-background-2">
             <CardHeader></CardHeader>
             <CardContent className="px-6 pb-6 w-full">
               <TypographyParagraph>{review}</TypographyParagraph>

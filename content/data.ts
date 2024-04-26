@@ -4,20 +4,28 @@ export const nav = [
     to: "home",
   },
   {
-    label: "Services",
-    to: "services",
-  },
-  {
-    label: "Projects",
-    to: "projects",
-  },
-  {
     label: "About Us",
     to: "about",
   },
   {
+    label: "Services",
+    to: "services",
+  },
+  // {
+  //   label: "Projects",
+  //   to: "projects",
+  // },
+  {
+    label: "Our Process",
+    to: "process",
+  },
+  {
     label: "Testimonials",
     to: "testimonials",
+  },
+  {
+    label: "FAQ",
+    to: "faq",
   },
   {
     label: "Contact Us",
@@ -32,27 +40,35 @@ export const header = {
 }
 
 export const services = {
-  heading: "services",
-  title: "Build and Design Websites",
+  heading: "Services",
+  title: "We Build & Design Websites",
+  services: [
+    "Brand Identity",
+    "Responsive Website Design",
+    "Custom Website Development",
+    "Memberships",
+    "SEO (Search Engine Optimisation)",
+    "Animations & interaction",
+  ],
   items: [
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "",
       title: "Custom Website Development",
       content:
         "Tailor-made websites that align with you unique business needs, providing a seamless online experience",
     },
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "",
       title: "Responsive Design",
       content:
         "Designing websites that adapt to different devices and screen sizes, ensuring optimal user experience on every platform.",
     },
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "",
-      title: "E-commerce Solutions",
+      title: "SEO Optimisation",
       content:
         "Building secure and user-friendly online stores, enabling you to expanding your reach and generate more sales",
     },
@@ -60,35 +76,44 @@ export const services = {
 }
 
 export const benefits = {
-  heading: "Benefits Value",
+  heading: "Benefits & Value",
   title: "Why Clients Choose Us",
   items: [
     {
       heading: "Your Digital Crafting Experts",
-      content:
-        "In the ever-evolving digital world, your online presence is more than just a website; it's the heartbeat of your brand. That's where 365 Kreative steps in. We offer a comprehensive suite of digital solutions, from bespoke web design and development to cutting-edge SEO strategies. Our approach is simple yet powerful – blending aesthetics with functionality, and aligning every pixel with your business goals. With us, experience the convenience of having all your digital needs addressed under one roof, ensuring a cohesive and impactful online presence.",
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      content: [
+        "In the ever-evolving digital world, your online presence is more than just a website; it's the heartbeat of your brand. That's where 365 Kreative steps in.",
+        "We offer a comprehensive suite of digital solutions, from bespoke web design and development to cutting-edge SEO strategies. Our approach is simple yet powerful – blending aesthetics with functionality, and aligning every pixel with your business goals.",
+        "With us, experience the convenience of having all your digital needs addressed under one roof, ensuring a cohesive and impactful online presence.",
+      ],
+      src: "/images/workstation.webp",
       alt: "",
     },
     {
-      heading: "Crafting Experiences, Not Just Websites",
-      content:
-        "At 365 Kreative, we believe in creating more than just websites – we create digital experiences. Our team of experts is dedicated to designing and developing websites that are not only visually stunning but also user-centric. We focus on crafting sites that offer seamless navigation and engaging content, making every visitor's journey enjoyable and memorable. Our SEO expertise ensures your website ranks high in search results, connecting you with your target audience effectively. Plus, our commitment to data-driven decisions means your website stays relevant, dynamic, and ahead of the competition.",
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      heading: "Casting Experiences, Not Just Websites",
+      content: [
+        "At 365 Kreative, we believe in creating more than just websites – we create digital experiences.",
+        "Our team of experts is dedicated to designing and developing websites that are not only visually stunning but also user-centric. We focus on crafting sites that offer seamless navigation and engaging content, making every visitor's journey enjoyable and memorable. Our SEO expertise ensures your website ranks high in search results, connecting you with your target audience effectively.",
+        "Plus, our commitment to data-driven decisions means your website stays relevant, dynamic, and ahead of the competition.",
+      ],
+      src: "/images/ux.webp",
       alt: "",
     },
     {
       heading: "Your Growth, Our Mission",
-      content:
-        "Your business is unique, and your digital strategy should reflect that. At 365 Kreative, we tailor our services to fit the unique contours of your brand. From creating a distinctive brand identity to optimising for conversions, every step we take is designed to amplify your online presence and drive business growth. And as your business evolves, our scalable solutions evolve with you, ensuring you always stay on top of the digital game. With our ongoing support and maintenance, rest assured that your digital assets remain in expert hands, leaving you free to focus on what you do best – growing your business.",
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      content: [
+        "Your business is unique, and your digital strategy should reflect that.",
+        "At 365 Kreative, we tailor our services to fit the specific contours of your brand. From creating a distinctive brand identity to optimising for conversions, every step we take is designed to amplify your online presence and drive business growth. And as your business evolves, our scalable solutions evolve with you, ensuring you always stay on top of the digital game",
+        "With our ongoing support and maintenance, rest assured that your digital assets remain in expert hands, leaving you free to focus on what you do best – growing your business.",
+      ],
+      src: "/images/success.webp",
       alt: "",
     },
   ],
 }
 
 export const seoFeatures = {
-  heading: "Search engine optimisation (SEO)",
+  heading: "Search Engine Optimisation (SEO)",
   title: "Drive Traffic & Engage Users",
 
   items: [
@@ -141,8 +166,8 @@ export const seoFeatures = {
 }
 
 export const webFeatures = {
-  heading: "Wed design and development",
-  title: "Engage & Impress  ",
+  heading: "Wed Design and Development",
+  title: "Engage & Impress ",
   title2: "with Fast, Accessible Web Design",
 
   items: [
@@ -168,9 +193,8 @@ export const webFeatures = {
       heading: "Consistent and Accessible Design",
       content:
         "Implementing a consistent design across all pages for a cohesive look, while ensuring accessibility for all users, including those with disabilities (such as through the use of alt tags, keyboard navigation, and screen reader compatibility).",
-      benefit: "Consistency reinforces brand identity and professionalism.",
-      value:
-        "Accessibility widens the audience reach and complies with legal standards.",
+      benefit: "Reinforces brand identity and professionalism.",
+      value: "Widens the audience reach and complies with legal standards.",
     },
     {
       heading: "Faster Load Times",
@@ -186,13 +210,13 @@ export const webFeatures = {
 
 export const aboutUs = {
   heading: "About Us",
-  title: "Web specialists",
+  title: "Your Web Specialists",
   content: [
     "Welcome to 365Kreative, a premier web design and development agency based in the London, UK. We specialise in creating innovative and visually appealing websites that help businesses stand out in the digital world.",
     "With our team of talented designers and developers, we are dedicated to providing top-notch services tailored to meet your unique needs and goals. Let us help you to elevate your online presence and achieve success in a competitive online landscape.",
   ],
   image: {
-    src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+    src: "/images/workstation.webp",
     alt: "",
   },
 }
@@ -202,11 +226,11 @@ export const projects = {
   title: "Our work",
   items: [
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "",
     },
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "",
     },
   ],
@@ -227,7 +251,7 @@ export const testimonials: {
   title: "What Our Clients Say About Us",
   items: [
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "@shadcn",
       fallback: "CN",
       review:
@@ -235,7 +259,7 @@ export const testimonials: {
       name: "David Chen, CEO, BrandPulse Marketing Solutions",
     },
     {
-      src: "/images/photo-1499951360447-b19be8fe80f5.jpeg",
+      src: "/images/workstation.webp",
       alt: "@shadcn",
       fallback: "CN",
       review:
@@ -256,9 +280,9 @@ export const contact = {
 
 export const subscribe = {
   heading: "Subscribe",
-  title: "Join My Mailing List",
+  title: "Join Our Mailing List",
   content: [
-    "The people on my mailing list are the first to hear about my new content.",
+    "The people on our mailing list are the first to hear about my new content.",
     "Join them by signing up now!",
   ],
   agree:
@@ -267,130 +291,111 @@ export const subscribe = {
   sending: "Sending",
 }
 
-// change with qwil
-export const enquiry = {
-  heading: "Enquiry",
-  title: "Enquiry",
-  content:
-    "Describe your requirements and I'll get back to you within a couple of working days.",
-  form: {
-    description: {
-      title: "Brief description of the website",
-      heading: "Typical audience, main goals, what success looks like eg.",
-      placeholder:
-        "e.g I am the CEO of a non-profit for looking for a new website to raise awareness of the brand...",
-    },
-    services: [
-      "Brand Identity",
-      "Website Design",
-      "Website Development",
-      "Memberships",
-      "Ecommerce",
-      "SEO (Search Engine Optimisation)",
-      "Animations & interaction",
-      "Data & Analytics",
-    ],
-  },
-}
-
-// change with qwil
-export const workflow = {
-  heading: "How we Work",
-  title: "How we Work",
+export const ourProcess = {
+  heading: "Our Process",
+  title: "How we work",
 
   steps: [
     {
-      heading: "Step 01",
-      title: "",
+      step: "1",
+      heading: "Contact Us",
       content: [
-        "It starts by you getting in touch.",
-        "Then we have a short call where I explain who I am and what I do and you can explain who you are, why you find yourself looking for Web Design work and what your goals are for a new product.",
+        "The process begins when you reach out Following that, we'll engage in a brief conversation during which I'll introduce myself and my services, and you'll have the opportunity to share details about yourself, your reasons for seeking web design services, and the objectives you hope to achieve with your new project.",
       ],
     },
     {
-      heading: "Step 02",
-      title: "Proposal",
+      step: "2",
+      heading: "Proposal",
       content: [
-        "If I think I can build something to help you achieve your goals, I then write up a free proposal PDF. This includes a design mockup and explanation, cost range, potential timeline for work and next steps.",
+        "Should we determine that you are a good fit us, we will then draft a complimentary proposal in PDF format free of charge. This document will outline the estimated costs, a potential timeline for the project, and the subsequent steps.",
       ],
     },
     ,
     {
-      heading: "Step 03",
-      title: "Call",
+      step: "3",
+      heading: "Call",
       content: [
-        "If you like the proposal and want to work with me, we then have a call to sort out all the fine details of what content you want on your site, what structure you may have in mind and what features you want.",
+        "If the proposal appeals to you and you want to proceed, we'll arrange another call to delve deeper into specifics. During this discussion, we can explore the type of content you wish to include on your site, its structure, and any particular features you desire.",
+      ],
+    },
+
+    {
+      step: "4",
+      heading: "Structure",
+      content: [
+        "The work begins! We start by creating a sitemap. A sitemap is an essential blueprint for the structure of a website, outlining all the main pages and subpages.",
+        " The sitemap is crucial for optimizing site architecture for both user experience and search engine indexing, making it easier for visitors and search engines to find content efficiently",
+      ],
+    },
+
+    {
+      step: "5",
+      heading: "Design",
+      content: [
+        "Now we move to design software. The visual design phase introduces aesthetics, including colors, typography, and imagery, ensuring that the site not only functions well but also resonates with users visually.",
+        " If you already have a design we can skip this phase.",
+      ],
+    },
+
+    {
+      step: "6",
+      heading: "Build",
+      content: [
+        "From the high-definition designs, we code these concepts into actual web pages, adhering to the best SEO practices. This ensures that visitors have an optimal experience and are consistently guided to interact in the ways you intend.",
       ],
     },
     {
-      heading: "Step 04",
-      title: "Design",
+      step: "7",
+      heading: "Test",
       content: [
-        "The work begins! I first draw out a sitemap of your website - the structure of your site. I then get to the drawing board and follow a process taking me from pencil and pad to fully designed pages in design software.",
-        "",
+        "Once the site is built and we both agree it's ready to go live, we'll enter a testing phase. During this period, you can share a private link with trusted individuals to ensure the site functions correctly and check for any glitches or problems. Simultaneously, I will provide training for you and your team on how to use, edit, and manage the website effectively.",
       ],
     },
     {
-      heading: "Step 05",
-      title: "Build",
+      step: "8",
+      heading: "Launch",
       content: [
-        "I then take those HD designs and build them out as real web pages, inline with best SEO practices, making sure visitors have the best experience and are always led to interact in the ways that you want them to.",
-      ],
-    },
-    {
-      heading: "Step 06",
-      title: "Test",
-      content: [
-        "When the site is built and we're both happy to launch, there will be a period of testing where you can send out a private link to trusted people to test the website to make sure everything works, and see if there are any bugs or issues.",
-        "During this time, I also train you/your team on how to use/edit/manage your site.",
-      ],
-    },
-    {
-      heading: "Step 07",
-      title: "Launch",
-      content: [
-        "When all the bugs have been dealt with, we launch the site and monitor visitors and search engine results. There is a period of time when I’m on hand to answer any questions and fix any issues.",
-        "After that, if you don’t choose to have an (customer success plan) plan, the site is handed over and you gain the reins of your sparkly new site!",
+        "Once all issues are resolved, we proceed with launching the site and start tracking search engine performance. During this initial phase, we are available to address any questions and resolve any emerging issues. After this period, unless you opt for a customer success plan, control of your brand-new site is fully transferred to you, and you take the helm.",
       ],
     },
   ],
 }
 
 export const faq = {
-  heading: "faq",
-  tile: "faq",
+  heading: "FAQ",
+  title: "Frequently Asked Questions",
   items: [
     {
-      heading: "",
-      content: [""],
+      heading: "How long does it take?",
+      content: [
+        "The timeline for completing your website hinges on its size, the features you desire, and how quickly we receive all the necessary resources from you. A straightforward site can typically be developed within about a month.",
+      ],
     },
     {
-      heading: "",
-      content: [""],
+      heading: "How much will it cost?",
+      content: [
+        "The cost varies based on the type of website you need. Prices start around £1k for basic single-page website and will increase with additional functionality, more pages, and enhanced interactive and features.",
+      ],
     },
     {
-      heading: "",
-      content: [""],
+      heading: "Can we meet in person?",
+      content: ["content"],
     },
     {
-      heading: "",
-      content: [""],
+      heading: "What systems do you use to design websites?",
+      content: ["content"],
     },
     {
-      heading: "",
-      content: [""],
+      heading: "How will we communicate throughout the project?",
+      content: ["content"],
     },
     {
-      heading: "",
-      content: [""],
+      heading: "Will I be able to update the website myself?",
+      content: ["content"],
     },
     {
-      heading: "",
-      content: [""],
-    },
-    {
-      heading: "",
-      content: [""],
+      heading: "What happens after my website is launched?",
+      content: ["content"],
     },
   ],
 }

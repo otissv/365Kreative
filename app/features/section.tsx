@@ -75,36 +75,6 @@ export const SectionWatermark = ({
   )
 }
 
-// export const useElementScrollPosition = (
-//   elementRef: React.RefObject<HTMLElement>,
-//   onTopPosition: () => void
-// ) => {
-//   const checkPosition = React.useCallback(() => {
-//     if (!elementRef.current) return false
-
-//     const elementTop = elementRef.current.getBoundingClientRect().top
-//     const elementHeight = elementRef.current.getBoundingClientRect().height
-//     const scrollPosition = window.scrollY || window.pageYOffset
-
-//     // When the top of the element is reached
-//     if (
-//       elementTop / 2 <= (scrollPosition - window.outerHeight) * 0.33 * 0.33 &&
-//       elementTop + elementHeight / 2 > 0
-//     ) {
-//       onTopPosition()
-//     }
-
-//     return elementTop === scrollPosition
-//   }, [elementRef, onTopPosition])
-
-//   React.useEffect(() => {
-//     window.addEventListener("scroll", checkPosition, { passive: true })
-//     return () => window.removeEventListener("scroll", checkPosition)
-//   }, [checkPosition])
-
-//   return checkPosition
-// }
-
 export interface SectionBackground
   extends React.HTMLAttributes<HTMLDivElement> {
   image?: ImageProps
@@ -173,11 +143,7 @@ export function Section({
       ) : null}
       {bottomDivider ? <ShapeDivider width="156%" {...bottomDivider} /> : null}
       <div className="absolute h-full" id={id}></div>
-      <div
-        className={cn(
-          "365-SectionContent relative w-full z-[2]  gap-x-2 gap-y-6"
-        )}
-      >
+      <div className={cn("365-SectionContent relative w-full gap-x-2 gap-y-6")}>
         {children}
       </div>
     </section>

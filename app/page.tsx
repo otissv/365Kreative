@@ -3,19 +3,15 @@
 import * as React from "react"
 import Image from "next/image"
 
-import { Button } from "@/components/ui/button"
+import { AuroraBackground } from "@/components/aceternity/aurora-background"
 import { TypographyParagraph } from "@/components/typography/paragraph.typography"
-
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   Nav,
   NaveItemType,
   SocialLinks,
   setSelectedNavItem,
 } from "./features/nav"
-import { Feature } from "./features/feature"
-import { benefits, contact, nav } from "../content/data"
+import { benefits, contact, faq, nav, ourProcess } from "../content/data"
 
 import {
   header,
@@ -33,10 +29,19 @@ import { AnimateImage } from "@/components/animate-image"
 import { cn } from "@/lib/utils"
 import { TypographyH3 } from "@/components/typography/h3.typography"
 import { TypographyBlockquote } from "@/components/typography/blockquote.typography"
-import { QuoteMarks } from "./features/quote-marks"
 import { Subscribe } from "./subscribe/subscribe"
 import { Contact } from "./contact/contact"
 import { Testimonials } from "./features/testimonials"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { TypographyUList } from "@/components/typography/u-list.typography"
+import { ScrollLink } from "@/components/scroll-link"
+import { MoveDown } from "lucide-react"
+import { Logo365k } from "./features/365kreative"
 
 export default function Home() {
   const [active, setActive] = React.useState<NaveItemType>(nav[0])
@@ -72,9 +77,126 @@ export default function Home() {
 
       <main>
         <Section
+          id="about"
+          heading={aboutUs.title}
+          className="section-gradient"
+          onInView={handleOnInView}
+          topDivider={{ type: "tilt", flipHorizontal: true }}
+        >
+          <SectionWatermark className="ml-2 top-[10%] lg:translate-x-16  lg:top-[20%] 2xl:top-[30%]">
+            {aboutUs.title}
+          </SectionWatermark>
+          <div
+            className={cn(
+              "section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[50%] md:pt-[25%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]",
+              "lg:grid lg:grid-cols-2 lg:grid-row-2 lg:gap-6 items-center"
+            )}
+          >
+            <div className="mb-10">
+              <SectionHeading headingClassName="grid mb-2">
+                <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
+                  {aboutUs.heading}
+                  <span className="text-transparent">,</span>
+                </span>
+                {aboutUs.title}
+              </SectionHeading>
+              {aboutUs.content.map((item, index) => (
+                <TypographyParagraph
+                  key={index}
+                  className="mb-6 translate-y-40 duration-500 opacity-0 delay-100 ml-5 lg:ml-0"
+                  enter="translate-y-0 opacity-80"
+                >
+                  {item}
+                </TypographyParagraph>
+              ))}
+            </div>
+
+            <Box
+              className="relative h-[600px] w-full row-start-1 translate-y-40 opacity-30 scale-50 col-start-2"
+              enter="translate-y-0 scale-100 opacity-1"
+            >
+              <Image
+                className="object-cover rounded-sm shadow-2xl"
+                src="/images/web-design-collaboration.webp"
+                fill
+                alt=""
+              />
+            </Box>
+          </div>
+        </Section>
+
+        <Section
+          id="about"
+          onInView={handleOnInView}
+          className="section-gradient"
+          bottomDivider={{ type: "tilt" }}
+        >
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[5%] md:top-[10%] 2xl:top-[20%]">
+            {benefits.title}
+          </SectionWatermark>
+
+          <div className="section-container pb-20 lg:px-20 px-2 pt-[50%] md:pt-[36%] lg:pt-[28%] xl:pt-[20%] 2xl:pt-[16%]">
+            <SectionHeading headingClassName="grid mb-2">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
+                {benefits.heading}
+                <span className="text-transparent">,</span>
+              </span>
+              {benefits.title}
+            </SectionHeading>
+
+            <Box
+              className="opacity-1 translate-y-40"
+              enter="opacity-100 translate-y-0"
+            >
+              {benefits.items.map(({ heading, content, src, alt }, index) => (
+                <div
+                  key={heading}
+                  className="mb-32 md:mb-8 border py-6 px-4 bg-background-3 rounded-sm "
+                >
+                  <TypographyH3
+                    className="mb-5 opacity-0 translate-y-40 ml-5 lg:ml-0"
+                    enter="opacity-100 translate-y-0"
+                  >
+                    {heading}
+                  </TypographyH3>
+                  <div className="grid  md:grid-cols-2 gap-6">
+                    <div>
+                      {content.map((text) => {
+                        return (
+                          <TypographyParagraph
+                            key={text}
+                            className="opacity-0 translate-y-40 ml-5 mb-4 lg:ml-0"
+                            enter="opacity-70 translate-y-0"
+                          >
+                            {text}
+                          </TypographyParagraph>
+                        )
+                      })}
+                    </div>
+
+                    <AnimateImage
+                      className="object-cover rounded-sm opacity-30 scale-50 duration-1000 ease-in-out"
+                      src={src}
+                      width={460}
+                      height={306}
+                      alt={alt}
+                      enter="opacity-100 scale-100"
+                      imageProps={{
+                        className: "rounded-sm",
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </Box>
+          </div>
+        </Section>
+
+        <Section
           id="services"
           className="section-gradient"
           onInView={handleOnInView}
+          bottomDivider={{ type: "tilt" }}
           topDivider={{ type: "tilt", flipHorizontal: true }}
         >
           <SectionWatermark className="lg:translate-x-16  top-[9%] md:top-[13%] lg:top-[15%]">
@@ -89,74 +211,32 @@ export default function Home() {
               </span>
               {services.title}
             </SectionHeading>
-            {services.items.map(({ src, alt, title, content }, index) => (
-              <Feature
-                key={index}
-                src={src}
-                alt={alt}
-                title={title}
-                content={content}
-                className={index % 2 ? "self-end" : ""}
-              />
-            ))}
-          </div>
-        </Section>
+            {/* <div className="grid xl:grid-cols-3 gap-6">
+              {services.items.map(({ src, alt, title, content }, index) => (
+                <Feature
+                  key={index}
+                  src={src}
+                  alt={alt}
+                  title={title}
+                  content={content}
+                  className={index % 2 ? "self-end" : ""}
+                />
+              ))}
+            </div> */}
 
-        <Section
-          id="services"
-          onInView={handleOnInView}
-          className="section-gradient"
-          bottomDivider={{ type: "tilt" }}
-        >
-          <SectionWatermark className="ml-2 lg:translate-x-16  top-[5%] md:top-[10%] 2xl:top-[20%]">
-            {benefits.title}
-          </SectionWatermark>
-
-          <Box className="section-container pb-20 lg:px-20 px-2 pt-[50%] md:pt-[36%] lg:pt-[28%] xl:pt-[20%] 2xl:pt-[16%]">
-            <SectionHeading headingClassName="grid mb-2">
-              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
-                {benefits.heading}
-                <span className="text-transparent">,</span>
-              </span>
-              {benefits.title}
-            </SectionHeading>
-
-            <Box
-              className="opacity-1 translate-y-40"
-              enter="opacity-100 translate-y-0"
-            >
-              {benefits.items.map(({ heading, content, src, alt }, index) => (
-                <Box key={heading} className="mb-32 md:mb-0 xl:mb-8">
-                  <TypographyH3
-                    className="mb-4 opacity-0 translate-y-40 ml-5 lg:ml-0"
-                    enter="opacity-100 translate-y-0"
-                  >
-                    {heading}
-                  </TypographyH3>
-                  <div className="grid  md:grid-cols-2 gap-6">
-                    <TypographyParagraph
-                      className="opacity-0 translate-y-40 ml-5 lg:ml-0"
-                      enter="opacity-100 translate-y-0"
-                    >
-                      {content}
-                    </TypographyParagraph>
-
-                    <AnimateImage
-                      className="object-cover rounded-sm opacity-30 scale-50 duration-1000 ease-in-out"
-                      src={src}
-                      width={460}
-                      height={306}
-                      alt={alt}
-                      enter="opacity-100 scale-100"
-                      imageProps={{
-                        className: "rounded-sm",
-                      }}
-                    />
-                  </div>
+            <ul className="grid md:grid-cols-2 xl:grid-cols-3 text-xl gap-6 mt-10 w-full">
+              {services.services.map((service) => (
+                <Box
+                  as="li"
+                  key={service}
+                  className="w-full h-20 border flex center items-center rounded-sm bg-background-2 opacity-1 translate-y-40"
+                  enter="opacity-100 translate-y-0"
+                >
+                  {service}
                 </Box>
               ))}
-            </Box>
-          </Box>
+            </ul>
+          </div>
         </Section>
 
         <Section
@@ -169,40 +249,56 @@ export default function Home() {
           <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] md:top-[10%] lg:top-[15%]">
             {webFeatures.title}
           </SectionWatermark>
-          <Box className="section-container pb-20 px-2 lg:px-20 pt-[40%] md:mt-[2%] lg:pt-[40%] xl:pt-[25%] 2xl:pt-[10%]">
+          <div className="section-container pb-20 px-2 lg:px-20 pt-[40%] md:mt-[2%] lg:pt-[40%] xl:pt-[25%] 2xl:pt-[10%]">
             <SectionHeading
               className="mb-16 lg:mb-0"
               headingClassName="flex-col grid mb-2"
             >
-              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
                 {webFeatures.heading}
                 <span className="text-transparent">,</span>
               </span>
               <span className="mb-1">{webFeatures.title}</span>
-              <span className="text-4xl"> {webFeatures.title2}</span>
+              <span className="text-4xl opacity-70"> {webFeatures.title2}</span>
             </SectionHeading>
 
-            <Box className="pl-5 md:grid md:grid-cols-2 lg:pl-0 lg:translate-y-32 lg:mb-20">
+            <div className="pl-5 md:grid md:grid-cols-2 lg:pl-0 lg:translate-y-32 lg:mb-20">
               <ul className="flex flex-col gap-8">
-                {webFeatures.items.map(({ heading, content }) => (
-                  <Box as="li" key={heading}>
-                    <TypographyH3
-                      className="mb-2 opacity-0 translate-y-40"
+                {webFeatures.items.map(
+                  ({ heading, content, benefit, value }) => (
+                    <Box
+                      as="li"
+                      key={heading}
+                      className="bg-background-3 py-6 px-4 rounded border w-full opacity-0 translate-y-40"
                       enter="opacity-100 translate-y-0"
                     >
-                      {heading}
-                    </TypographyH3>
-                    <TypographyParagraph
-                      className="opacity-0 translate-y-40"
-                      enter="opacity-100 translate-y-0"
-                    >
-                      {content}
-                    </TypographyParagraph>
-                  </Box>
-                ))}
+                      <TypographyH3 className="mb-4">{heading}</TypographyH3>
+                      <TypographyParagraph className="opacity-70">
+                        {content}
+                      </TypographyParagraph>
+
+                      <TypographyUList className="opacity-70 p-0 ml-0">
+                        <li className="grid">
+                          <strong>Benefit: </strong> {benefit}
+                        </li>
+                        <li className="grid">
+                          <strong>Value: </strong> {value}
+                        </li>
+                      </TypographyUList>
+                    </Box>
+                  )
+                )}
               </ul>
-            </Box>
-          </Box>
+              <div className="flex justify-center">
+                <Image
+                  width={300}
+                  height={1000}
+                  src="/images/Home-Kanti-Ria.webp"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
         </Section>
 
         <Section
@@ -215,9 +311,9 @@ export default function Home() {
           <SectionWatermark className="ml-2 top-[5%] md:top-[10%] lg:translate-x-16  2xl:top-[20%]">
             {seoFeatures.title}
           </SectionWatermark>
-          <Box className="section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[30%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]">
+          <div className="section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[30%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]">
             <SectionHeading headingClassName="grid mb-2">
-              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
                 {seoFeatures.heading}
                 <span className="text-transparent">,</span>
               </span>
@@ -226,18 +322,45 @@ export default function Home() {
 
             <div className="md:grid md:grid-cols-2 ml-5 lg:ml-0">
               <ul className="flex flex-col gap-y-6">
-                {seoFeatures.items.map(({ heading, content }) => (
-                  <Box as="li" key={heading}>
-                    <TypographyH3 className="mb-4">{heading}</TypographyH3>
-                    <TypographyParagraph>{content}</TypographyParagraph>
-                  </Box>
-                ))}
+                {seoFeatures.items.map(
+                  ({ heading, content, benefit, value }) => (
+                    <Box
+                      as="li"
+                      key={heading}
+                      className="bg-background-3 py-6 px-4 rounded border w-full opacity-0 translate-y-40"
+                      enter="opacity-100 translate-y-0"
+                    >
+                      <TypographyH3 className="mb-4">{heading}</TypographyH3>
+                      <TypographyParagraph className="opacity-70 ">
+                        {content}
+                      </TypographyParagraph>
+
+                      <TypographyUList className="opacity-70 p-0 ml-0">
+                        <li className="grid">
+                          <strong>Benefit: </strong> {benefit}
+                        </li>
+                        <li className="grid">
+                          <strong>Value: </strong> {value}
+                        </li>
+                      </TypographyUList>
+                    </Box>
+                  )
+                )}
               </ul>
+
+              <div className="flex justify-center">
+                <Image
+                  width={150}
+                  height={8000}
+                  src="/images/Yogini-studio-mobile.webp"
+                  alt="yogini yoga studio website"
+                />
+              </div>
             </div>
-          </Box>
+          </div>
         </Section>
 
-        <Section
+        {/* <Section
           id="projects"
           className="section-gradient"
           heading={projects.title}
@@ -286,54 +409,58 @@ export default function Home() {
               ))}
             </Box>
           </Box>
-        </Section>
+        </Section> */}
 
         <Section
-          id="about"
-          heading={aboutUs.title}
+          id="process"
           className="section-gradient"
+          heading={ourProcess.title}
           onInView={handleOnInView}
           bottomDivider={{ type: "tilt" }}
         >
-          <SectionWatermark className="ml-2 top-[10%] lg:translate-x-16  lg:top-[20%] 2xl:top-[30%]">
-            {aboutUs.title}
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] 2xl:top-[20%]">
+            {ourProcess.title}
           </SectionWatermark>
           <Box
             className={cn(
-              "section-container pb-40 xl:pb-48 2xl:pb-60 lg:px-20 px-2 pt-[50%] md:pt-[25%] lg:pt-[25%] xl:pt-[20%] 2xl:pt-[14%]",
-              "lg:grid lg:grid-cols-2 lg:grid-row-2 lg:gap-6 items-center"
+              "section-container px-2 lg:px-20 pb-20 pt-[36%] md:pt-[20%] lg:pt-[15%]"
             )}
           >
-            <div className="mb-10">
-              <SectionHeading headingClassName="grid mb-2">
-                <span className="text-2xl uppercase font-normal tracking-wide mb-1">
-                  {aboutUs.heading}
-                  <span className="text-transparent">,</span>
-                </span>
-                {aboutUs.title}
-              </SectionHeading>
-              {aboutUs.content.map((item, index) => (
-                <TypographyParagraph
-                  key={index}
-                  className="mb-6 translate-y-40 duration-500 opacity-0 delay-100 ml-5 lg:ml-0"
-                  enter="translate-y-0 opacity-1"
-                >
-                  {item}
-                </TypographyParagraph>
-              ))}
-            </div>
+            <SectionHeading className="mb-16 " headingClassName="grid mb-2">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
+                {ourProcess.heading}
+                <span className="text-transparent">,</span>
+              </span>
+              {ourProcess.title}
+            </SectionHeading>
 
-            <Box
-              className="relative h-[600px] w-full row-start-1 translate-y-40 opacity-30 scale-50 col-start-2"
-              enter="translate-y-0 scale-100 opacity-1"
-            >
-              <Image
-                className="object-cover rounded-sm shadow-2xl"
-                src="/images/photo-1499951360447-b19be8fe80f5.jpeg"
-                fill
-                alt=""
-              />
-            </Box>
+            <ul>
+              {ourProcess.steps.map(({ step, heading, content }) => {
+                return (
+                  <Box as="li" key={step} className="grid mb-6 ml-5 lg:ml-0">
+                    <Box
+                      className="opacity-0 translate-y-40"
+                      enter="translate-y-0 opacity-100"
+                    >
+                      <TypographyH3>
+                        <span className="mr-2">{step} </span>
+                        {heading}
+                      </TypographyH3>
+                      <div className="h-[1px] w-full mt-2 bg-white opacity-20"></div>
+                    </Box>
+
+                    <Box
+                      className="mt-4 mb-6 grid lg:grid-cols-2 items-center opacity-0 translate-y-40 "
+                      enter="translate-y-0 opacity-70"
+                    >
+                      <TypographyParagraph className="lg:grid lg:col-start-2 ">
+                        {content}
+                      </TypographyParagraph>
+                    </Box>
+                  </Box>
+                )
+              })}
+            </ul>
           </Box>
         </Section>
 
@@ -342,7 +469,7 @@ export default function Home() {
           className="section-gradient"
           heading={testimonials.title}
           onInView={handleOnInView}
-          topDivider={{ type: "tilt", flipHorizontal: true }}
+          bottomDivider={{ type: "tilt" }}
         >
           <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] 2xl:top-[20%]">
             {testimonials.title}
@@ -357,7 +484,7 @@ export default function Home() {
               className="mb-16 lg:mb-0"
               headingClassName="grid mb-2"
             >
-              <span className="text-2xl uppercase font-normal tracking-wide mb-1">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
                 {testimonials.heading}
                 <span className="text-transparent">,</span>
               </span>
@@ -369,46 +496,90 @@ export default function Home() {
         </Section>
 
         <Section
-          id="testimonials"
-          className="section-gradient h-[100vh] block"
-          background={{
-            image: {
-              src: "/images/photo-1587440871875-191322ee64b0.jpeg",
-              alt: "",
-            },
-          }}
-          bottomDivider={{ type: "tilt" }}
+          id="faq"
+          className="section-gradient"
+          heading={faq.title}
+          onInView={handleOnInView}
+          topDivider={{ type: "tilt", flipHorizontal: true }}
         >
-          <Box className="h-[100vh] max-w-[730px] mx-auto">
-            <TypographyBlockquote
-              className="relative border-0 text-6xl font-bold translate-y-0 opacity-0 scale-0 w-full"
-              enter="opacity-100 translate-y-[50vh] scale-100"
-            >
-              <QuoteMarks
-                className="w-28 absolute z-[0] -translate-y-16"
-                side="right"
-              />
-              <span className=" z-[1] absolute">
-                The best way to predict <br />
-                the future is to create it
+          <SectionWatermark className="ml-2 lg:translate-x-16  top-[7%] 2xl:top-[20%]">
+            {faq.title}
+          </SectionWatermark>
+
+          <Box
+            className={cn(
+              "section-container px-2 lg:px-20 pb-20 pt-[36%] md:pt-[20%] lg:pt-[15%]"
+            )}
+          >
+            <SectionHeading headingClassName="grid mb-2">
+              <span className="text-2xl uppercase font-normal tracking-wide mb-1 opacity-70">
+                {faq.heading}
+                <span className="text-transparent">,</span>
               </span>
-            </TypographyBlockquote>
+              {faq.title}
+            </SectionHeading>
+
+            <Box
+              className="opacity-0 translate-y-40"
+              enter="translate-y-0 opacity-100"
+            >
+              <Accordion type="single" collapsible className="w-full">
+                {faq.items.map(({ heading, content }) => {
+                  return (
+                    <AccordionItem key={heading} value={heading}>
+                      <AccordionTrigger className="text-xl">
+                        {heading}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-lg opacity-70 max-w-[800px] ">
+                        {content}
+                      </AccordionContent>
+                    </AccordionItem>
+                  )
+                })}
+
+                <AccordionItem value="interested">
+                  <AccordionTrigger className="text-xl">
+                    What if I&apos;m interested?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-lg opacity-70 max-w-[800px] ">
+                    <ScrollLink
+                      to="contact"
+                      className="inline-flex border-b-2 border-accent-foreground"
+                    >
+                      Let&apos;s chat <MoveDown className="" />
+                    </ScrollLink>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </Box>
           </Box>
         </Section>
 
-        <Contact
-          id="contact"
-          onInView={handleOnInView}
-          topDivider={{ type: "tilt", flipHorizontal: true }}
-        />
+        <Section id="testimonials" className="h-[100vh]">
+          <AuroraBackground>
+            <TypographyBlockquote
+              className=" flex justify-center text-white border-0 text-6xl font-extrabold italic max-font-[6vw,264px] w-full opacity-0 scale-0 "
+              enter="opacity-100 scale-100"
+            >
+              The best way to predict <br />
+              the future is to create it
+            </TypographyBlockquote>
+          </AuroraBackground>
+        </Section>
 
-        <Subscribe id="contact" bottomDivider={{ type: "tilt" }} />
+        <Contact id="contact" onInView={handleOnInView} className="lg:pt-40 " />
+
+        <div className="relative h-[300px] w-full overflow-hidden">
+          <AuroraBackground />
+        </div>
+
+        <Subscribe id="contact" />
       </main>
 
       <footer className="container relative text-sm z-[2] pt-20 pb-4 px-8 lg:px-20 grid items-end xl:h-[50vh]">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="grid gap-4 w-full ">
-            <div>365Kreative</div>
+            <Logo365k className="h-10 w-36" fill="white" />
             <a className="flex" href={`mailto:${contact.email}`}>
               {contact.email}
             </a>

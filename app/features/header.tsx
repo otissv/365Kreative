@@ -7,8 +7,8 @@ import { ScrollLink } from "@/components/scroll-link"
 import { cn } from "@/lib/utils"
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { useElementScrollPosition } from "../hooks/useElementScrollPosition"
 import { Section } from "./section"
+import { Logo365k } from "./365kreative"
 
 export interface Hero1Props extends React.HTMLAttributes<HTMLElement> {
   title: string
@@ -24,8 +24,6 @@ export const Hero1 = ({
   id,
   ...props
 }: Hero1Props) => {
-  const scrollRef = React.useRef<HTMLDivElement>(null)
-
   return (
     <header>
       <Section
@@ -37,6 +35,7 @@ export const Hero1 = ({
         )}
       >
         <BackgroundGradientAnimation />
+        <div className="365-overlay h-[100vh] absolute top-0 bottom-0 left-0 right-0 bg-[#00007f] mix-blend-overlay"></div>
 
         <Box className="absolute inset-0 container p-4 flex flex-col center items-center gap-6 mt-20 md:p-6 lg:px-20 ">
           <TypographyH1
@@ -55,26 +54,30 @@ export const Hero1 = ({
             {subTitle}
           </TypographyParagraph>
           <div className="flex flex-col gap-2 center items-center mt-10">
-            <Button
-              asChild
-              size="lg"
-              className="text-2xl font-bold rounded-sm max-w-96"
-            >
-              <ScrollLink to="contact">Hire Us</ScrollLink>
-            </Button>
-
             <Box
-              as="span"
-              className="mix-blend-overlay w-full max-font-[10vw,264px] font-bold leading-none"
-              parallax={30}
+              className="opacity-0 translate-y-40 delay-300"
+              enter="opacity-1 -translate-y-10 md:translate-y-0"
             >
-              365Kreative
+              <Button
+                size="lg"
+                className="text-4xl font-bold rounded-sm px-10 py-8 bg-background-1 border-2 app-gradient-border hover:bg-background-3 mb-20 text-white max-w-96"
+              >
+                <ScrollLink to="contact">Hire Us</ScrollLink>
+              </Button>
             </Box>
           </div>
 
+          <Box
+            className="365-Watermark-logo absolute bottom-0 lg:bottom-10 xl:bottom-32   w-[100vw] h-[100vh] mix-blend-overlay flex items-end font-bold leading-none opacity-0 translate-y-40 delay-400"
+            parallax={30}
+            enter="opacity-1 -translate-y-10 md:translate-y-0"
+          >
+            <Logo365k className="w-[100vw] h-[30vh]" fill="white" />
+          </Box>
+
           <ScrollLink
             to="services"
-            className="absolute bottom-6 mx-auto z-[9] mt-10"
+            className="absolute bottom-0 lg:bottom-5 mx-auto z-[9] mt-8"
           >
             <ArrowDown className="animate-bounce h-10 w-10" />
           </ScrollLink>

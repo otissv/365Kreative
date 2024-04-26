@@ -40,6 +40,11 @@
     --ring: 240 5% 64.9%;
 
     --radius: 0.5rem;
+    
+    --bg-background-1: 0 0% 0%;
+    --bg-background-2: 240 10% 4%;
+    --bg-background-3: 240 8% 8%;
+
 
   }
   
@@ -66,8 +71,8 @@
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
 
-    --accent: 210.55 77.46% 13.92%;
-    --accent-foreground: 210 79.17% 62.35%;
+    --accent: 275.68 75.51% 48.04%;
+    --accent-foreground: 275.68 75.51% 48.04%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
@@ -76,6 +81,10 @@
     --success-foreground:1142, 76%, 36%
 
     --ring: 240 3.7% 15.9%;
+
+    --bg-background-1: 0 0% 0%;
+    --bg-background-2: 240 10% 4%;
+    --bg-background-3: 240 8% 8%;
   }
 }
 
@@ -131,16 +140,25 @@
 
   .section-gradient {
     &:nth-child(odd) {
-      background: var(--bg-black);
+      background: hsl(var(--bg-background-1));
     }
 
     &:nth-child(even) {
-        background: hsla(293, 75%, 13%, 1);
-        background: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
-        
-      }
+      background-color: hsl(var(--bg-background-2));
+    }
   }
 
+  .bg-background-1 {
+    background-color: hsl(var(--bg-background-1));
+  }
+
+  .bg-background-2 {
+    background-color: hsl(var(--bg-background-2));
+  }
+
+  .bg-background-3 {
+    background-color: hsl(var(--bg-background-3));
+  }
 
   .section-container {
     margin-left: auto;
@@ -205,12 +223,11 @@
     background: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
   }
 
+ 
   .app-gradient-border {
     border-color: hsla(293, 75%, 13%, 1);
     border-color: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
   }
 
-  .app-gradient-color {
-    color: hsl(293, 76%, 13%) ;
-  }
+
 }

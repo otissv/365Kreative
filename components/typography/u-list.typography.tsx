@@ -20,7 +20,7 @@ export const TypographyUList = ({
       {...props}
       as="ul"
       className={cn(
-        "inline-flex my-6 ml-6 list-disc [&>li]:mt-2 text-balance align-top",
+        "my-6 ml-6 list-disc [&>li]:mt-2 text-pretty align-top",
         variant && variants.variant[variant],
         muted && "text-muted-foreground",
         className

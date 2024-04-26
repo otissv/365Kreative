@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet"
 
 import { ScrollLink } from "@/components/scroll-link"
+import { Logo365k } from "./365kreative"
 
 export type NaveItemType = {
   label: string
@@ -158,7 +159,6 @@ export const NaveItem = ({
           "relative block w-full px-4 py-2 rounded-sm transition-all duration-1000",
           hovering === to && activeButtonClassName,
           active.label === children && isStack && activeButtonClassName,
-
           buttonLabelClassName
         )}
       >
@@ -185,7 +185,7 @@ export const NavList = ({
         "hidden [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full gap-1",
         isStack
           ? "flex flex-col"
-          : "lg:flex md:flex-row md:items-center md:justify-center",
+          : "xl:flex md:flex-row md:items-center md:justify-center",
         className
       )}
       {...props}
@@ -224,7 +224,7 @@ export function Nav({
       {...props}
       aria-label={label}
     >
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <Sheet>
           <SheetTrigger asChild>
             <button
@@ -248,7 +248,7 @@ export function Nav({
             closeIcon={<NavToggleIcon reverse />}
           >
             <div className="h-16 w-full">
-              <ScrollLink to="hero">365Kreative</ScrollLink>
+              <ScrollLink to="hero"></ScrollLink>
             </div>
 
             <NavList isStack={true}>
@@ -274,7 +274,9 @@ export function Nav({
         </Sheet>
       </div>
 
-      <ScrollLink to="hero">365Kreative</ScrollLink>
+      <ScrollLink to="hero">
+        <Logo365k className="h-10 w-36" fill="white" />
+      </ScrollLink>
 
       <NavList>
         {items.map(({ label, to }) => {
@@ -294,7 +296,7 @@ export function Nav({
         })}
       </NavList>
 
-      <SocialLinks className="hidden lg:flex ml-auto" />
+      <SocialLinks className="hidden xl:flex ml-auto" />
     </nav>
   )
 }

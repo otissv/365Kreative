@@ -10,7 +10,7 @@ import {
   inView,
 } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { useElementScrollPosition } from "../features/section"
+import { useElementScrollPosition } from "../hooks/useElementScrollPosition"
 
 export default function PlayGround() {
   const unStickRef = React.useRef(null)
