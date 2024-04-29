@@ -1,7 +1,8 @@
-"use client"
-import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "framer-motion"
-import React, { useEffect, useState } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+'use client'
+import { cn } from '@/lib/utils'
+import { motion, AnimatePresence } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 
 /** @example
  ```
@@ -53,7 +54,7 @@ export const ImagesSlider = ({
   overlayClassName,
   className,
   autoplay = true,
-  direction = "up",
+  direction = 'up'
 }: {
   images: string[]
   children: React.ReactNode
@@ -61,10 +62,10 @@ export const ImagesSlider = ({
   overlayClassName?: string
   className?: string
   autoplay?: boolean
-  direction?: "up" | "down"
+  direction?: 'up' | 'down'
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [loading, setLoading] = useState(false)
+  const [_loading, setLoading] = useState(false)
   const [loadedImages, setLoadedImages] = useState<string[]>([])
 
   const handleNext = () => {
@@ -99,18 +100,18 @@ export const ImagesSlider = ({
         setLoadedImages(loadedImages as string[])
         setLoading(false)
       })
-      .catch((error) => console.error("Failed to load images", error))
+      .catch((error) => console.error('Failed to load images', error))
   }
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") {
+      if (event.key === 'ArrowRight') {
         handleNext()
-      } else if (event.key === "ArrowLeft") {
+      } else if (event.key === 'ArrowLeft') {
         handlePrevious()
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener('keydown', handleKeyDown)
 
     // autoplay
     let interval: any
@@ -121,7 +122,7 @@ export const ImagesSlider = ({
     }
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener('keydown', handleKeyDown)
       clearInterval(interval)
     }
   }, [])
@@ -130,7 +131,7 @@ export const ImagesSlider = ({
     initial: {
       scale: 0,
       opacity: 0,
-      rotateX: 45,
+      rotateX: 45
     },
     visible: {
       scale: 1,
@@ -138,23 +139,23 @@ export const ImagesSlider = ({
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: [0.645, 0.045, 0.355, 1.0],
-      },
+        ease: [0.645, 0.045, 0.355, 1.0]
+      }
     },
     upExit: {
       opacity: 1,
-      y: "-150%",
+      y: '-150%',
       transition: {
-        duration: 1,
-      },
+        duration: 1
+      }
     },
     downExit: {
       opacity: 1,
-      y: "150%",
+      y: '150%',
       transition: {
-        duration: 1,
-      },
-    },
+        duration: 1
+      }
+    }
   }
 
   const areImagesLoaded = loadedImages.length > 0
@@ -162,17 +163,17 @@ export const ImagesSlider = ({
   return (
     <div
       className={cn(
-        "overflow-hidden h-full w-full relative flex items-center justify-center",
+        'overflow-hidden h-full w-full relative flex items-center justify-center',
         className
       )}
       style={{
-        perspective: "1000px",
+        perspective: '1000px'
       }}
     >
       {areImagesLoaded && children}
       {areImagesLoaded && overlay && (
         <div
-          className={cn("absolute inset-0 bg-black/60 z-40", overlayClassName)}
+          className={cn('absolute inset-0 bg-black/60 z-40', overlayClassName)}
         />
       )}
 
@@ -183,7 +184,7 @@ export const ImagesSlider = ({
             src={loadedImages[currentIndex]}
             initial="initial"
             animate="visible"
-            exit={direction === "up" ? "upExit" : "downExit"}
+            exit={direction === 'up' ? 'upExit' : 'downExit'}
             variants={slideVariants}
             className="image h-full w-full absolute inset-0 object-cover object-center"
           />

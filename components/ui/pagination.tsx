@@ -1,44 +1,44 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   ChevronFirst,
   ChevronLast,
   ChevronLeft,
   ChevronRight,
-  MoreHorizontal,
-} from "lucide-react"
+  MoreHorizontal
+} from 'lucide-react'
 
-import { cn } from "@/lib/utils"
-import { Button, ButtonProps, buttonVariants } from "@/components/ui/button"
+import { cn } from '@/lib/utils'
+import { Button, ButtonProps } from '@/components/ui/button'
 
-const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
+const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn("mx-auto flex w-full", className)}
+    className={cn('mx-auto flex w-full', className)}
     {...props}
   />
 )
-Pagination.displayName = "Pagination"
+Pagination.displayName = 'Pagination'
 
 const PaginationContent = React.forwardRef<
   HTMLUListElement,
-  React.ComponentProps<"ul">
+  React.ComponentProps<'ul'>
 >(({ className, ...props }, ref) => (
-  <ul ref={ref} className={cn("flex flex-row gap-2", className)} {...props} />
+  <ul ref={ref} className={cn('flex flex-row gap-2', className)} {...props} />
 ))
-PaginationContent.displayName = "PaginationContent"
+PaginationContent.displayName = 'PaginationContent'
 
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
-  React.ComponentProps<"li">
+  React.ComponentProps<'li'>
 >(({ className, ...props }, ref) => (
   <li
     ref={ref}
-    className={cn("list-none flex items-center text-sm", className)}
+    className={cn('list-none flex items-center text-sm', className)}
     {...props}
   />
 ))
-PaginationItem.displayName = "PaginationItem"
+PaginationItem.displayName = 'PaginationItem'
 
 type PaginationLinkProps = {
   isActive?: boolean
@@ -47,23 +47,23 @@ type PaginationLinkProps = {
 const PaginationLink = ({
   className,
   isActive,
-  size = "icon",
+  size = 'icon',
   ...props
 }: PaginationLinkProps) => (
   <Button
-    variant={isActive ? "active" : "outline"}
+    variant={isActive ? 'active' : 'outline'}
     variants={{
       variant: {
         active:
-          "background-accent-foreground bg-gray-900 text-accent-foreground font-medium border hover:bg-accent hover:text-accent-foreground",
-      },
+          'background-accent-foreground bg-gray-900 text-accent-foreground font-medium border hover:bg-accent hover:text-accent-foreground'
+      }
     }}
-    aria-current={isActive ? "page" : undefined}
-    className={cn("h-10 w-10 p-0 font-medium", className)}
+    aria-current={isActive ? 'page' : undefined}
+    className={cn('h-10 w-10 p-0 font-medium', className)}
     {...props}
   />
 )
-PaginationLink.displayName = "PaginationLink"
+PaginationLink.displayName = 'PaginationLink'
 
 const PaginationFirstPage = ({
   className,
@@ -111,7 +111,7 @@ const PaginationPrevious = ({
     {children}
   </PaginationLink>
 )
-PaginationPrevious.displayName = "PaginationPrevious"
+PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({
   className,
@@ -129,18 +129,18 @@ const PaginationNext = ({
     <span className="sr-only">Next page</span>
   </PaginationLink>
 )
-PaginationNext.displayName = "PaginationNext"
+PaginationNext.displayName = 'PaginationNext'
 
 const PaginationEllipsis = ({
   className,
   ...props
-}: React.ComponentProps<"span">) => (
-  <span aria-hidden className={cn("self-end p-2", className)} {...props}>
+}: React.ComponentProps<'span'>) => (
+  <span aria-hidden className={cn('self-end p-2', className)} {...props}>
     <MoreHorizontal className="h-4 w-4" />
     <span className="sr-only">More pages</span>
   </span>
 )
-PaginationEllipsis.displayName = "PaginationEllipsis"
+PaginationEllipsis.displayName = 'PaginationEllipsis'
 
 export {
   Pagination,
@@ -151,5 +151,5 @@ export {
   PaginationNext,
   PaginationPrevious,
   PaginationFirstPage,
-  PaginationLastPage,
+  PaginationLastPage
 }

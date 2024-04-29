@@ -34,8 +34,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --success: 142, 76%, 36%
-    --success-foreground: 142, 76%, 36%
+    --success: 142 76% 36%
+    --success-foreground: 142 76% 36%
 
     --ring: 240 5% 64.9%;
 
@@ -77,8 +77,8 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
 
-    --success: 142, 76%, 36%
-    --success-foreground:1142, 76%, 36%
+    --success: 142 76% 36%
+    --success-foreground:1142 76% 36%
 
     --ring: 240 3.7% 15.9%;
 
@@ -138,15 +138,166 @@
     display: none;
   }
 
-  .section-gradient {
+  .Section {
+    /* sm */
+    .Section-container {
+      margin-left: auto;
+      margin-right: auto;
+      width:100%;
+      max-width: 1440px;
+    }
+  
+    .Section-content-wrapper {
+      position: relative;
+      padding-bottom: 5rem;
+    }
+
+    .Section-content-main {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      align-items: start;
+    }
+
     &:nth-child(odd) {
       background: hsl(var(--bg-background-1));
+      .Section-container {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+      }
+
+      .Section-content-main {
+        padding-top: 3rem;
+      }
     }
 
     &:nth-child(even) {
       background-color: hsl(var(--bg-background-2));
+      .Section-container {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+      }
+
+      .Section-content-main {
+        padding-top: 2rem;
+      } 
+    }
+
+    /* md */
+    @media (min-width: 768px) {
+      .Section-content-main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      &:nth-child(odd) {
+        
+        .Section-content-main {
+          padding-top: 4rem;
+        } 
+      }
+
+      &:nth-child(even) {
+        .Section-container {
+          margin-top: 4rem;
+          margin-bottom: 4rem;
+        }
+        .Section-content-wrapper {
+          padding-top: 8rem;
+          padding-bottom: 8rem;
+        }
+        .Section-content-main {
+          padding-top: 0rem;
+        }
+      }
+    }
+
+    /* lg */     
+    @media (min-width: 1024px) {
+      .Section-content-main {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+
+      &:nth-child(odd) {
+      .Section-content-main {
+          padding-top: 6rem;
+        }
+      }
+
+      &:nth-child(even) {
+        .Section-content-wrapper {
+          padding-top: 10rem;
+          padding-bottom: 10rem;
+        }
+        .Section-content-main {
+          padding-top: 2rem;
+        }
+      }
+    }
+
+
+    /* xl */
+    @media (min-width: 1280px) {
+      &:nth-child(odd) {
+        .Section-content-main {
+          padding-top: 8rem;
+        }
+      }
+
+      &:nth-child(even) {
+        .Section-content-wrapper {
+          padding-top: 12rem;
+          padding-bottom: 12rem;
+        }
+        .Section-content-main {
+          padding-top: 0rem;
+        }
+      }
+    }
+
+
+    /* 2xl */
+    @media (min-width: 1440px) {
+      &:nth-child(odd) {
+        .Section-content-main {
+          padding-top: 8rem;
+        }
+      }
+
+      &:nth-child(even) {
+        .Section-content-wrapper {
+          padding-top: 13rem;
+          padding-bottom: 13rem;
+        }
+        .Section-content-main {
+          padding-top: 4rem;
+        }
+      }
+    }
+
+    /* 3xl */
+    @media (min-width: 2560px) {
+      &:nth-child(odd) {
+        .Section-content-main {
+          padding-top: 10rem;
+        }
+      }
+
+      &:nth-child(even) {
+        .Section-content-wrapper {
+          padding-top: 20rem;
+          padding-bottom: 20rem;
+        }
+        .Section-content-main {
+          padding-top: 5rem;
+        }
+      }
     }
   }
+
+  
+
+ 
 
   .bg-background-1 {
     background-color: hsl(var(--bg-background-1));
@@ -160,14 +311,9 @@
     background-color: hsl(var(--bg-background-3));
   }
 
-  .section-container {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    width:100%;
-    max-width: 1440px;
-  }
+
+
+
 
   .rtl {
     direction: rtl;
@@ -229,5 +375,7 @@
     border-color: linear-gradient(180deg, hsla(293, 75%, 13%, 1) 0%, hsla(261, 53%, 30%, 1) 100%); 
   }
 
+ 
 
+  
 }

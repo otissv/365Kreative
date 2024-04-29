@@ -10,7 +10,6 @@ import { Box } from "../box"
 export const TypographyH3 = ({
   children,
   className,
-  inView,
   variant = "default",
   muted,
   ...props

@@ -1,4 +1,5 @@
-import { SubscribeForm } from '@/app/[features]/subscribe/validate.subscribe'
+import { Logo365k } from '@/app/(features)/365kreative'
+import { SubscribeForm } from '@/app/(features)/subscribe/validate.subscribe'
 import {
   Body,
   Button,
@@ -24,42 +25,47 @@ export default function ConfirmNewsletterEmail({
   subject,
   name,
   unsubscribeURL,
-  verifyURL
+  verifyURL,
+  email
 }: ConfirmNewsletterEmailProps) {
+  const unsubscribe = `${unsubscribeURL}?email=${email}`
+
   return (
     <Html>
       <Head />
       <Preview>{subject}</Preview>
-      <Body style={main}>
-        <Container style={container}>
-          <Text style={paragraph}>Hi {name},</Text>
-          <Text style={paragraph}>
+      <Body style={mainStyles}>
+        <Container style={containerStyles}>
+          <Logo365k style={{ width: '320px' }} />
+
+          <Text style={paragraphStyles}>Hi {name},</Text>
+
+          <Text style={paragraphStyles}>
             Thank you for signing up for 365Kreative newsletter.
           </Text>
 
-          <Text style={paragraph}>
-            {' '}
+          <Text style={paragraphStyles}>
             Please click the link below to confirm your subscription.
           </Text>
 
-          <Section style={btnContainer}>
-            <Button style={button} href={verifyURL}>
+          <Section style={btnContainerStyles}>
+            <Button style={buttonStyles} href={verifyURL}>
               Confirm your subscription
             </Button>
           </Section>
 
-          <Text style={paragraph}>It&apos;s good to have you!</Text>
+          <Text style={paragraphStyles}>It&apos;s good to have you!</Text>
 
           <Section style={{ marginTop: '64px' }}>
-            <Text style={paragraph}>Best Regards,</Text>
-            <Text style={paragraph}>The 365Kreative Team</Text>
+            <Text style={paragraphStyles}>Many thanks,</Text>
+            <Text style={paragraphStyles}>The 365Kreative Team</Text>
 
-            <Hr style={hr} />
+            <Hr style={hrStyles} />
 
-            <Text style={footerText}>
+            <Text style={footerTextStyles}>
               You are receiving this email because you previously requested to
               subscribe to newsletter.{' '}
-              <Link href={unsubscribeURL} style={footerText}>
+              <Link href={unsubscribe} style={footerTextStyles}>
                 Unsubscribe from list.
               </Link>
             </Text>
@@ -74,31 +80,32 @@ ConfirmNewsletterEmail.display = 'ConfirmNewsletterEmail'
 ConfirmNewsletterEmail.PreviewProps = {
   subject: 'Please confirm you email',
   name: 'Otis',
+  email: 'otissv@email.com',
   unsubscribeURL: 'http://localhost:3000/subscribe/unsubscribe',
   verifyURL: 'http://localhost:3000/subscribe/verify'
 } as ConfirmNewsletterEmailProps
 
-const main = {
+const mainStyles = {
   backgroundColor: '#ffffff',
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
 }
 
-const container = {
+const containerStyles = {
   margin: '0 auto',
   padding: '20px 0 48px'
 }
 
-const paragraph = {
+const paragraphStyles = {
   fontSize: '16px',
   lineHeight: '26px'
 }
 
-const btnContainer = {
+const btnContainerStyles = {
   textAlign: 'center' as const
 }
 
-const button = {
+const buttonStyles = {
   borderRadius: '4px',
   fontSize: '24px',
   background:
@@ -110,12 +117,12 @@ const button = {
   padding: '12px'
 }
 
-const hr = {
+const hrStyles = {
   borderColor: '#cccccc',
   margin: '20px 0'
 }
 
-const footerText = {
+const footerTextStyles = {
   color: '#8898aa',
   fontSize: '12px',
   lineHeight: '14px'

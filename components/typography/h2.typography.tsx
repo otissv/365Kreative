@@ -1,18 +1,17 @@
-"use client"
+'use client'
 
-import * as React from "react"
+import * as React from 'react'
 
-import { cn } from "@/lib/utils"
-import { variants } from "@/components/typography/variants.typography"
-import { TypographyHeadingProps } from "@/components/typography/types.typography"
-import { Box } from "../box"
+import { cn } from '@/lib/utils'
+import { variants } from '@/components/typography/variants.typography'
+import { TypographyHeadingProps } from '@/components/typography/types.typography'
+import { Box } from '../box'
 
 export const TypographyH2 = ({
   children,
   className,
-  inView,
   muted,
-  variant = "default",
+  variant = 'default',
   ...props
 }: TypographyHeadingProps) => {
   return (
@@ -20,9 +19,9 @@ export const TypographyH2 = ({
       {...props}
       as="h2"
       className={cn(
-        "inline-flex sscroll-m-20 text-3xl font-semibold tracking-tight text-balance align-top first:mt-0",
+        'inline-flex sscroll-m-20 text-3xl font-semibold tracking-tight text-balance align-top first:mt-0',
         variant && variants.variant[variant],
-        muted && "text-muted-foreground",
+        muted && 'text-muted-foreground',
         className
       )}
     >
@@ -30,4 +29,4 @@ export const TypographyH2 = ({
     </Box>
   )
 }
-TypographyH2.displayName = "TypographyH2"
+TypographyH2.displayName = 'TypographyH2'

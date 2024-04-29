@@ -1,18 +1,17 @@
-"use client"
+'use client'
 
-import * as React from "react"
+import * as React from 'react'
 
-import { cn } from "@/lib/utils"
-import { TypographyUListProps } from "@/components/typography/types.typography"
-import { variants } from "@/components/typography/variants.typography"
-import { Box } from "../box"
+import { cn } from '@/lib/utils'
+import { TypographyUListProps } from '@/components/typography/types.typography'
+import { variants } from '@/components/typography/variants.typography'
+import { Box } from '../box'
 
 export const TypographyUList = ({
   children,
   className,
-  inView,
   muted,
-  variant = "default",
+  variant = 'default',
   ...props
 }: TypographyUListProps) => {
   return (
@@ -20,9 +19,9 @@ export const TypographyUList = ({
       {...props}
       as="ul"
       className={cn(
-        "my-6 ml-6 list-disc [&>li]:mt-2 text-pretty align-top",
+        'my-6 ml-6 list-disc [&>li]:mt-2 text-pretty align-top',
         variant && variants.variant[variant],
-        muted && "text-muted-foreground",
+        muted && 'text-muted-foreground',
         className
       )}
     >
@@ -30,4 +29,4 @@ export const TypographyUList = ({
     </Box>
   )
 }
-TypographyUList.displayName = "TypographyUList"
+TypographyUList.displayName = 'TypographyUList'

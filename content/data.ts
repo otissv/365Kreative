@@ -4,6 +4,10 @@ export const nav = [
     to: 'home'
   },
   {
+    label: 'Projects',
+    to: 'projects'
+  },
+  {
     label: 'About Us',
     to: 'about'
   },
@@ -11,10 +15,7 @@ export const nav = [
     label: 'Services',
     to: 'services'
   },
-  // {
-  //   label: "Projects",
-  //   to: "projects",
-  // },
+
   {
     label: 'Our Process',
     to: 'process'
@@ -32,6 +33,15 @@ export const nav = [
     to: 'contact'
   }
 ]
+
+export const contact = {
+  heading: 'Contact us',
+  title: "Let's create the future together",
+  phone: '+44 7848114854',
+  email: 'otissv@gmail.com',
+  content: 'discovery call message here/ invite to discuss',
+  button: 'Send'
+}
 
 export const header = {
   title: 'Transform Your Online Presence',
@@ -133,7 +143,7 @@ export const seoFeatures = {
       benefit:
         'Enhances user experience for mobile visitors, encouraging longer site visits and interactions.',
       value:
-        'Improves search engine rankings, as search engines favour mobile-optimised sites.'
+        'Improves search engine rankings, as search engines favour mobile-optimise sites.'
     },
     {
       heading: 'High-Quality Content Creation',
@@ -225,12 +235,12 @@ export const projects = {
   title: 'Our work',
   items: [
     {
-      src: '/images/workstation.webp',
-      alt: ''
+      src: '/images/kanti-project.webp',
+      alt: 'kanti Ria website'
     },
     {
-      src: '/images/workstation.webp',
-      alt: ''
+      src: '/images/yogini-project.webp',
+      alt: 'Yogini Yoga website'
     }
   ]
 }
@@ -250,31 +260,24 @@ export const testimonials: {
   title: 'What Our Clients Say About Us',
   items: [
     {
-      src: '/images/workstation.webp',
-      alt: '@shadcn',
-      fallback: 'CN',
-      review:
-        '"Integrating AdaptTech’s solutions has been pivotal in streamlining our operations and exceeding our client service expectations. The impact on our workflow has been profound, fostering better teamwork and enabling us to deliver high-quality services faster. Our clients have noticed the difference, and their feedback has been overwhelmingly positive. We credit AdaptTech Solutions with helping us maintain our competitive edge."',
-      name: 'David Chen, CEO, BrandPulse Marketing Solutions'
+      src: '/images/kanti-avatar.webp',
+      alt: 'Kanti avatar',
+      fallback: 'KR',
+      review: `Otis is very knowledgeable, professional and confident in guiding you in every step of the website creation.
+        He has a very detailed structure when it comes to gathering all the information necessary to build online identity. A crucial step I have then realised to be.
+        His laid back personality made it easy to work through the whole process and to find solutions when needed. He was well reachable and available when I needed it. I am very happy with my website in terms of structure, graphic and content.
+        I can only recommend working with 365Kreative. It was also fun.
+        `,
+      name: 'Kanti, kanti Ria'
     },
     {
-      src: '/images/workstation.webp',
-      alt: '@shadcn',
-      fallback: 'CN',
-      review:
-        '"Integrating AdaptTech’s solutions has been pivotal in streamlining our operations and exceeding our client service expectations. The impact on our workflow has been profound, fostering better teamwork and enabling us to deliver high-quality services faster. Our clients have noticed the difference, and their feedback has been overwhelmingly positive. We credit AdaptTech Solutions with helping us maintain our competitive edge."',
-      name: 'David Chen, CEO, BrandPulse Marketing Solutions'
+      src: '/images/ania-avatar.webp',
+      alt: 'Ania avatar',
+      fallback: 'AY',
+      review: `I couldn't be happier with our new website! Their team was incredibly attentive and intuitive, really capturing the essence of our studio's calming and welcoming atmosphere. The website is not only beautiful but also user-friendly, making it easy for our clients to navigate and book classes. The response from our community has been overwhelmingly positive.`,
+      name: 'Ania, Yogini yoga'
     }
   ]
-}
-
-export const contact = {
-  heading: 'Contact us',
-  title: "Let's create the future together",
-  phone: '+48 882943276',
-  email: 'otissv@gmail.com',
-  content: 'discovery call message here/ invite to discuss',
-  button: 'Send'
 }
 
 export const subscribe = {
@@ -322,7 +325,7 @@ export const ourProcess = {
       step: '4',
       heading: 'Structure',
       content: [
-        'The work begins! We start by creating a sitemap. A sitemap is an essential blueprint for the structure of a website, outlining all the main pages and subpages.',
+        'The work begins! We start by creating a sitemap. A sitemap is an essential blueprint for the structure of a website, outlining all the main pages and sub-pages.',
         ' The sitemap is crucial for optimizing site architecture for both user experience and search engine indexing, making it easier for visitors and search engines to find content efficiently'
       ]
     },
@@ -378,22 +381,35 @@ export const faq = {
     },
     {
       heading: 'Can we meet in person?',
-      content: ['content']
+      content: [
+        'Normally a video call is enough. Yes it is possible to meet in person as we are based in London and will travel locally. Traveling will be at charged.'
+      ]
     },
     {
       heading: 'What systems do you use to design websites?',
       content: ['content']
     },
-    {
-      heading: 'How will we communicate throughout the project?',
-      content: ['content']
-    },
+    // {
+    //   heading: 'How will we communicate throughout the project?',
+    //   content: ['Communication will be done via email and video calls']
+    // },
     {
       heading: 'Will I be able to update the website myself?',
-      content: ['content']
+      content: [
+        'Yes, updating is easy, via a Content Management System (CMS). Tanning will be provided on how to use the CMS.'
+      ]
     },
     {
       heading: 'What happens after my website is launched?',
+      content: [
+        'Once the website goes live, we will be on call to for 10 days to fix any bugs and solve issues you might be having.',
+        'Launching is just the beginning, there is a annual cost to maintaining to running a website',
+        'We offer various customer success packages tailored to your needs, from basic maintenance to frequent updates.',
+        'If you prefer not to have to a customer success package but still need occasional assistance, we also provide services at an hourly rate.'
+      ]
+    },
+    {
+      heading: 'How does my website get found?',
       content: ['content']
     }
   ]
@@ -409,6 +425,6 @@ export const emails = {
   contact: {
     from: 'website@365kreative.com',
     to: 'info@365kreative.com',
-    subject: 'New Message'
+    subject: 'Email confirmation – We have received your message'
   }
 }

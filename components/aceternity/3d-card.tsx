@@ -1,13 +1,15 @@
-"use client"
+/* eslint-disable react-hooks/exhaustive-deps */
 
-import { cn } from "@/lib/utils"
+'use client'
+
+import { cn } from '@/lib/utils'
 import React, {
   createContext,
   useState,
   useContext,
   useRef,
-  useEffect,
-} from "react"
+  useEffect
+} from 'react'
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -77,7 +79,7 @@ export function ThreeDCardDemo() {
 export const CardContainer = ({
   children,
   className,
-  containerClassName,
+  containerClassName
 }: {
   children?: React.ReactNode
   className?: string
@@ -108,9 +110,9 @@ export const CardContainer = ({
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
-        className={cn("flex items-center ", containerClassName)}
+        className={cn('flex items-center ', containerClassName)}
         style={{
-          perspective: "1000px",
+          perspective: '1000px'
         }}
       >
         <div
@@ -119,11 +121,11 @@ export const CardContainer = ({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
+            'flex items-center justify-center relative transition-all duration-200 ease-linear',
             className
           )}
           style={{
-            transformStyle: "preserve-3d",
+            transformStyle: 'preserve-3d'
           }}
         >
           {children}
@@ -135,7 +137,7 @@ export const CardContainer = ({
 
 export const CardBody = ({
   children,
-  className,
+  className
 }: {
   children: React.ReactNode
   className?: string
@@ -143,7 +145,7 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
+        'h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]',
         className
       )}
     >
@@ -153,7 +155,7 @@ export const CardBody = ({
 }
 
 export const CardItem = ({
-  as: Tag = "div",
+  as: Tag = 'div',
   children,
   className,
   translateX = 0,
@@ -178,10 +180,6 @@ export const CardItem = ({
   const ref = useRef<HTMLDivElement>(null)
   const [isMouseEntered] = useMouseEnter()
 
-  useEffect(() => {
-    handleAnimations()
-  }, [isMouseEntered])
-
   const handleAnimations = () => {
     if (!ref.current) return
     if (isMouseEntered) {
@@ -191,10 +189,14 @@ export const CardItem = ({
     }
   }
 
+  useEffect(() => {
+    handleAnimations()
+  }, [isMouseEntered])
+
   return (
     <Tag
       ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
+      className={cn('w-fit transition duration-200 ease-linear', className)}
       {...rest}
     >
       {children}
@@ -206,7 +208,7 @@ export const CardItem = ({
 export const useMouseEnter = () => {
   const context = useContext(MouseEnterContext)
   if (context === undefined) {
-    throw new Error("useMouseEnter must be used within a MouseEnterProvider")
+    throw new Error('useMouseEnter must be used within a MouseEnterProvider')
   }
   return context
 }

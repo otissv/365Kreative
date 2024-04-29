@@ -1,16 +1,16 @@
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
 export type ShapeDividerTypes =
-  | "waves"
-  | "wavesOpacity"
-  | "curves"
-  | "curersAsymmetrical"
-  | "triangle"
-  | "triangleAsymmetrical"
-  | "tilt"
-  | "arrow"
-  | "split"
-  | "book"
+  | 'waves'
+  | 'wavesOpacity'
+  | 'curves'
+  | 'curersAsymmetrical'
+  | 'triangle'
+  | 'triangleAsymmetrical'
+  | 'tilt'
+  | 'arrow'
+  | 'split'
+  | 'book'
 
 type ShapeProps = { fill?: string; svgClassName?: string }
 
@@ -186,42 +186,40 @@ export interface ShapeDividerProps {
   invert?: boolean
   height?: string
   width?: string
-  y?: "top" | "bottom"
+  y?: 'top' | 'bottom'
 }
 
 export const ShapeDivider = ({
   className,
-  type = "waves",
-  fill = "fill-black",
+  type = 'waves',
+  fill = 'fill-black',
   flipVertical = false,
   flipHorizontal = false,
-  height = "150px",
-  width = "100%",
+  height = '150px',
+  width = '100%',
   invert = false,
-  y = "top",
+  y = 'top'
 }: ShapeDividerProps) => {
-  const id = crypto.randomUUID()
-
   let DividerPath = Waves
-  if (type === "wavesOpacity") DividerPath = WavesOpacity
-  if (type === "curves") DividerPath = Curves
-  if (type === "curersAsymmetrical") DividerPath = CurersAsymmetrical
-  if (type === "triangle") DividerPath = Triangle
-  if (type === "triangleAsymmetrical") DividerPath = TriangleAsymmetrical
-  if (type === "tilt") DividerPath = Tilt
-  if (type === "arrow") DividerPath = Arrow
-  if (type === "split") DividerPath = Split
-  if (type === "book") DividerPath = Book
+  if (type === 'wavesOpacity') DividerPath = WavesOpacity
+  if (type === 'curves') DividerPath = Curves
+  if (type === 'curersAsymmetrical') DividerPath = CurersAsymmetrical
+  if (type === 'triangle') DividerPath = Triangle
+  if (type === 'triangleAsymmetrical') DividerPath = TriangleAsymmetrical
+  if (type === 'tilt') DividerPath = Tilt
+  if (type === 'arrow') DividerPath = Arrow
+  if (type === 'split') DividerPath = Split
+  if (type === 'book') DividerPath = Book
 
   return (
     <>
       <div
         className={cn(
-          "356-ShapeDivider",
-          "absolute w-full overflow-hidden leading-[0] left-0 ",
-          flipVertical && "rotate-180",
-          flipHorizontal && "scale-x-[-1]",
-          y === "top" ? "top-0" : "bottom-0",
+          '356-ShapeDivider',
+          'absolute w-full overflow-hidden leading-[0] left-0 ',
+          flipVertical && 'rotate-180',
+          flipHorizontal && 'scale-x-[-1]',
+          y === 'top' ? 'top-0' : 'bottom-0',
           className
         )}
       >

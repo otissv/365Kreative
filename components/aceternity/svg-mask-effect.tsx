@@ -1,7 +1,8 @@
-"use client"
-import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
+/* eslint-disable react-hooks/exhaustive-deps */
+'use client'
+import { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 /** @example
   Add mask in public folder
@@ -49,7 +50,7 @@ export const MaskContainer = ({
   revealText,
   size = 10,
   revealSize = 600,
-  className,
+  className
 }: {
   children?: string | React.ReactNode
   revealText?: string | React.ReactNode
@@ -66,11 +67,11 @@ export const MaskContainer = ({
   }
 
   useEffect(() => {
-    containerRef.current.addEventListener("mousemove", updateMousePosition)
+    containerRef.current.addEventListener('mousemove', updateMousePosition)
     return () => {
       if (containerRef.current) {
         containerRef.current.removeEventListener(
-          "mousemove",
+          'mousemove',
           updateMousePosition
         )
       }
@@ -81,9 +82,9 @@ export const MaskContainer = ({
   return (
     <motion.div
       ref={containerRef}
-      className={cn("h-screen relative", className)}
+      className={cn('h-screen relative', className)}
       animate={{
-        backgroundColor: isHovered ? "var(--slate-900)" : "var(--white)",
+        backgroundColor: isHovered ? 'var(--slate-900)' : 'var(--white)'
       }}
     >
       <motion.div
@@ -92,9 +93,9 @@ export const MaskContainer = ({
           WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${
             mousePosition.y - maskSize / 2
           }px`,
-          WebkitMaskSize: `${maskSize}px`,
+          WebkitMaskSize: `${maskSize}px`
         }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
       >
         <div className="absolute inset-0 bg-black h-full w-full z-0 opacity-50" />
         <div

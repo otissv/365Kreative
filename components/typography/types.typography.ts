@@ -1,8 +1,8 @@
-import { ComponentProps } from "../component.types"
+import { ComponentProps } from '../component.types'
 
 export interface TypographyBaseProps {
   muted?: boolean
-  variant?: "default" | "uppercase" | "lowercase" | "capitalize"
+  variant?: 'default' | 'uppercase' | 'lowercase' | 'capitalize'
 }
 
 // @ts-ignore override size

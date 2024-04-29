@@ -1,16 +1,9 @@
-"use client"
-import React from "react"
-import Image from "next/image"
+'use client'
+import React from 'react'
 
-import {
-  motion,
-  useInView,
-  useScroll,
-  useMotionValueEvent,
-  inView,
-} from "framer-motion"
-import { cn } from "@/lib/utils"
-import { useElementScrollPosition } from "../hooks/useElementScrollPosition"
+import { useInView } from 'framer-motion'
+import { cn } from '@/lib/utils'
+import { useElementScrollPosition } from '../../hooks/useElementScrollPosition'
 
 export default function PlayGround() {
   const unStickRef = React.useRef(null)
@@ -35,19 +28,19 @@ export default function PlayGround() {
     setElementTop(elementTop)
   })
 
-  if (stick && unStickIsInView && elementTopInView < 0) {
+  if (stick && unStickIsInView && (elementTopInView || 0) < 0) {
     console.log({ stick, unStickIsInView, elementTopInView })
     setStick(false)
   }
 
-  console.log("sticky", stick)
+  console.log('sticky', stick)
 
   return (
     <>
       <style>
         {`
       body {
-        overflow: ${stick ? "hidden" : "auto"}
+        overflow: ${stick ? 'hidden' : 'auto'}
       }
       `}
       </style>
@@ -55,8 +48,8 @@ export default function PlayGround() {
 
       <aside
         className={cn(
-          "bg-red-300 h-[80vh]",
-          stick ? "overflow-y-scroll" : "overflow-y-hidden"
+          'bg-red-300 h-[80vh]',
+          stick ? 'overflow-y-scroll' : 'overflow-y-hidden'
         )}
         ref={stickRef}
       >

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "email": "email dev --dir ./emails"
+    "email": "email dev --dir ./emails",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -47,6 +48,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.3.0",
     "@xata.io/client": "^0.29.4",
+    "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.0.1",
     "framer-motion": "^11.0.24",
@@ -55,7 +57,10 @@
     "mini-svg-data-uri": "^1.4.4",
     "nanoid": "^5.0.7",
     "next": "14.1.4",
+    "next-themes": "^0.3.0",
+    "popmotion": "^11.0.5",
     "react": "^18",
+    "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-element-to-jsx-string": "^15.0.0",
     "react-email": "2.1.1",
@@ -67,6 +72,7 @@
     "sonner": "^1.4.41",
     "three": "^0.163.0",
     "three-globe": "^2.31.0",
+    "vaul": "^0.9.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

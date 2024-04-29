@@ -1,39 +1,29 @@
-import Image, { ImageProps } from "next/image"
-import { ComponentProps } from "./component.types"
-import { Box } from "./box"
+import Image, { ImageProps } from 'next/image'
+import { ComponentProps } from './component.types'
+import { Box } from './box'
+import { cn } from '@/lib/utils'
 
-interface AnimateImagePropsProps extends Omit<ImageProps, "src" | "alt"> {
+interface AnimateImagePropsProps extends Omit<ImageProps, 'fill'> {
   className?: string
+  fill?: true
 }
 
 export interface AnimateImageProps extends ComponentProps<HTMLImageElement> {
   imageProps?: AnimateImagePropsProps
-  src: string
-  alt: string
-  width?: number
-  height?: number
-  fill?: boolean
 }
 
 export const AnimateImage = ({
-  src,
-  alt,
-  width,
-  height,
-  fill,
   imageProps,
+  className,
   ...props
 }: AnimateImageProps) => {
-  const widthProps = width ? { width } : { fill }
-
   return (
-    <Box {...props}>
+    <Box className={cn('relative', className)} {...props}>
       <Image
-        src={src}
-        height={height}
-        {...widthProps}
         {...imageProps}
-        alt={alt}
+        alt={imageProps?.alt || ''}
+        src={imageProps?.src || ''}
+        className={cn('object-cover w-auto h-auto', imageProps?.className)}
       />
     </Box>
   )

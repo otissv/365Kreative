@@ -1,7 +1,7 @@
-"use client"
-import React, { useEffect, useMemo, useRef, useState } from "react"
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion"
-import { cn } from "@/lib/utils"
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
+import { MotionValue, motion, useScroll, useTransform } from 'framer-motion'
+import { cn } from '@/lib/utils'
 import {
   IconBrightnessDown,
   IconBrightnessUp,
@@ -16,14 +16,14 @@ import {
   IconTable,
   IconVolume,
   IconVolume2,
-  IconVolume3,
-} from "@tabler/icons-react"
-import { IconSearch } from "@tabler/icons-react"
-import { IconWorld } from "@tabler/icons-react"
-import { IconCommand } from "@tabler/icons-react"
-import { IconCaretLeftFilled } from "@tabler/icons-react"
-import { IconCaretDownFilled } from "@tabler/icons-react"
-import Image from "next/image"
+  IconVolume3
+} from '@tabler/icons-react'
+import { IconSearch } from '@tabler/icons-react'
+import { IconWorld } from '@tabler/icons-react'
+import { IconCommand } from '@tabler/icons-react'
+import { IconCaretLeftFilled } from '@tabler/icons-react'
+import { IconCaretDownFilled } from '@tabler/icons-react'
+import Image from 'next/image'
 
 /** @example
 ```
@@ -100,7 +100,7 @@ export const MacbookScroll = ({
   src,
   showGradient,
   title,
-  badge,
+  badge
 }: {
   src?: string
   showGradient?: boolean
@@ -110,7 +110,7 @@ export const MacbookScroll = ({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start']
   })
 
   const [isMobile, setIsMobile] = useState(false)
@@ -144,7 +144,7 @@ export const MacbookScroll = ({
       <motion.h2
         style={{
           translateY: textTransform,
-          opacity: textOpacity,
+          opacity: textOpacity
         }}
         className="dark:text-white text-neutral-800 text-3xl font-bold mb-20 text-center"
       >
@@ -195,7 +195,7 @@ export const Lid = ({
   scaleY,
   rotate,
   translate,
-  src,
+  src
 }: {
   scaleX: MotionValue<number>
   scaleY: MotionValue<number>
@@ -207,15 +207,15 @@ export const Lid = ({
     <div className="relative [perspective:800px]">
       <div
         style={{
-          transform: "perspective(800px) rotateX(-25deg) translateZ(0px)",
-          transformOrigin: "bottom",
-          transformStyle: "preserve-3d",
+          transform: 'perspective(800px) rotateX(-25deg) translateZ(0px)',
+          transformOrigin: 'bottom',
+          transformStyle: 'preserve-3d'
         }}
         className="h-[12rem] w-[32rem] bg-[#010101] rounded-2xl p-2 relative"
       >
         <div
           style={{
-            boxShadow: "0px 2px 0px 2px var(--neutral-900) inset",
+            boxShadow: '0px 2px 0px 2px var(--neutral-900) inset'
           }}
           className="absolute inset-0 bg-[#010101] rounded-lg flex items-center justify-center"
         >
@@ -230,8 +230,8 @@ export const Lid = ({
           scaleY: scaleY,
           rotateX: rotate,
           translateY: translate,
-          transformStyle: "preserve-3d",
-          transformOrigin: "top",
+          transformStyle: 'preserve-3d',
+          transformOrigin: 'top'
         }}
         className="h-96 w-full absolute inset-0 bg-[#010101] rounded-2xl p-2"
       >
@@ -252,7 +252,7 @@ export const Trackpad = () => {
     <div
       className="w-[40%] mx-auto h-32  rounded-xl my-1"
       style={{
-        boxShadow: "0px 0px 1px 1px #00000020 inset",
+        boxShadow: '0px 0px 1px 1px #00000020 inset'
       }}
     ></div>
   )
@@ -529,7 +529,7 @@ export const Keypad = () => {
         <KBtn>
           <span className="block">{`>`}</span>
           <span className="block">{`.`}</span>
-        </KBtn>{" "}
+        </KBtn>{' '}
         <KBtn>
           <span className="block">{`?`}</span>
           <span className="block">{`/`}</span>
@@ -623,7 +623,7 @@ export const KBtn = ({
   className,
   children,
   childrenClassName,
-  backlit = true,
+  backlit = true
 }: {
   className?: string
   children?: React.ReactNode
@@ -633,25 +633,25 @@ export const KBtn = ({
   return (
     <div
       className={cn(
-        "p-[0.5px] rounded-[4px]",
-        backlit && "bg-white/[0.2] shadow-xl shadow-white"
+        'p-[0.5px] rounded-[4px]',
+        backlit && 'bg-white/[0.2] shadow-xl shadow-white'
       )}
     >
       <div
         className={cn(
-          "h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center",
+          'h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center',
           className
         )}
         style={{
           boxShadow:
-            "0px -0.5px 2px 0 #0D0D0F inset, -0.5px 0px 2px 0 #0D0D0F inset",
+            '0px -0.5px 2px 0 #0D0D0F inset, -0.5px 0px 2px 0 #0D0D0F inset'
         }}
       >
         <div
           className={cn(
-            "text-neutral-200 text-[5px] w-full flex justify-center items-center flex-col",
+            'text-neutral-200 text-[5px] w-full flex justify-center items-center flex-col',
             childrenClassName,
-            backlit && "text-white"
+            backlit && 'text-white'
           )}
         >
           {children}
@@ -675,8 +675,8 @@ export const SpeakerGrid = () => {
       className="flex px-[0.5px] gap-[2px] mt-2 h-40"
       style={{
         backgroundImage:
-          "radial-gradient(circle, #08080A 0.5px, transparent 0.5px)",
-        backgroundSize: "3px 3px",
+          'radial-gradient(circle, #08080A 0.5px, transparent 0.5px)',
+        backgroundSize: '3px 3px'
       }}
     ></div>
   )
