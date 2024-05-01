@@ -26,7 +26,7 @@ export default function WebFeatures(props: SectionProps) {
             <span className="text-4xl opacity-70">{webFeatures.title2}</span>
           </SectionHeading>
 
-          <div className="md:grid md:gap-6 md:justify-center md:grid-cols-2 lg:pl-0 lg:translate-y-32 lg:mb-20 ">
+          <div className="md:grid md:gap-6 md:justify-center md:grid-cols-2 lg:pl-0 lg:translate-y-32 lg:mb-[160px]">
             <ul className="flex flex-col gap-8">
               {webFeatures.items.map(({ heading, content, benefit, value }) => (
                 <Box

@@ -20,7 +20,6 @@ export default function Services(props: SectionProps) {
           >
             {services.title}
           </SectionHeading>
-
           <ul className="grid md:grid-cols-2 xl:grid-cols-3 text-xl gap-6 mt-10 w-full">
             {services.services.map((service) => (
               <Box

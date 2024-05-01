@@ -428,3 +428,12 @@ export const emails = {
     subject: 'Email confirmation – We have received your message'
   }
 }
+
+export const pwa = [
+  'Improved user experience',
+  'Offline accessability',
+  'Performance Boost',
+  'Cost-Effective',
+  'Auto Update',
+  'Search Engine Optimised'
+]

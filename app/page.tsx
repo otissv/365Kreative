@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'We design, develop, and optimise websites that are visually stunning, SEO savvy and conversion-focused.'
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
       <Home />

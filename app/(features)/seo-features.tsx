@@ -24,7 +24,7 @@ export default function SeoFeatures(props: SectionProps) {
             {seoFeatures.title}
           </SectionHeading>
 
-          <div className="md:grid md:grid-cols-2 lg:pl-0 lg:translate-y-32 lg:mb-20">
+          <div className="md:grid md:grid-cols-2 lg:pl-0 lg:translate-y-32l lg:mb-20">
             <ul className="flex flex-col gap-8">
               {seoFeatures.items.map(({ heading, content, benefit, value }) => (
                 <Box
@@ -58,7 +58,7 @@ export default function SeoFeatures(props: SectionProps) {
                 width: 150,
                 height: 1878,
                 className: 'rounded-sm object-fill',
-                style: { height: 'auto', width: '150px' }
+                style: { height: '1878px', width: '150px' }
               }}
             />
           </div>

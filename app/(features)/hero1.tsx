@@ -31,7 +31,7 @@ export default function Hero1({
         {...props}
         id={id}
         className={cn(
-          'relative h-[100vh] flex  flex-col overflow-hidden',
+          'relative h-[100vh] flex  flex-col overflow-hidden snap-start',
           className
         )}
         contentClassName="h-[100vh] grid"
@@ -39,7 +39,7 @@ export default function Hero1({
         <BackgroundGradientAnimation containerClassName="absolute" />
         <div className="365-overlay h-[100vh] absolute top-0 bottom-0 left-0 right-0 bg-[#00007f] mix-blend-overlay"></div>
 
-        <Box className="inset-0 container p-4 flex flex-col center items-center gap-6 mt-20 md:p-6 lg:px-20 ">
+        <Box className="inset-0  container p-4 flex flex-col center items-center gap-6 mt-20 md:p-6 lg:px-20 ">
           <Box
             className="365-Watermark-logo absolute bottom-0 lg:bottom-10 xl:bottom-32   w-[100vw] h-[100vh] mix-blend-overlay flex items-end font-bold leading-none opacity-0 translate-y-40 delay-400"
             parallax={30}

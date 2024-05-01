@@ -11,6 +11,7 @@ export const ScrollLink = ({
   children,
   to: hostTo = '',
   duration = 500,
+  smooth = false,
   ...props
 }: ScrollLinkProps) => {
   const to = hostTo.replace('#', '')
@@ -18,9 +19,9 @@ export const ScrollLink = ({
     <Link
       {...props}
       to={to}
-      smooth={true}
+      smooth={smooth}
       duration={duration}
-      className={cn('cursor-pointer', className)}
+      className={cn('inline-flex cursor-pointer items-center', className)}
       href={`#${to}`}
     >
       {children}

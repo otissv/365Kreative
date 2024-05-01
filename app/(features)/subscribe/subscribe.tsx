@@ -344,7 +344,7 @@ export const SubscribeForm = ({ className, ...props }: BoxProps) => {
           <div className="mb-3 md:w-96">
             <Input
               aria-label="name"
-              className="md:rounded-r-none"
+              className="h-12 md:rounded-r-none"
               placeholder="Enter your name..."
               onBlur={handleOnBlur('name')}
               value={form.name.value}
@@ -356,7 +356,7 @@ export const SubscribeForm = ({ className, ...props }: BoxProps) => {
             <Input
               type="email"
               aria-label="email address"
-              className="md:rounded-l-none md:border-l-0 md:rounded-r-none md:border-r-0"
+              className="h-12 md:rounded-l-none md:border-l-0 md:rounded-r-none md:border-r-0"
               placeholder="Enter your email here.."
               value={form.email.value}
               onBlur={handleOnBlur('email')}
@@ -366,7 +366,7 @@ export const SubscribeForm = ({ className, ...props }: BoxProps) => {
 
           <Button
             className={cn(
-              'bg-purple-700  hover:bg-purple-500 focus:bg-purple-500 text-white w-full hidden',
+              'bg-purple-700 h-12 hover:bg-purple-500 focus:bg-purple-500 text-white w-full hidden',
               'md:flex md:w-[150px] md:border md:rounded-l-none'
             )}
             onClick={handleOnSubscriptionSubmit}
@@ -404,7 +404,7 @@ export const SubscribeForm = ({ className, ...props }: BoxProps) => {
 
         <Button
           className={cn(
-            'bg-purple-700  hover:bg-purple-500 focus:bg-purple-500 text-white w-full mt-6 md:hidden'
+            'bg-purple-700 h-12 hover:bg-purple-500 focus:bg-purple-500 text-white w-full mt-6 md:hidden'
           )}
           onClick={handleOnSubscriptionSubmit}
         >

@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 import { Facebook, Twitter, Instagram } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
@@ -61,11 +61,10 @@ export const SocialLinks = ({ className }: { className?: string }) => {
 
 export interface NavMenuButtonProps
   extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> {
-  id: string
-  iconClassName?: NavToggleIconProps
-  expanded: boolean
-  children: string
   as?: React.ElementType<any, keyof React.JSX.IntrinsicElements>
+  id: string
+  iconProps?: NavToggleIconProps
+  reverse?: boolean
 }
 export const NavMenuButton = React.forwardRef<
   HTMLButtonElement,
@@ -76,9 +75,9 @@ export const NavMenuButton = React.forwardRef<
       as: Tag = 'button',
       id,
       className,
-      iconClassName,
-      expanded,
+      iconProps,
       children,
+      reverse,
       ...props
     },
     ref
@@ -94,12 +93,8 @@ export const NavMenuButton = React.forwardRef<
           className
         )}
         {...props}
-        type="button"
-        aria-haspopup="dialog"
-        aria-controls={id}
-        data-state={expanded ? 'open' : 'closed'}
       >
-        <NavToggleIcon reverse={expanded} />
+        <NavToggleIcon reverse={reverse} {...iconProps} />
         <span className="sr-only">{children}</span>
       </Tag>
     )
@@ -185,30 +180,23 @@ export const NavItem = ({
 }: NavItemProps) => {
   return (
     <li
-      onClick={() => {
-        setActiveLink(to)
-      }}
       className={buttonClassName}
       style={{
         transformStyle: 'preserve-3d'
       }}
       {...props}
     >
-      {active.label === children && (
+      {/* {active.label === children && (
         <motion.div
           layoutId="navItemActive"
           transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
           className={cn('absolute inset-0  rounded-sm ', activeButtonClassName)}
         />
-      )}
+      )} */}
       <ScrollLink
         to={to}
-        onClick={() => {
-          setActiveLink(to)
-        }}
         className={cn(
           'relative block w-full px-4 py-2 rounded-sm transition-all duration-1000',
-          // hovering === to && activeButtonClassName,
           active.label === children && isStack && activeButtonClassName,
           buttonLabelClassName
         )}
@@ -269,6 +257,8 @@ export function Nav({
   setActiveLink,
   ...props
 }: NavProps) {
+  const [expanded, setExpanded] = React.useState(false)
+
   return (
     <nav
       className={cn('flex items-center h-16 w-full z-30', className)}
@@ -279,12 +269,14 @@ export function Nav({
         <Sheet>
           <SheetTrigger asChild>
             <NavMenuButton
-              as="span"
-              id="nav-closed"
-              aria-expanded="false"
-              expanded={false}
+              id="nav-toggle"
+              onClick={() => setExpanded(true)}
+              aria-haspopup="dialog"
+              aria-controls="nav-close"
+              aria-expanded={expanded}
+              data-state="closed"
             >
-              close Navigation Menu
+              Open menu
             </NavMenuButton>
           </SheetTrigger>
           <SheetContent
@@ -292,9 +284,10 @@ export function Nav({
             className="p-4 bg-black w-4/5 max-w-96 flex flex-col"
             closeIcon={
               <NavMenuButton
-                id="nav-opened"
-                aria-expanded="true"
-                expanded={true}
+                id="nav-close"
+                reverse={true}
+                onClick={() => setExpanded(false)}
+                as="span"
               >
                 Open Navigation Menu
               </NavMenuButton>
@@ -310,7 +303,7 @@ export function Nav({
                   <NavItem
                     key={`${label}${to}`}
                     active={active}
-                    activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active "
+                    activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active hover:bg-nav-button-active"
                     buttonClassName={buttonClassName}
                     buttonLabelClassName={buttonLabelClassName}
                     setActiveLink={setActiveLink}

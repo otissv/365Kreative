@@ -31,21 +31,25 @@ export default function Home() {
   })
 
   const handleOnInView = (id: string) => {
-    const index = nav.findIndex((item) => item.to === id)
-    if (index >= 0) {
-      setActiveLink(id)
-    }
+    //TODO: fix
+    // const index = nav.findIndex((item) => item.to === id)
+    // if (index >= 0 && active.to !== id) {
+    //   console.log('handleOnInView: ', id)
+    //   setActiveLink(id)
+    // }
   }
   return (
     <>
       <Nav
         label="Main Navigation"
-        className="fixed backdrop-blur-lg px-2 z-10 lg:px-20"
+        className="absolute backdrop-blur-lg px-2 z-10 lg:px-20 snap-start"
         isMainMenu={true}
         active={active}
         setActiveLink={setActiveLink}
         items={nav}
+        buttonLabelClassName="hover:bg-nav-button-active"
       />
+
       <Hero1
         id="home"
         title={header.title}
@@ -58,30 +62,35 @@ export default function Home() {
           id="projects"
           onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
+          backToTop={true}
         />
 
         <About
           id="about"
           onInView={handleOnInView}
           bottomDivider={{ type: 'tilt' }}
+          backToTop={true}
         />
 
         <Benefits
           id="about"
           onInView={handleOnInView}
-          bottomDivider={{ type: 'tilt' }}
+          topDivider={{ type: 'tilt', flipHorizontal: true }}
+          backToTop={true}
         />
 
         <Services
           id="services"
           onInView={handleOnInView}
-          topDivider={{ type: 'tilt', flipHorizontal: true }}
+          bottomDivider={{ type: 'tilt' }}
+          backToTop={true}
         />
 
         <WebFeatures
           id="services"
           onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
+          backToTop={true}
         />
 
         <SeoFeatures
@@ -89,27 +98,31 @@ export default function Home() {
           onInView={handleOnInView}
           className="section font-medium"
           bottomDivider={{ type: 'tilt' }}
+          backToTop={true}
         />
         <Process
           id="process"
           onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
+          backToTop={true}
         />
 
         <Testimonials
           id="testimonials"
           onInView={handleOnInView}
           bottomDivider={{ type: 'tilt' }}
+          backToTop={true}
         />
 
         <Faq
           id="faq"
           onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
+          backToTop={true}
         />
 
         <Section
-          id="testimonials"
+          id="faq"
           className="h-[100vh]"
           bottomDivider={{ type: 'tilt' }}
         >
@@ -128,13 +141,14 @@ export default function Home() {
           id="contact"
           onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
+          backToTop={true}
         />
 
         <div className="relative h-[100px] md:h-[300px] w-full overflow-hidden">
           <AuroraBackground />
         </div>
 
-        <Subscribe id="contact" className="!bg-background-2" />
+        <Subscribe id="contact" className="!bg-background-2" backToTop={true} />
       </main>
     </>
   )

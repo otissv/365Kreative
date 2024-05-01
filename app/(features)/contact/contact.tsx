@@ -318,7 +318,7 @@ export default function Contact({ className, ...props }: SectionProps) {
                 <Input
                   id="name"
                   className={cn(
-                    'rounded-sm',
+                    'h-12 rounded-sm',
                     form.name.error && 'border-red-700'
                   )}
                   value={form.name.value}
@@ -340,7 +340,7 @@ export default function Contact({ className, ...props }: SectionProps) {
                   id="email"
                   type="email"
                   className={cn(
-                    'rounded-sm',
+                    'h-12 rounded-sm',
                     form.email.error && 'border-red-700'
                   )}
                   value={form.email.value}
@@ -379,7 +379,7 @@ export default function Contact({ className, ...props }: SectionProps) {
 
             <Button
               className={cn(
-                'text-xl rounded-sm text-foreground w-full h-auto bg-purple-700  hover:bg-purple-500 focus:bg-purple-500',
+                'h-12 text-xl rounded-sm text-foreground w-full  bg-purple-700  hover:bg-purple-500 focus:bg-purple-500',
                 'md:ml-auto md:w-auto'
               )}
               disabled={form.isLoading}

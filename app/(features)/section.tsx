@@ -6,6 +6,8 @@ import { Box, BoxProps } from '@/components/box'
 import { ShapeDivider, ShapeDividerProps } from '@/components/shape-divider'
 import { TypographyH2 } from '@/components/typography/h2.typography'
 import { useElementScrollPosition } from '@/hooks/useElementScrollPosition'
+import { ScrollLink } from '@/components/scroll-link'
+import { MoveUpIcon } from 'lucide-react'
 
 export interface SectionHeadingProps extends BoxProps {
   heading?: string
@@ -86,26 +88,28 @@ export interface SectionBackground
 
 export interface SectionProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
+  backToTop?: boolean
   background?: SectionBackground
   bottomDivider?: ShapeDividerProps
   content?: React.ReactNode
+  contentClassName?: string
   hasContainer?: boolean
   heading?: string
   topDivider?: ShapeDividerProps
-  contentClassName?: string
   onInView?: (id: string) => void
 }
 
 export function Section({
+  backToTop = false,
   background,
   bottomDivider,
   children,
   className,
   content,
+  contentClassName,
   id,
   topDivider,
   onInView,
-  contentClassName,
   ...props
 }: SectionProps) {
   const scrollRef = React.useRef<HTMLDivElement>(null)
@@ -162,6 +166,14 @@ export function Section({
         )}
       >
         {children}
+
+        {backToTop ? (
+          <div className=" Section-content-main absolute bottom-10 z-[3]">
+            <ScrollLink to="home" className="h-12">
+              Back to top <MoveUpIcon className="inline-flex ml-1 h-4 w-4" />
+            </ScrollLink>
+          </div>
+        ) : null}
       </div>
     </section>
   )

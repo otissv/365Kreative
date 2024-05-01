@@ -12,7 +12,7 @@ export interface AnimateImageProps extends ComponentProps<HTMLImageElement> {
   imageProps?: AnimateImagePropsProps
 }
 
-export const AnimateImage = ({
+export const AnimateImage = async ({
   imageProps,
   className,
   ...props

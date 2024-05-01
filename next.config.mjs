@@ -1,5 +1,22 @@
 /** @type {import('next').NextConfig} */
 
+import nextPWA from '@ducanh2912/next-pwa'
+
+const withPWA = nextPWA({
+  scope: '/app/',
+  dest: 'public',
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  disable: false,
+  fallbacks: {
+    image: '/images/fallback.png'
+  },
+  workboxOptions: {
+    disableDevLogs: true
+  }
+})
+
 const nextConfig = {
   experimental: {
     webVitalsAttribution: ['FCP', 'CLS', 'LCP'],
@@ -12,8 +29,6 @@ const nextConfig = {
         default: false,
         vendors: false
       }
-      config.optimization.splitChunks.cacheGroups.default = false
-      config.optimization.splitChunks.cacheGroups.default = false
 
       config.optimization.splitChunks.chunks = 'async'
       config.optimization.splitChunks.minSize = 20000
@@ -29,4 +44,4 @@ const nextConfig = {
   }
 }
 
-export default nextConfig
+export default withPWA(nextConfig)
