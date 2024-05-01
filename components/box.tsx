@@ -12,7 +12,7 @@ import { ComponentProps } from './component.types'
 import { cn } from '@/lib/utils'
 
 export interface BoxProps extends ComponentProps<HTMLElement> {
-  as?: React.ElementType
+  as?: React.ElementType<any, keyof React.JSX.IntrinsicElements>
 }
 
 function useParallax(value: MotionValue<number>, distance: number) {

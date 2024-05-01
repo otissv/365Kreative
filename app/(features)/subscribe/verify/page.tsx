@@ -98,7 +98,7 @@ const VerifyContainer = ({
       <div className=" grid md:grid-cols-2 gap-6 center">
         <Button
           variant="outline"
-          className="app-gradient-border hover:app-bg-gradient hover:text-foreground focus:app-bg-gradient  border-2  w-48"
+          className="app-border-gradient hover:app-bg-gradient hover:text-foreground focus:app-bg-gradient  border-2  w-48"
           asChild
         >
           <Link href="/">Back to home page</Link>

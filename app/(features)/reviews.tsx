@@ -17,7 +17,7 @@ export const Reviews = ({ className }: { className?: string }) => {
       {testimonials.items.map(({ src, alt, fallback, review, name }, index) => (
         <Box key={index} className="translate-y-40" enter="translate-y-0">
           <Card className="w-full lg:max-w-[800px] rounded-sm bg-background-3">
-            <CardContent className="px-6 pb-6 w-full">
+            <CardContent className="px-6 pt-4 pb-6 w-full">
               <TypographyParagraph>&ldquo;{review}&rdquo;</TypographyParagraph>
             </CardContent>
             <CardFooter className="md:whitespace-nowrap">

@@ -6,9 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "email": "email dev --dir ./emails",
-    "tsc": "tsc"
+    "lint": "next lint && node ./node_modules/typescript/bin/tsc",
+    "email": "email dev --dir ./emails"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -49,6 +48,7 @@
     "@tsparticles/slim": "^3.3.0",
     "@xata.io/client": "^0.29.4",
     "cmdk": "^1.0.0",
+    "critters": "^0.0.22",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.0.1",
     "framer-motion": "^11.0.24",
@@ -68,6 +68,7 @@
     "react-scroll": "^1.9.0",
     "react-wrap-balancer": "^1.1.0",
     "resend": "^3.2.0",
+    "sharp": "^0.33.3",
     "simplex-noise": "^4.0.1",
     "sonner": "^1.4.41",
     "three": "^0.163.0",

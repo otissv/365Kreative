@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Facebook, Twitter, Instagram } from 'lucide-react'
@@ -16,7 +16,7 @@ import {
 import { ScrollLink } from '@/components/scroll-link'
 import { Logo365k } from '@/app/(features)/365kreative'
 
-export type NaveItemType = {
+export type NavItemType = {
   label: string
   to: string
 }
@@ -58,6 +58,54 @@ export const SocialLinks = ({ className }: { className?: string }) => {
     </ul>
   )
 }
+
+export interface NavMenuButtonProps
+  extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> {
+  id: string
+  iconClassName?: NavToggleIconProps
+  expanded: boolean
+  children: string
+  as?: React.ElementType<any, keyof React.JSX.IntrinsicElements>
+}
+export const NavMenuButton = React.forwardRef<
+  HTMLButtonElement,
+  NavMenuButtonProps
+>(
+  (
+    {
+      as: Tag = 'button',
+      id,
+      className,
+      iconClassName,
+      expanded,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Tag
+        ref={ref}
+        className={cn(
+          'inline-flex items-center justify-center h-10 w-10 py-2 mr-2 px-0 text-base  whitespace-nowrap rounded-sm font-medium transition-colors',
+          'disabled:pointer-events-none disabled:opacity-50',
+          'hover:text-white hover:bg-transparent hover:border',
+          'focus-visible:outline-none focus-visible:ring-ring focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0',
+          className
+        )}
+        {...props}
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls={id}
+        data-state={expanded ? 'open' : 'closed'}
+      >
+        <NavToggleIcon reverse={expanded} />
+        <span className="sr-only">{children}</span>
+      </Tag>
+    )
+  }
+)
+NavMenuButton.displayName = 'NavMenuButton'
 
 export interface NavToggleIconProps
   extends React.HTMLAttributes<HTMLOrSVGElement> {
@@ -106,16 +154,16 @@ export const setSelectedNavItem =
     items,
     setActive
   }: {
-    items: NaveItemType[]
-    setActive: (navItem: NaveItemType) => void
+    items: NavItemType[]
+    setActive: (navItem: NavItemType) => void
   }) =>
   (id: string) => {
     const item = items.find((item) => item.to === id)
     setActive(item || ({} as any))
   }
 
-export interface NaveItemProps extends React.HTMLAttributes<HTMLLIElement> {
-  active: NaveItemType
+export interface NavItemProps extends React.HTMLAttributes<HTMLLIElement> {
+  active: NavItemType
   activeButtonClassName?: string
   buttonClassName?: string
   buttonLabelClassName?: string
@@ -124,7 +172,7 @@ export interface NaveItemProps extends React.HTMLAttributes<HTMLLIElement> {
   to: string
 }
 
-export const NaveItem = ({
+export const NavItem = ({
   active,
   activeButtonClassName,
   buttonClassName,
@@ -134,9 +182,7 @@ export const NaveItem = ({
   setActiveLink,
   to,
   ...props
-}: NaveItemProps) => {
-  // const [hovering, _] = React.useState<string>("")
-
+}: NavItemProps) => {
   return (
     <li
       onClick={() => {
@@ -201,12 +247,12 @@ export const NavList = ({
 }
 
 export type NavProps = React.HTMLAttributes<HTMLDivElement> & {
-  active: NaveItemType
+  active: NavItemType
   activeButtonClassName?: string
   buttonClassName?: string
   buttonLabelClassName?: string
   isMainMenu?: boolean
-  items?: NaveItemType[]
+  items?: NavItemType[]
   label: string
   setActiveLink: (id: string) => void
 }
@@ -232,34 +278,36 @@ export function Nav({
       <div className="xl:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <button
-              className={cn(
-                'inline-flex items-center justify-center h-10 w-10 py-2 mr-2 px-0 text-base  whitespace-nowrap rounded-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0'
-                // "md:hidden"
-              )}
-              type="button"
-              aria-haspopup="dialog"
+            <NavMenuButton
+              as="span"
+              id="nav-closed"
               aria-expanded="false"
-              aria-controls="radix-:R16u6la:"
-              data-state="closed"
+              expanded={false}
             >
-              <NavToggleIcon />
-              <span className="sr-only">Toggle Menu</span>
-            </button>
+              close Navigation Menu
+            </NavMenuButton>
           </SheetTrigger>
           <SheetContent
             position="left"
             className="p-4 bg-black w-4/5 max-w-96 flex flex-col"
-            closeIcon={<NavToggleIcon reverse />}
+            closeIcon={
+              <NavMenuButton
+                id="nav-opened"
+                aria-expanded="true"
+                expanded={true}
+              >
+                Open Navigation Menu
+              </NavMenuButton>
+            }
           >
             <div className="h-16 w-full">
-              <ScrollLink to="hero"></ScrollLink>
+              <Logo365k className="h-10 w-36" fill="white" />
             </div>
 
             <NavList isStack={true}>
               {items.map(({ label, to }, index) => {
                 return (
-                  <NaveItem
+                  <NavItem
                     key={`${label}${to}`}
                     active={active}
                     activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active "
@@ -269,7 +317,7 @@ export function Nav({
                     to={to}
                   >
                     <SheetClose className="justify-start">{label}</SheetClose>
-                  </NaveItem>
+                  </NavItem>
                 )
               })}
             </NavList>
@@ -279,15 +327,12 @@ export function Nav({
         </Sheet>
       </div>
 
-      <ScrollLink to="hero">
-        <Logo365k className="h-10 w-36" fill="white" />
-        <span className="sr-only">365 Kreative logo</span>
-      </ScrollLink>
+      <Logo365k className="h-10 w-36" fill="white" />
 
       <NavList>
         {items.map(({ label, to }) => {
           return (
-            <NaveItem
+            <NavItem
               key={`${label}${to}`}
               active={active}
               activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active"
@@ -297,7 +342,7 @@ export function Nav({
               to={to}
             >
               {label}
-            </NaveItem>
+            </NavItem>
           )
         })}
       </NavList>

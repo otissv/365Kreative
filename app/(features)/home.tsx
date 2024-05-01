@@ -4,7 +4,7 @@ import * as React from 'react'
 import dynamic from 'next/dynamic'
 
 import { AuroraBackground } from '@/components/aceternity/aurora-background'
-import { Nav, NaveItemType, setSelectedNavItem } from '@/app/(features)/nav'
+import { Nav, NavItemType, setSelectedNavItem } from '@/app/(features)/nav'
 import { header, nav } from '@/content/data'
 import { Section } from '@/app/(features)/section'
 import { TypographyBlockquote } from '@/components/typography/blockquote.typography'
@@ -22,14 +22,8 @@ const Process = dynamic(() => import('@/app/(features)/process'))
 const Testimonials = dynamic(() => import('@/app/(features)/testimonials'))
 const Faq = dynamic(() => import('@/app/(features)/faq'))
 
-// export const metadata: Metadata = {
-//   title: 'Transform your online presence with 365 Kreative',
-//   description:
-//     'We design, develop, and optimise websites that are not just visually stunning, but also SEO-savvy and conversion-focused.'
-// }
-
 export default function Home() {
-  const [active, setActive] = React.useState<NaveItemType>(nav[0])
+  const [active, setActive] = React.useState<NavItemType>(nav[0])
 
   const setActiveLink = setSelectedNavItem({
     items: nav,
@@ -72,16 +66,16 @@ export default function Home() {
           bottomDivider={{ type: 'tilt' }}
         />
 
-        <Services
-          id="services"
-          onInView={handleOnInView}
-          topDivider={{ type: 'tilt', flipHorizontal: true }}
-        />
-
         <Benefits
           id="about"
           onInView={handleOnInView}
           bottomDivider={{ type: 'tilt' }}
+        />
+
+        <Services
+          id="services"
+          onInView={handleOnInView}
+          topDivider={{ type: 'tilt', flipHorizontal: true }}
         />
 
         <WebFeatures

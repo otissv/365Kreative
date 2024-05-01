@@ -1,12 +1,15 @@
 import { MetadataRoute } from 'next'
+import { env } from '@/config/env'
+
+const { baseUrl } = env()
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/subscribe/', '/contact/']
+      disallow: ['/subscribe', '/contact']
     },
-    sitemap: 'https://acme.com/sitemap.xml'
+    sitemap: `${baseUrl}/sitemap.xml`
   }
 }

@@ -6,34 +6,57 @@ import { cn } from '@/lib/utils'
 import { useElementScrollPosition } from '../../hooks/useElementScrollPosition'
 
 export default function PlayGround() {
-  const unStickRef = React.useRef(null)
+  const containerRef = React.useRef<HTMLElement | null>(null)
+
+  const unStickRef = React.useRef<HTMLDivElement | null>(null)
   const unStickIsInView = useInView(unStickRef)
 
-  const [stick, setStick] = React.useState<boolean>(false)
-  const stickRef = React.useRef(null)
-  const [elementTopInView, setElementTop] = React.useState<number>()
+  const stickyRef = React.useRef<HTMLDivElement | null>(null)
+  const stickyIsInView = useInView(stickyRef)
 
-  useElementScrollPosition(stickRef, (isInView, elementTop) => {
-    if (
-      !stick &&
-      elementTop >= -10 &&
-      elementTop <= 10 &&
-      isInView
-      // &&
-      // elementTop >= -10 &&
-      // elementTop <= 10
-    ) {
-      setStick(!stick)
+  const stickyTopRef = React.useRef<HTMLDivElement | null>(null)
+  const stickyTopIsInView = useInView(stickyTopRef)
+
+  const [stick, setStick] = React.useState<boolean>(false)
+
+  useElementScrollPosition(containerRef, (isInView, elementTop) => {
+    if (!stick && isInView && elementTop > 0) {
+      console.log(!stick, isInView, elementTop > 0)
+      if (containerRef.current) {
+      }
+      setStick(true)
     }
-    setElementTop(elementTop)
   })
 
-  if (stick && unStickIsInView && (elementTopInView || 0) < 0) {
-    console.log({ stick, unStickIsInView, elementTopInView })
-    setStick(false)
-  }
+  // if (elementTopInView < 0) {
+  //   setStick(true)
+  // }
 
-  console.log('sticky', stick)
+  React.useEffect(() => {
+    if (unStickIsInView && stick) {
+      setStick(false)
+    }
+    if (stickyIsInView && !stickyTopIsInView && !unStickIsInView && !stick) {
+      setStick(true)
+    }
+
+    if (
+      stickyTopIsInView &&
+      !unStickIsInView &&
+      stick &&
+      containerRef.current
+    ) {
+      // window.scrollTo = containerRef.current?.getClientRects()[0].top
+      setStick(false)
+    }
+  }, [
+    containerRef,
+    stickyTopIsInView,
+    unStickIsInView,
+    stick,
+    stickyIsInView,
+    setStick
+  ])
 
   return (
     <>
@@ -44,17 +67,25 @@ export default function PlayGround() {
       }
       `}
       </style>
-      <div className="h-[101vh] w-full bg-gray-500"></div>
+      <div
+        className={cn('h-[100vh] w-full bg-gray-500', !stick && 'snap-start')}
+      ></div>
 
-      <aside
+      <section
         className={cn(
-          'bg-red-300 h-[80vh]',
-          stick ? 'overflow-y-scroll' : 'overflow-y-hidden'
+          'bg-red-300 h-[100vh]  py-10',
+          stick ? 'overflow-y-scroll snap-none' : 'overflow-y-hidden snap-start'
         )}
-        ref={stickRef}
+        ref={containerRef}
       >
-        hello
-        <div>
+        <div ref={stickyTopRef} />
+
+        <div className="relative">
+          <div
+            ref={stickyRef}
+            className=" absolute top-[50%]  h-10 w-10 bg-red-600"
+          ></div>
+
           <div className="grid gap-2 ">
             {[...new Array(20)].map((_, index) => (
               <div
@@ -66,12 +97,16 @@ export default function PlayGround() {
             ))}
           </div>
         </div>
+
         <div ref={unStickRef}>unstick</div>
-      </aside>
+      </section>
 
-      <main className="bg-gray-700 p-4"></main>
-
-      <div className="h-[100vh] w-full bg-gray-500"></div>
+      <div
+        className={cn(
+          'h-[100vh] w-full bg-gray-500',
+          stick ? 'snap-none' : 'snap-start'
+        )}
+      />
     </>
   )
 }
