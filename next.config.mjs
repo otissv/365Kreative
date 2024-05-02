@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 import nextPWA from '@ducanh2912/next-pwa'
+import withPlaiceholder from '@plaiceholder/next'
 
 const withPWA = nextPWA({
   scope: '/app/',
@@ -44,4 +45,9 @@ const nextConfig = {
   }
 }
 
-export default withPWA(nextConfig)
+const config =
+  process.env.NODE_ENV === 'development'
+    ? nextConfig
+    : withPWA(withPlaiceholder(nextConfig))
+
+export default config

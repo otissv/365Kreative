@@ -1,62 +1,32 @@
-'use client'
-
 import * as React from 'react'
-import Link from 'next/link'
-// import { motion } from 'framer-motion'
-import { Facebook, Twitter, Instagram } from 'lucide-react'
-
-import { cn } from '@/lib/utils'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger
-} from '@/components/ui/sheet'
 
 import { ScrollLink } from '@/components/scroll-link'
 import { Logo365k } from '@/app/(features)/365kreative'
+import { cn } from '@/lib/utils'
+import { SocialLinks } from '@/app/(features)/social-links'
+import {
+  NavSheet,
+  NavSheetContent,
+  NavSheetItem,
+  NavSheetList
+} from '@/components/nav/nav-sheet'
+
+export const setSelectedNavItem =
+  ({
+    items,
+    setActive
+  }: {
+    items: NavItemType[]
+    setActive: (navItem: NavItemType) => void
+  }) =>
+  (id: string) => {
+    const item = items.find((item) => item.to === id)
+    setActive(item || ({} as any))
+  }
 
 export type NavItemType = {
   label: string
   to: string
-}
-
-const social = [
-  {
-    href: 'https://www.facebook.com/365kreative',
-    name: 'Facebook',
-    Icon: (props: Record<string, any>) => <Facebook {...props} />
-  },
-  {
-    href: 'https://twitter.com/365kreative',
-    name: ' X formerly known as Twitter',
-    Icon: (props: Record<string, any>) => <Twitter {...props} />
-  },
-  {
-    href: 'https://www.instagram.com/365kreative',
-    name: 'Instagram',
-    Icon: (props: Record<string, any>) => <Instagram {...props} />
-  }
-] as const
-
-export const SocialLinks = ({ className }: { className?: string }) => {
-  return (
-    <ul className={cn('flex gap-1', className)}>
-      {social.map(({ href, Icon, name }, index) => {
-        return (
-          <li key={index}>
-            <Link
-              href={href}
-              className="inline-flex justify-center items-center rounded-full w-10 h-10 bg-background border bg-nav-button-hover"
-            >
-              <Icon />
-              <span className="sr-only">{name}</span>
-            </Link>
-          </li>
-        )
-      })}
-    </ul>
-  )
 }
 
 export interface NavMenuButtonProps
@@ -78,12 +48,19 @@ export const NavMenuButton = React.forwardRef<
       iconProps,
       children,
       reverse,
+      onClick,
       ...props
     },
     ref
   ) => {
+    const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault()
+      onClick && onClick(e)
+    }
+
     return (
       <Tag
+        type="button"
         ref={ref}
         className={cn(
           'inline-flex items-center justify-center h-10 w-10 py-2 mr-2 px-0 text-base  whitespace-nowrap rounded-sm font-medium transition-colors',
@@ -92,6 +69,7 @@ export const NavMenuButton = React.forwardRef<
           'focus-visible:outline-none focus-visible:ring-ring focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0',
           className
         )}
+        onClick={handleOnClick}
         {...props}
       >
         <NavToggleIcon reverse={reverse} {...iconProps} />
@@ -106,7 +84,6 @@ export interface NavToggleIconProps
   extends React.HTMLAttributes<HTMLOrSVGElement> {
   reverse?: boolean
 }
-
 const NavToggleIcon = ({
   className,
   reverse,
@@ -143,38 +120,25 @@ const NavToggleIcon = ({
     ></path>
   </svg>
 )
-
-export const setSelectedNavItem =
-  ({
-    items,
-    setActive
-  }: {
-    items: NavItemType[]
-    setActive: (navItem: NavItemType) => void
-  }) =>
-  (id: string) => {
-    const item = items.find((item) => item.to === id)
-    setActive(item || ({} as any))
-  }
+NavToggleIcon.displayName = 'NavToggleIcon'
 
 export interface NavItemProps extends React.HTMLAttributes<HTMLLIElement> {
-  active: NavItemType
+  // active: NavItemType
   activeButtonClassName?: string
   buttonClassName?: string
   buttonLabelClassName?: string
   isStack?: boolean
-  setActiveLink: (id: string) => void
+  // setActiveLink: (id: string) => void
   to: string
 }
-
 export const NavItem = ({
-  active,
+  // active,
   activeButtonClassName,
   buttonClassName,
   buttonLabelClassName,
   isStack,
   children,
-  setActiveLink,
+  // setActiveLink,
   to,
   ...props
 }: NavItemProps) => {
@@ -197,7 +161,7 @@ export const NavItem = ({
         to={to}
         className={cn(
           'relative block w-full px-4 py-2 rounded-sm transition-all duration-1000',
-          active.label === children && isStack && activeButtonClassName,
+          // active.label === children && isStack && activeButtonClassName,
           buttonLabelClassName
         )}
       >
@@ -207,17 +171,15 @@ export const NavItem = ({
   )
 }
 
-export interface NavContainerProps
-  extends React.HTMLAttributes<HTMLUListElement> {
+export interface NavListProps extends React.HTMLAttributes<HTMLUListElement> {
   isStack?: boolean
 }
-
 export const NavList = ({
   children,
   className,
   isStack,
   ...props
-}: NavContainerProps) => {
+}: NavListProps) => {
   return (
     <ul
       className={cn(
@@ -235,18 +197,14 @@ export const NavList = ({
 }
 
 export type NavProps = React.HTMLAttributes<HTMLDivElement> & {
-  active: NavItemType
   activeButtonClassName?: string
   buttonClassName?: string
   buttonLabelClassName?: string
   isMainMenu?: boolean
   items?: NavItemType[]
   label: string
-  setActiveLink: (id: string) => void
 }
-
 export function Nav({
-  active,
   activeButtonClassName,
   buttonClassName,
   buttonLabelClassName,
@@ -254,71 +212,36 @@ export function Nav({
   isMainMenu,
   items = [],
   label,
-  setActiveLink,
   ...props
 }: NavProps) {
-  const [expanded, setExpanded] = React.useState(false)
-
   return (
     <nav
       className={cn('flex items-center h-16 w-full z-30', className)}
       {...props}
       aria-label={label}
     >
-      <div className="xl:hidden">
-        <Sheet>
-          <SheetTrigger asChild>
-            <NavMenuButton
-              id="nav-toggle"
-              onClick={() => setExpanded(true)}
-              aria-haspopup="dialog"
-              aria-controls="nav-close"
-              aria-expanded={expanded}
-              data-state="closed"
-            >
-              Open menu
-            </NavMenuButton>
-          </SheetTrigger>
-          <SheetContent
-            position="left"
-            className="p-4 bg-black w-4/5 max-w-96 flex flex-col"
-            closeIcon={
-              <NavMenuButton
-                id="nav-close"
-                reverse={true}
-                onClick={() => setExpanded(false)}
-                as="span"
-              >
-                Open Navigation Menu
-              </NavMenuButton>
-            }
-          >
-            <div className="h-16 w-full">
-              <Logo365k className="h-10 w-36" fill="white" />
-            </div>
-
-            <NavList isStack={true}>
+      <NavSheet>
+        <NavSheetContent id="main-mobile-nav" label="Main mobile menu">
+          <Logo365k className="ml-6 h-10 w-36" fill="white" />
+          <div className="p-4">
+            <NavSheetList>
               {items.map(({ label, to }, index) => {
                 return (
-                  <NavItem
+                  <NavSheetItem
                     key={`${label}${to}`}
-                    active={active}
                     activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active hover:bg-nav-button-active"
                     buttonClassName={buttonClassName}
                     buttonLabelClassName={buttonLabelClassName}
-                    setActiveLink={setActiveLink}
                     to={to}
                   >
-                    <SheetClose className="justify-start">{label}</SheetClose>
-                  </NavItem>
+                    {label}
+                  </NavSheetItem>
                 )
               })}
-            </NavList>
-
-            <SocialLinks className="mt-auto" />
-          </SheetContent>
-        </Sheet>
-      </div>
+            </NavSheetList>
+          </div>
+        </NavSheetContent>
+      </NavSheet>
 
       <Logo365k className="h-10 w-36" fill="white" />
 
@@ -327,11 +250,9 @@ export function Nav({
           return (
             <NavItem
               key={`${label}${to}`}
-              active={active}
               activeButtonClassName="bg-nav-button-active dark:bg-nav-button-active"
               buttonClassName={buttonClassName}
               buttonLabelClassName={buttonLabelClassName}
-              setActiveLink={setActiveLink}
               to={to}
             >
               {label}

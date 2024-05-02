@@ -1,11 +1,8 @@
-'use client'
-
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 
 import { AuroraBackground } from '@/components/aceternity/aurora-background'
-import { Nav, NavItemType, setSelectedNavItem } from '@/app/(features)/nav'
-import { header, nav } from '@/content/data'
+import { header } from '@/content/data'
 import { Section } from '@/app/(features)/section'
 import { TypographyBlockquote } from '@/components/typography/blockquote.typography'
 
@@ -22,101 +19,58 @@ const Process = dynamic(() => import('@/app/(features)/process'))
 const Testimonials = dynamic(() => import('@/app/(features)/testimonials'))
 const Faq = dynamic(() => import('@/app/(features)/faq'))
 
-export default function Home() {
-  const [active, setActive] = React.useState<NavItemType>(nav[0])
-
-  const setActiveLink = setSelectedNavItem({
-    items: nav,
-    setActive
-  })
-
-  const handleOnInView = (id: string) => {
-    //TODO: fix
-    // const index = nav.findIndex((item) => item.to === id)
-    // if (index >= 0 && active.to !== id) {
-    //   console.log('handleOnInView: ', id)
-    //   setActiveLink(id)
-    // }
-  }
+export default function Home({}) {
   return (
     <>
-      <Nav
-        label="Main Navigation"
-        className="absolute backdrop-blur-lg px-2 z-10 lg:px-20"
-        isMainMenu={true}
-        active={active}
-        setActiveLink={setActiveLink}
-        items={nav}
-        buttonLabelClassName="hover:bg-nav-button-active"
-      />
-
-      <Hero1
-        id="home"
-        title={header.title}
-        subTitle={header.subTitle}
-        onInView={handleOnInView}
-      />
+      <Hero1 id="home" title={header.title} subTitle={header.subTitle} />
 
       <main>
         <Projects
           id="projects"
-          onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
           backToTop={true}
         />
 
-        <About
-          id="about"
-          onInView={handleOnInView}
-          bottomDivider={{ type: 'tilt' }}
-          backToTop={true}
-        />
+        <About id="about" bottomDivider={{ type: 'tilt' }} backToTop={true} />
 
         <Benefits
           id="about"
-          onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
           backToTop={true}
         />
 
         <Services
           id="services"
-          onInView={handleOnInView}
           bottomDivider={{ type: 'tilt' }}
           backToTop={true}
         />
 
         <WebFeatures
           id="services"
-          onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
           backToTop={true}
         />
 
         <SeoFeatures
           id="services"
-          onInView={handleOnInView}
           className="section font-medium"
           bottomDivider={{ type: 'tilt' }}
           backToTop={true}
         />
         <Process
           id="process"
-          onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
           backToTop={true}
         />
 
         <Testimonials
           id="testimonials"
-          onInView={handleOnInView}
           bottomDivider={{ type: 'tilt' }}
           backToTop={true}
         />
 
         <Faq
           id="faq"
-          onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
           backToTop={true}
         />
@@ -139,7 +93,6 @@ export default function Home() {
 
         <Contact
           id="contact"
-          onInView={handleOnInView}
           topDivider={{ type: 'tilt', flipHorizontal: true }}
           backToTop={true}
         />

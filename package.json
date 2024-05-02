@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.6",
+    "@plaiceholder/next": "^3.0.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -59,6 +60,7 @@
     "nanoid": "^5.0.7",
     "next": "14.1.4",
     "next-themes": "^0.3.0",
+    "plaiceholder": "^3.0.0",
     "popmotion": "^11.0.5",
     "react": "^18",
     "react-day-picker": "^8.10.1",

@@ -8,8 +8,30 @@ import {
 } from './section'
 import { Box } from '@/components/box'
 import { projects } from '@/content/data'
+import { getPlaiceholder } from 'plaiceholder'
 
-export default function Projects(props: SectionProps) {
+//TODO: add to all sections
+export async function fetchBlurDataURL(url: string) {
+  try {
+    const response = await fetch(`http:localhost:3000${url}`)
+    if (!response.ok) {
+      throw new Error('Failed to fetch image')
+    }
+
+    const buffer = await response.arrayBuffer()
+    const { base64 } = await getPlaiceholder(Buffer.from(buffer))
+
+    return base64
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.stack)
+    }
+  }
+}
+
+export default async function Projects({ ...props }: SectionProps) {
+  const blurDataURL = await fetchBlurDataURL('/images/fallback.png')
+
   return (
     <Section {...props}>
       <div className="Section-content-wrapper">
@@ -34,21 +56,25 @@ export default function Projects(props: SectionProps) {
               'lg:grid-row-2'
             )}
           >
-            {projects.items.map(({ src, alt }, index) => (
-              <AnimateImage
-                key={index}
-                className="relative opacity-30 translate-y-40 w-full lg:max-w-[800px] scale-0"
-                enter="opacity-100 translate-y-0 scale-100"
-                parallax={70}
-                imageProps={{
-                  src,
-                  alt,
-                  width: 580,
-                  height: 580,
-                  className: 'md:rounded-sm'
-                }}
-              />
-            ))}
+            {projects.items.map(async ({ src, alt }, index) => {
+              const blurDataURL = await fetchBlurDataURL(src)
+              return (
+                <AnimateImage
+                  key={index}
+                  className="relative opacity-30 translate-y-40 w-full lg:max-w-[800px] scale-0"
+                  enter="opacity-100 translate-y-0 scale-100"
+                  parallax={70}
+                  imageProps={{
+                    src,
+                    alt,
+                    width: 580,
+                    height: 580,
+                    className: 'md:rounded-sm',
+                    blurDataURL
+                  }}
+                />
+              )
+            })}
           </Box>
         </Box>
       </div>

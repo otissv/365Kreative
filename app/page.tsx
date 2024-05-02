@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { Metadata } from 'next/types'
 
-import { SocialLinks } from '@/app/(features)/nav'
+import { SocialLinks } from '@/app/(features)/social-links'
 import { contact } from '@/content/data'
 import { Logo365k } from '@/app/(features)/365kreative'
 import Home from './(features)/home'
+import { nav } from '@/content/data'
+import { Nav } from '@/components/nav/nav'
 
 export const metadata: Metadata = {
   title: 'Transform your online presence with 365Kreative',
@@ -15,6 +17,14 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   return (
     <>
+      <Nav
+        label="Main Navigation"
+        className="fixed backdrop-blur-lg px-2 z-10 lg:px-20"
+        isMainMenu={true}
+        items={nav}
+        buttonLabelClassName="hover:bg-nav-button-active"
+      />
+
       <Home />
 
       <footer className="Footer container relative text-sm z-[2] pt-20 pb-4 px-8 lg:px-20 grid items-end xl:h-[50vh]">

@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils'
 import { Box, BoxProps } from '@/components/box'
 import { ShapeDivider, ShapeDividerProps } from '@/components/shape-divider'
 import { TypographyH2 } from '@/components/typography/h2.typography'
-import { useElementScrollPosition } from '@/hooks/useElementScrollPosition'
 import { ScrollLink } from '@/components/scroll-link'
 import { MoveUpIcon } from 'lucide-react'
 
@@ -112,13 +111,6 @@ export function Section({
   onInView,
   ...props
 }: SectionProps) {
-  const scrollRef = React.useRef<HTMLDivElement>(null)
-
-  useElementScrollPosition(
-    scrollRef,
-    (inInView) => inInView && onInView && onInView(id as string)
-  )
-
   const { image, ...backgroundProps } = background || { image: {} }
 
   return (
@@ -130,7 +122,6 @@ export function Section({
       )}
       id={id}
       {...props}
-      ref={scrollRef}
     >
       {background ? (
         <div className="overflow-hidden w-full initial" {...backgroundProps}>
