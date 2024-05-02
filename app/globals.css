@@ -98,6 +98,11 @@
   body {
     @apply bg-black text-foreground;
   }
+  body, main {
+    > * {
+      scroll-snap-align: start;
+    }
+  }
 }  
 
 
@@ -141,9 +146,7 @@
     display: none;
   }
 
-  .Section, .Footer {
-    scroll-snap-align: start;
-  }
+
   .Section {
     min-height: 100vh;
     

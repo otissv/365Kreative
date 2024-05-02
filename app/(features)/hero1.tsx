@@ -31,7 +31,7 @@ export default function Hero1({
         {...props}
         id={id}
         className={cn(
-          'relative h-[100vh] flex  flex-col overflow-hidden snap-start',
+          'relative h-[100vh] flex  flex-col overflow-hidden',
           className
         )}
         contentClassName="h-[100vh] grid"

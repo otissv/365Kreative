@@ -42,7 +42,7 @@ export default function Home() {
     <>
       <Nav
         label="Main Navigation"
-        className="absolute backdrop-blur-lg px-2 z-10 lg:px-20 snap-start"
+        className="absolute backdrop-blur-lg px-2 z-10 lg:px-20"
         isMainMenu={true}
         active={active}
         setActiveLink={setActiveLink}
