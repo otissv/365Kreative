@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { ScrollLink } from '@/components/scroll-link'
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 import { cn } from '@/lib/utils'
 import { SocialLinks } from '@/app/(features)/social-links'
 import {
@@ -222,7 +222,7 @@ export function Nav({
     >
       <NavSheet>
         <NavSheetContent id="main-mobile-nav" label="Main mobile menu">
-          <Logo365k className="ml-6 h-10 w-36" fill="white" />
+          <Logo365M className="ml-6 h-10 w-36" fill="white" />
           <div className="p-4">
             <NavSheetList>
               {items.map(({ label, to }, index) => {
@@ -243,7 +243,7 @@ export function Nav({
         </NavSheetContent>
       </NavSheet>
 
-      <Logo365k className="h-10 w-36" fill="white" />
+      <Logo365M className="h-10 w-36" fill="white" />
 
       <NavList>
         {items.map(({ label, to }) => {

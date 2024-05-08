@@ -3,13 +3,13 @@ import { Metadata } from 'next/types'
 
 import { SocialLinks } from '@/app/(features)/social-links'
 import { contact } from '@/content/data'
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 import Home from './(features)/home'
 import { nav } from '@/content/data'
 import { Nav } from '@/components/nav/nav'
 
 export const metadata: Metadata = {
-  title: 'Transform your online presence with 365Kreative',
+  title: 'Transform your online presence with 365Milian',
   description:
     'We design, develop, and optimise websites that are visually stunning, SEO savvy and conversion-focused.'
 }
@@ -30,7 +30,7 @@ export default async function HomePage() {
       <footer className="Footer container relative text-sm z-[2] pt-20 pb-4 px-8 lg:px-20 grid items-end xl:h-[50vh]">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="grid gap-4 w-full ">
-            <Logo365k className="h-10 w-36" fill="white" />
+            <Logo365M className="h-10 w-36" fill="white" />
             <a className="flex" href={`mailto:${contact.email}`}>
               {contact.email}
             </a>

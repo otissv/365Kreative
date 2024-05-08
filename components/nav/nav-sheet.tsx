@@ -21,12 +21,13 @@ export interface NavSheetProps extends React.HTMLAttributes<HTMLDivElement> {}
 export const NavSheet = ({ children, className, ...props }: NavSheetProps) => {
   const [expanded, setExpanded] = React.useState(false)
 
-  if (expanded) {
-    document.body.classList.add('scroll-locked')
-  } else {
-    document.body.classList.remove('scroll-locked')
-  }
-
+  React.useEffect(() => {
+    if (expanded && document) {
+      document.body.classList.add('scroll-locked')
+    } else {
+      document.body.classList.remove('scroll-locked')
+    }
+  }, [expanded])
   return (
     <NavSheetContext.Provider
       value={{
@@ -117,6 +118,7 @@ export const NavSheetItem = ({
     >
       <ScrollLink
         to={to}
+        smooth={true}
         className={cn(
           'relative block w-full px-4 py-2 rounded-sm transition-all duration-1000',
           buttonLabelClassName

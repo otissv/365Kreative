@@ -2,24 +2,24 @@ import { CircleCheck, Mail, MoveDown } from 'lucide-react'
 import Link from 'next/link'
 import { Metadata } from 'next/types'
 
-import { SocialLinks } from '@/app/(features)/nav'
+import { SocialLinks } from '@/app/(features)/social-links'
 import { TypographyH1 } from '@/components/typography/h1.typography'
 import { TypographyParagraph } from '@/components/typography/paragraph.typography'
 import { Button } from '@/components/ui/button'
 import { TypographyH2 } from '@/components/typography/h2.typography'
 import { Divider } from '@/components/divider'
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 import { Reviews } from '@/app/(features)/reviews'
 
 export const metadata: Metadata = {
-  title: 'Thank you for contacting  365Kreative',
+  title: 'Thank you for contacting  365Milian',
   description: 'Confirmation of receipt of email.'
 }
 
 export default function ThankYou() {
   return (
     <div className="container grid justify-center pt-6 pb-20 gap-20">
-      <Logo365k className="w-full" />
+      <Logo365M className="w-full" />
       <div className="max-w-[800px] grid center gap-6">
         <div className="center mx-auto relative w-40 h-40 mb-10">
           <Mail className="absolute w-40 h-40 mx-auto app-gradient-color" />

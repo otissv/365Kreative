@@ -9,7 +9,7 @@ import { Box } from '@/components/box'
 import { ScrollLink } from '@/components/scroll-link'
 import { Button } from '@/components/ui/button'
 import { Section } from '@/app/(features)/section'
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 
 export interface Hero1Props extends React.HTMLAttributes<HTMLElement> {
   title: string
@@ -40,14 +40,6 @@ export default function Hero1({
         <div className="365-overlay h-[100vh] absolute top-0 bottom-0 left-0 right-0 bg-[#00007f] mix-blend-overlay"></div>
 
         <Box className="inset-0  container p-4 flex flex-col center items-center gap-6 mt-20 md:p-6 lg:px-20 ">
-          <Box
-            className="365-Watermark-logo absolute bottom-0 lg:bottom-10 xl:bottom-32   w-[100vw] h-[100vh] mix-blend-overlay flex items-end font-bold leading-none opacity-0 translate-y-40 delay-400"
-            parallax={30}
-            enter="opacity-1 -translate-y-10 md:translate-y-0"
-          >
-            <Logo365k className="w-[100vw] h-[30vh]" fill="white" />
-          </Box>
-
           <ScrollLink
             to="services"
             className="absolute bottom-0 lg:bottom-5 mx-auto z-[9] mt-8"
@@ -71,6 +63,14 @@ export default function Hero1({
           >
             {subTitle}
           </TypographyParagraph>
+          <Box
+            className="365-Watermark-logo max-font-[15vw,264px] mix-blend-overlay flex items-end font-bold leading-none opacity-0 translate-y-40 delay-400"
+            parallax={30}
+            enter="opacity-1 -translate-y-10 md:translate-y-0"
+          >
+            <Logo365M className="w-[100vw] h-[30vh]" fill="white" />
+          </Box>
+
           <div className="flex flex-col gap-2 center items-center mt-10">
             <Box
               className="opacity-30 translate-y-40 delay-300"

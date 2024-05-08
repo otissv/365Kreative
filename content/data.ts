@@ -92,7 +92,7 @@ export const benefits = {
     {
       heading: 'Your Digital Crafting Experts',
       content: [
-        "In the ever-evolving digital world, your online presence is more than just a website; it's the heartbeat of your brand. That's where 365Kreative steps in.",
+        "In the ever-evolving digital world, your online presence is more than just a website; it's the heartbeat of your brand. That's where 365Milian steps in.",
         'We offer a comprehensive suite of digital solutions, from bespoke web design and development to cutting-edge SEO strategies. Our approach is simple yet powerful – blending aesthetics with functionality, and aligning every pixel with your business goals.',
         'With us, experience the convenience of having all your digital needs addressed under one roof, ensuring a cohesive and impactful online presence.'
       ],
@@ -102,7 +102,7 @@ export const benefits = {
     {
       heading: 'Casting Experiences, Not Just Websites',
       content: [
-        'At 365Kreative, we believe in creating more than just websites – we create digital experiences.',
+        'At 365Milian, we believe in creating more than just websites – we create digital experiences.',
         "Our team of experts is dedicated to designing and developing websites that are not only visually stunning but also user-centric. We focus on crafting sites that offer seamless navigation and engaging content, making every visitor's journey enjoyable and memorable. Our SEO expertise ensures your website ranks high in search results, connecting you with your target audience effectively.",
         'Plus, our commitment to data-driven decisions means your website stays relevant, dynamic, and ahead of the competition.'
       ],
@@ -113,7 +113,7 @@ export const benefits = {
       heading: 'Your Growth, Our Mission',
       content: [
         'Your business is unique, and your digital strategy should reflect that.',
-        'At 365Kreative, we tailor our services to fit the specific contours of your brand. From creating a distinctive brand identity to optimising for conversions, every step we take is designed to amplify your online presence and drive business growth. And as your business evolves, our scalable solutions evolve with you, ensuring you always stay on top of the digital game',
+        'At 365Milian, we tailor our services to fit the specific contours of your brand. From creating a distinctive brand identity to optimising for conversions, every step we take is designed to amplify your online presence and drive business growth. And as your business evolves, our scalable solutions evolve with you, ensuring you always stay on top of the digital game',
         'With our ongoing support and maintenance, rest assured that your digital assets remain in expert hands, leaving you free to focus on what you do best – growing your business.'
       ],
       src: '/images/success.webp',
@@ -221,7 +221,7 @@ export const aboutUs = {
   heading: 'About Us',
   title: 'Your Web Specialists',
   content: [
-    'Welcome to 365Kreative, a premier web design and development agency based in the London, UK. We specialise in creating innovative and visually appealing websites that help businesses stand out in the digital world.',
+    'Welcome to 365Milian, a premier web design and development agency based in the London, UK. We specialise in creating innovative and visually appealing websites that help businesses stand out in the digital world.',
     'With our team of talented designers and developers, we are dedicated to providing top-notch services tailored to meet your unique needs and goals. Let us help you to elevate your online presence and achieve success in a competitive online landscape.'
   ],
   image: {
@@ -266,7 +266,7 @@ export const testimonials: {
       review: `Otis is very knowledgeable, professional and confident in guiding you in every step of the website creation.
         He has a very detailed structure when it comes to gathering all the information necessary to build online identity. A crucial step I have then realised to be.
         His laid back personality made it easy to work through the whole process and to find solutions when needed. He was well reachable and available when I needed it. I am very happy with my website in terms of structure, graphic and content.
-        I can only recommend working with 365Kreative. It was also fun.
+        I can only recommend working with 365Milian. It was also fun.
         `,
       name: 'Kanti, kanti Ria'
     },
@@ -288,7 +288,7 @@ export const subscribe = {
     'Join them by signing up now!'
   ],
   agree:
-    'I agree to newsletter via email and consent to be contacted by 365Kreative Design with future updates and related promotional materials. I understand that I can unsubscribe from these communications at any time.',
+    'I agree to newsletter via email and consent to be contacted by 365Milian Design with future updates and related promotional materials. I understand that I can unsubscribe from these communications at any time.',
   button: 'Subscribe',
   sending: 'Sending'
 }
@@ -417,14 +417,14 @@ export const faq = {
 
 export const emails = {
   confirmNewsletterSubscription: {
-    from: 'noreply@365kreative.com',
+    from: 'noreply@365Milian.com',
     subject: 'Please confirm your subscription',
     unsubscribePath: '/subscribe/unsubscribe',
     verifyPath: '/subscribe/verify'
   },
   contact: {
-    from: 'website@365kreative.com',
-    to: 'info@365kreative.com',
+    from: 'website@365Milian.com',
+    to: 'info@365Milian.com',
     subject: 'Email confirmation – We have received your message'
   }
 }

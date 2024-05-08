@@ -30,8 +30,6 @@ export async function fetchBlurDataURL(url: string) {
 }
 
 export default async function Projects({ ...props }: SectionProps) {
-  const blurDataURL = await fetchBlurDataURL('/images/fallback.png')
-
   return (
     <Section {...props}>
       <div className="Section-content-wrapper">

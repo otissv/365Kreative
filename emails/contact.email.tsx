@@ -1,4 +1,4 @@
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 import { Contact } from '@/app/(features)/contact/validate.contract'
 import {
   Body,
@@ -36,7 +36,7 @@ export default function ContactEmail({
         }}
       >
         <Container style={containerStyles}>
-          <Logo365k style={{ width: '320px' }} />
+          <Logo365M style={{ width: '320px' }} />
 
           <Text style={paragraphStyles}>Hi {name},</Text>
 
@@ -51,7 +51,7 @@ export default function ContactEmail({
 
           <Section style={{ marginTop: '20px' }}>
             <Text style={paragraphStyles}>Many thanks,</Text>
-            <Text style={paragraphStyles}>The 365Kreative Team</Text>
+            <Text style={paragraphStyles}>The 365Milian Team</Text>
 
             <Hr style={hr} />
 

@@ -1,4 +1,4 @@
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 import { SubscribeForm } from '@/app/(features)/subscribe/validate.subscribe'
 import {
   Body,
@@ -36,12 +36,12 @@ export default function ConfirmNewsletterEmail({
       <Preview>{subject}</Preview>
       <Body style={mainStyles}>
         <Container style={containerStyles}>
-          <Logo365k style={{ width: '320px' }} />
+          <Logo365M style={{ width: '320px' }} />
 
           <Text style={paragraphStyles}>Hi {name},</Text>
 
           <Text style={paragraphStyles}>
-            Thank you for signing up for 365Kreative newsletter.
+            Thank you for signing up for 365Milian newsletter.
           </Text>
 
           <Text style={paragraphStyles}>
@@ -58,7 +58,7 @@ export default function ConfirmNewsletterEmail({
 
           <Section style={{ marginTop: '64px' }}>
             <Text style={paragraphStyles}>Many thanks,</Text>
-            <Text style={paragraphStyles}>The 365Kreative Team</Text>
+            <Text style={paragraphStyles}>The 365Milian Team</Text>
 
             <Hr style={hrStyles} />
 

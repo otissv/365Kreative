@@ -10,9 +10,9 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
-const APP_NAME = '365Kreative'
-const APP_DEFAULT_TITLE = '365Kreative'
-const APP_TITLE_TEMPLATE = '%s - 365Kreative'
+const APP_NAME = '365Milian'
+const APP_DEFAULT_TITLE = '365Milian'
+const APP_TITLE_TEMPLATE = '%s - 365Milian'
 const APP_DESCRIPTION =
   'We design, develop, and optimise websites that are visually stunning, SEO savvy and conversion-focused.'
 const APP_IMAGE = '/opengraph-image.png'

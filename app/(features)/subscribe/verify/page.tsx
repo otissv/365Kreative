@@ -16,9 +16,9 @@ import { ResendSubscribe } from '@/app/(features)/subscribe/verify/resend-subscr
 import { Subscribe } from '@/app/(features)/subscribe/validate.subscribe'
 import { Divider } from '@/components/divider'
 import { Button } from '@/components/ui/button'
-import { SocialLinks } from '@/app/(features)/nav'
+import { SocialLinks } from '@/app/(features)/social-links'
 import { TypographyH2 } from '@/components/typography/h2.typography'
-import { Logo365k } from '@/app/(features)/365kreative'
+import { Logo365M } from '@/app/(features)/365Milian'
 import { Reviews } from '@/app/(features)/reviews'
 
 export const metadata: Metadata = {
@@ -81,7 +81,7 @@ const VerifyContainer = ({
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className="container grid justify-center pt-6 pb-20 gap-20" {...props}>
-      <Logo365k className="w-full" />
+      <Logo365M className="w-full" />
 
       <div className="max-w-[800px] grid center gap-6">
         <div className="center mx-auto relative w-40 h-40 mb-10">
